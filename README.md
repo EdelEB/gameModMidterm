@@ -1,6 +1,4 @@
-# gameModMidterm
-
-Strogg Zoo Tycoon
+# Strogg Zoo Tycoon
 by Edel Barcenas
 
 Build and maintain your very own zoo filled the Strogg of your choosing. 
