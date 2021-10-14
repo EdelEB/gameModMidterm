@@ -1,0 +1,20 @@
+
+player.h 
+	movement speed faster
+	jump height higher
+
+shotgun.h
+	fire rate faster
+	flash is green
+
+blaster.h / hyperblaster.h  <i don't remember>
+	fire rate faster
+
+WeaponBlaster.cpp 
+	Blaster cannot fire
+		429-438
+		commented out lines
+	
+
+
+	
