@@ -1,0 +1,174 @@
+//*********************************************************************************
+// Retrophobopolis
+// author:  JSchuch
+// ***edited by id Software 7/7/06 - jk
+//*********************************************************************************
+
+#include "scripts/doom_defs.script"
+
+	float bigpitfloor = 0;		//big pit floor closed
+
+
+//*********************************************************************************
+//** Big moving floor over main lava pit
+//** 
+//*********************************************************************************
+
+void bigpit_light_control()
+{
+	//turn on the lava lamp
+	$bigpit_light.fadeInLight( 3 );
+
+	//wait for floor to start closing
+	sys.wait( 14 );
+
+	//turn off the lava lamp
+	$bigpit_light.fadeOutLight( 3 );
+}
+
+void open_bigpit()
+{
+	//mark the floor as being opened / fully open so no one can abuse the buttons
+	bigpitfloor = 1;
+
+	$bigpit_heat.show();
+
+	thread bigpit_light_control();
+
+	//open
+	$mover_biglava_w.time( 6.5 );
+	$mover_biglava_w.accelTime( 0.2 );
+	$mover_biglava_w.decelTime( 0.2 );
+	$mover_biglava_w.move( WEST, 282 );
+
+	$mover_biglava_e.time( 6.5 );
+	$mover_biglava_e.accelTime( 0.2 );
+	$mover_biglava_e.decelTime( 0.2 );
+	$mover_biglava_e.move( EAST, 250 );
+
+	$mover_biglava_w2.time( 6.5 );
+	$mover_biglava_w2.accelTime( 0.2 );
+	$mover_biglava_w2.decelTime( 0.2 );
+	$mover_biglava_w2.move( WEST, 58 );
+
+	$mover_biglava_e2.time( 6.5 );
+	$mover_biglava_e2.accelTime( 0.2 );
+	$mover_biglava_e2.decelTime( 0.2 );
+	$mover_biglava_e2.move( EAST, 58 );
+
+
+	//gears
+	$mover_bigfloor_upper_r.time( 6.5 );
+	$mover_bigfloor_upper_r.accelTime( 0.2 );
+	$mover_bigfloor_upper_r.decelTime( 0.2 );
+	$mover_bigfloor_upper_r.rotateOnce( '320 0 0' );
+	$mover_bigfloor_lower_r.time( 6.5 );
+	$mover_bigfloor_lower_r.accelTime( 0.2 );
+	$mover_bigfloor_lower_r.decelTime( 0.2 );
+	$mover_bigfloor_lower_r.rotateOnce( '-320 0 0' );
+
+	$mover_bigfloor_upper_l.time( 6.5 );
+	$mover_bigfloor_upper_l.accelTime( 0.2 );
+	$mover_bigfloor_upper_l.decelTime( 0.2 );
+	$mover_bigfloor_upper_l.rotateOnce( '-320 0 0' );
+	$mover_bigfloor_lower_l.time( 6.5 );
+	$mover_bigfloor_lower_l.accelTime( 0.2 );
+	$mover_bigfloor_lower_l.decelTime( 0.2 );
+	$mover_bigfloor_lower_l.rotateOnce( '320 0 0' );
+
+	sys.trigger( $bigpitspeaker );
+
+	$tn_bigpitlavasnd.stopSound ( SND_CHANNEL_ANY, false );
+	$tn_bigpitlavasnd.startSoundShader ("lavaloop_01L", SND_CHANNEL_ANY );
+	sys.waitFor( $mover_biglava_e2 );
+	sys.wait( 3 );
+
+	//close
+	$mover_biglava_w.time( 6.5 );
+	$mover_biglava_w.accelTime( 0.2 );
+	$mover_biglava_w.decelTime( 0.2 );
+	$mover_biglava_w.move( EAST, 282 );
+
+	$mover_biglava_e.time( 6.5 );
+	$mover_biglava_e.accelTime( 0.2 );
+	$mover_biglava_e.decelTime( 0.2 );
+	$mover_biglava_e.move( WEST, 250 );
+
+	$mover_biglava_w2.time( 6.5 );
+	$mover_biglava_w2.accelTime( 0.2 );
+	$mover_biglava_w2.decelTime( 0.2 );
+	$mover_biglava_w2.move( EAST, 58 );
+
+	$mover_biglava_e2.time( 6.5 );
+	$mover_biglava_e2.accelTime( 0.2 );
+	$mover_biglava_e2.decelTime( 0.2 );
+	$mover_biglava_e2.move( WEST, 58 );
+
+
+	//gears
+	$mover_bigfloor_upper_r.time( 6.5 );
+	$mover_bigfloor_upper_r.accelTime( 0.2 );
+	$mover_bigfloor_upper_r.decelTime( 0.2 );
+	$mover_bigfloor_upper_r.rotateOnce( '-320 0 0' );
+	$mover_bigfloor_lower_r.time( 6.5 );
+	$mover_bigfloor_lower_r.accelTime( 0.2 );
+	$mover_bigfloor_lower_r.decelTime( 0.2 );
+	$mover_bigfloor_lower_r.rotateOnce( '320 0 0' );
+
+	$mover_bigfloor_upper_l.time( 6.5 );
+	$mover_bigfloor_upper_l.accelTime( 0.2 );
+	$mover_bigfloor_upper_l.decelTime( 0.2 );
+	$mover_bigfloor_upper_l.rotateOnce( '320 0 0' );
+	$mover_bigfloor_lower_l.time( 6.5 );
+	$mover_bigfloor_lower_l.accelTime( 0.2 );
+	$mover_bigfloor_lower_l.decelTime( 0.2 );
+	$mover_bigfloor_lower_l.rotateOnce( '-320 0 0' );
+
+	$tn_bigpitsnd.startSoundShader ("giant_lava_pit", SND_CHANNEL_ANY );
+	$tn_bigpitlavasnd.stopSound ( SND_CHANNEL_ANY, false );
+	$tn_bigpitlavasnd.startSoundShader ("lavaloop_muted", SND_CHANNEL_ANY );
+	sys.waitFor( $mover_biglava_e2 );
+
+	sys.wait( 0.5 );
+
+	$bigpit_heat.hide();
+	bigpitfloor = 0;
+	$button1_light.On();
+	$button2_light.On();
+
+}
+
+void biglavapit_button()
+{
+	if( bigpitfloor == 0 ) {
+		$button1_light.Off();
+		$button2_light.Off();
+		open_bigpit();
+	}
+}
+
+//*********************************************************************************
+//** Setup initial states
+//** Bind all origins and movers and whatnot
+//*********************************************************************************
+
+void setup_initial_states()
+{
+	//turn off the big lava pit light for performance
+	$bigpit_light.fadeOutLight( 0.1 );
+
+	//hide the bigpit heat VP
+	$bigpit_heat.hide();
+
+	//turn on the big lava pit ambient lava sound
+	$tn_bigpitlavasnd.startSoundShader ("lavaloop_muted", SND_CHANNEL_ANY );
+
+}
+//*********************************************************************************
+
+void main()
+{
+	sys.wait( 0.1 );
+	setup_initial_states();
+
+}
