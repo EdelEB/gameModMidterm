@@ -1,0 +1,29 @@
+Zoo Tycoon
+
+This mod will allow the player to create their own zoo filled with enemies and bosses from Quake 4.
+There will be pads on the ground that allow you to walk up and activate them; on activate, you will
+be asked what kind of enclosure you want to buy. Once the enclosures are bought there will be monitors
+on the side of them saying whether or not they are hungry or thirsty, which the player is responsible
+to keep up probably through using weapons which have been changed to "feeder" and "waterer." If the
+hunger or thirst gets too low, animals die and it costs money to buy more. Money is earned based on 
+how many enclosures you have and how happy the animals are. All enclosures must be prebuilt or
+room is open to allow customizable enclosures. Creating walkways/fences/trashcans around the park 
+are also available.
+
+Weapons Ideas:
+feeder
+water bucket
+deleter
+
+Deliverables:
+guests
+ability to spawn and have functioning enclosures
+5 animals minimum with different upfront cost
+3 vendors types, hunger for guests
+research facility to unlock more creatures & vendors
+
+A shortcut that automatically Launches your Mod
+An In-Game Help Screen to explain your mod
+All custom assets (def files, models, sounds, etc) placed in a pak001.pak file
+Custom User Interface(HUD or other in-game menus) for your game's features
+A README with instructions on how to play your game and see all of your new feature
