@@ -1082,8 +1082,8 @@ idPlayer::idPlayer() {
 	alreadyDidTeamAnnouncerSound = false;
 
 	doInitWeapon			= false;
-	noclip					= false;
-	godmode					= false;
+	noclip					= true;
+	godmode					= true;
 	undying					= g_forceUndying.GetBool() ? !gameLocal.isMultiplayer : false;
 
 	spawnAnglesSet			= false;
