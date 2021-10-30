@@ -3038,6 +3038,18 @@ void Cmd_ClientOverflowReliable_f( const idCmdArgs& args ) {
 }
 #endif
 
+//EDEL BEGIN
+
+void Cmd_PrintPlayerPos_f(const idCmdArgs& args) {
+	idVec3 myVec = gameLocal.GetLocalPlayer()->GetChestPosition();
+	gameLocal.Printf("%d %d %d",myVec.x, myVec.y, myVec.z);
+}
+
+//EDEL END
+
+
+
+
 /*
 =================
 idGameLocal::InitConsoleCommands
@@ -3142,7 +3154,7 @@ void idGameLocal::InitConsoleCommands( void ) {
 	cmdSystem->AddCommand( "listMapEntities",		idGameLocal::Cmd_PrintMapEntityNumbers_f,		CMD_FL_GAME|CMD_FL_CHEAT,	"lists map entity numbers" );
 	cmdSystem->AddCommand( "listSpawnIds",			idGameLocal::Cmd_PrintSpawnIds_f,		CMD_FL_GAME|CMD_FL_CHEAT,	"lists map entity numbers" );
 // RAVEN END
-
+	
 #ifndef	ID_DEMO_BUILD
 	cmdSystem->AddCommand( "disasmScript",			Cmd_DisasmScript_f,			CMD_FL_GAME|CMD_FL_CHEAT,	"disassembles script" );
 // RAVEN BEGIN
@@ -3233,6 +3245,15 @@ void idGameLocal::InitConsoleCommands( void ) {
 	cmdSystem->AddCommand( "buy",					Cmd_BuyItem_f,				CMD_FL_GAME,				"Buy an item (if in a buy zone and the game type supports it)" );
 // RITUAL END
 
+
+
+//EDEL BEGIN
+
+
+
+	cmdSystem->AddCommand("playerPos", Cmd_PrintPlayerPos_f, CMD_FL_GAME, "prints player position");
+
+//EDEL END
 }
 
 /*

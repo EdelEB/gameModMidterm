@@ -423,20 +423,27 @@ stateResult_t rvWeaponBlaster::State_Fire ( const stateParms_t& parms ) {
 				SetState ( "Idle", 4 );
 				return SRESULT_DONE;
 			}
-			
 
-	
-			//if ( gameLocal.time - fireHeldTime > chargeTime ) {	
-			//	Attack ( true, 1, spread, 0, 1.0f );
-			//	PlayEffect ( "fx_chargedflash", barrelJointView, false );
-			//	PlayAnim( ANIMCHANNEL_ALL, "chargedfire", parms.blendFrames );
-			//} else {
 
-				//Attack ( false, 1, spread, 0, 1.0f );
-				//PlayEffect ( "fx_normalflash", barrelJointView, false );
-				//PlayAnim( ANIMCHANNEL_ALL, "fire", parms.blendFrames );
-			//}
-			fireHeldTime = 0;
+
+			//gameLocal.Printf("spawn monster_berserker\n");
+			//&idGameLocal::Cmd_PrintSpawnIds_f;
+			//idCmdSystem::Cmd_spawn_f
+			//idSys
+
+	/*
+			if ( gameLocal.time - fireHeldTime > chargeTime ) {	
+				Attack ( true, 1, spread, 0, 1.0f );
+				PlayEffect ( "fx_chargedflash", barrelJointView, false );
+				PlayAnim( ANIMCHANNEL_ALL, "chargedfire", parms.blendFrames );
+			} else {
+
+				Attack ( false, 1, spread, 0, 1.0f );
+				PlayEffect ( "fx_normalflash", barrelJointView, false );
+				PlayAnim( ANIMCHANNEL_ALL, "fire", parms.blendFrames );
+			}
+	*/
+		fireHeldTime = 0;
 			
 			return SRESULT_STAGE(FIRE_WAIT);
 		

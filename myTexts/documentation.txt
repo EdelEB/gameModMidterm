@@ -1,7 +1,8 @@
 
 player.h 
-	movement speed faster
-	jump height higher
+	movement speed faster 700
+	jump height higher 698
+	godmode 291
 
 shotgun.h
 	fire rate faster
@@ -14,7 +15,30 @@ WeaponBlaster.cpp
 	Blaster cannot fire
 		429-438
 		commented out lines
-	
 
+Player.cpp
+	No Damage
+		1558
+	new Impulse cases
+	
+mainmenu.gui
+	map changed 20595
+	game start console commands 
+
+walker.map
+	player position	
+	player type : strogg->marine
+
+UsercmdGen.h
+	IMPULSE_23 : print player location to console
+
+SysCmds.cpp & Player.cpp
+	add playerPos command that prints player position
+
+Config file
+	new binding for 'l'
+
+
+	
 
 	

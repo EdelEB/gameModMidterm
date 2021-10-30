@@ -6,8 +6,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Game", "game.vcxproj", "{49
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "idLib", "idlib.vcxproj", "{49BEC5C6-B964-417A-851E-808886B57400}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MPGame", "mpgame.vcxproj", "{F2EF9123-B7C3-4F2F-A351-747B595BB534}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Default = Debug|Default
@@ -27,12 +25,6 @@ Global
 		{49BEC5C6-B964-417A-851E-808886B57400}.DebugInline|Default.Build.0 = DebugInline|Win32
 		{49BEC5C6-B964-417A-851E-808886B57400}.Release|Default.ActiveCfg = Release|Win32
 		{49BEC5C6-B964-417A-851E-808886B57400}.Release|Default.Build.0 = Release|Win32
-		{F2EF9123-B7C3-4F2F-A351-747B595BB534}.Debug|Default.ActiveCfg = Debug|Win32
-		{F2EF9123-B7C3-4F2F-A351-747B595BB534}.Debug|Default.Build.0 = Debug|Win32
-		{F2EF9123-B7C3-4F2F-A351-747B595BB534}.DebugInline|Default.ActiveCfg = DebugInline|Win32
-		{F2EF9123-B7C3-4F2F-A351-747B595BB534}.DebugInline|Default.Build.0 = DebugInline|Win32
-		{F2EF9123-B7C3-4F2F-A351-747B595BB534}.Release|Default.ActiveCfg = Release|Win32
-		{F2EF9123-B7C3-4F2F-A351-747B595BB534}.Release|Default.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

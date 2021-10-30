@@ -22,8 +22,8 @@ ability to spawn and have functioning enclosures
 3 vendors types, hunger for guests
 research facility to unlock more creatures & vendors
 
-A shortcut that automatically Launches your Mod
 An In-Game Help Screen to explain your mod
 All custom assets (def files, models, sounds, etc) placed in a pak001.pak file
 Custom User Interface(HUD or other in-game menus) for your game's features
 A README with instructions on how to play your game and see all of your new feature
+DONE: A shortcut that automatically Launches your Mod
