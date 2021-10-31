@@ -1,0 +1,126 @@
+10/14/21
+	I intend to figure out how to spawn 
+	creatures tonight, and even attach that
+	ability to a weapon. 
+	
+	Zoo Monster Names:
+		Monster_Berserker
+		Monster_Grunt
+		Monster_Gunner
+		Monster_Gladiator
+		Monster_Scientist
+		Monster_Sentry
+		
+		Monster_BossBuddy
+		Monster_Fatty
+
+	Zoo Guest Names:
+		NA
+
+10/21/21: 
+	Recap from previous week. I should clarified that
+	my goal was to figure out how to spawn things
+	with a weapon or some sort of activation in the 
+	game world that was not console commands. I failed
+	but learned a little more about how the game loads 
+	things in. I also took a look at some of the maps. 
+	Some other ones might be better but that is not a 
+	priority at the moment. I am more concerned with the
+	deliverables.
+	
+	Ideas: 
+	
+	If I can figure out where the hud's health 
+	counter	is adjusted in the code, I can use
+	that to represent the money and delete the rest of 
+	the hud in the GUI editor. 
+
+	If I figure out how the escape button is binded
+	to bringing up the pause menu in game I can copy and
+	paste an existing menu gui to create my own ingame
+	menu. However figuring out how to assign tasks to
+	buttons may be a challenge.
+
+10/23/21
+	Most commands are numbered seen as numbered impulses,
+	found in "UsercmdGen.h". 
+	Impulses are taken into idPlayer::PerformImpulse()
+	which has a switch statement that executes functions
+	based on the impulse.
+	
+10/27/21
+	Quake has so many macros. There are macros that create
+	more macros. I am not 100% sure what 
+	#define CLASS_PROTOTYPE(classname)
+	does. It lists out static and virtual classes that
+	also use CLASS_PROTOTYPE. Ugh
+	
+10/28/21
+	Professor explained the CLASS_PROTOTYPE issue. 
+	Also the gui code is the key to understanding the button 
+	pressing. The gui editor.
+
+	Inside the mainmenu gui is where the game picks the map afer
+	the player starts the a new game. Here you can also call 
+	any console commands you'd like on game start. Halleluja
+
+	
+10/30/21
+	I wish I had opened the gui and map codes sooner. It helped put a 
+	lot of puzzle pieces together. I added a console command and a key
+	action that print out the player location. "gameLocal" is the global
+	variable in which most game adjustments can be made, also where you
+	can GetLocalPLayer(). I still have not figured out how to call console
+	commands from the code, say for an impulse or a gun-fire, but I think
+	I can break down how the console command is using the code and just
+	rewrite it my own way. I also messed with moving in game objects in 
+	the map code. For some reason, at times when moved/rotated objects become
+	invisible; this also happens when I try to add new objects. I think
+	it is an issue with the textures that are applied to the models. I 
+	have not figured out how those interact yet.
+	
+	Another thing I noticed was that my hud adjustments were not showing
+	up in game when I switched the starting map. I found out that in the
+	code, during that campaign mission, the player is defined as a strogg
+	instead of a marine. When I defined the player as a marine it showed
+	the correct hud that I had been messing with.
+	Progress is finally being made.
+
+
+	
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+HELP FOR SHMUCKS:
+
+FIND_DEF_FILES:
+	This PC
+	Bootcamp
+	Program Files (x86)
+	Steam
+	steamapps
+	common
+	Quake 4
+
+WHAT_TO_SWAP:
+	gamex86.dll 
+	from 
+		git WIN32 folder  
+	to 
+		game000.pk4 in myFirstMod folder
+
