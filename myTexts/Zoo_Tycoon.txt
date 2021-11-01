@@ -10,11 +10,6 @@ how many enclosures you have and how happy the animals are. All enclosures must 
 room is open to allow customizable enclosures. Creating walkways/fences/trashcans around the park 
 are also available.
 
-Weapons Ideas:
-feeder
-water bucket
-deleter
-
 Deliverables:
 guests
 ability to spawn and have functioning enclosures

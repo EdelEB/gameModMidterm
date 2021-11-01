@@ -8560,8 +8560,8 @@ void idPlayer::PerformImpulse( int impulse ) {
 		}
 
 		case IMPULSE_24: { //spawns strogg berserker ; bind 'k'
-			const char *key, *spawn_name;
-			int			i;
+			const char* key;
+			char* spawn_name = "monster_sentry";
 			float		player_angle;
 			idVec3		org;
 			idPlayer	*player;
@@ -8572,7 +8572,6 @@ void idPlayer::PerformImpulse( int impulse ) {
 
 			player_angle = player->viewAngles.yaw;
 
-			spawn_name = "monster_berserker";
 			dict.Set( "classname", spawn_name );
 			dict.Set( "angle", va( "%f", player_angle + 180 ) );
 

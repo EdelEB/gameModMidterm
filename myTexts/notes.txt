@@ -13,9 +13,14 @@
 		
 		Monster_BossBuddy
 		Monster_Fatty
+		monster_strogg_marine
+		monster_network_guardian
 
 	Zoo Guest Names:
-		NA
+		char_marine
+		char_marine_tech (optional: _armed)
+		char_marine_medic (optional: _armed)
+		<you can also add the gun of choice to the end>
 
 10/21/21: 
 	Recap from previous week. I should clarified that
@@ -100,11 +105,22 @@
 	It took way longer than it should have but I can finally spawn stuff using
 	a key or weapon shot. Now I can choose the location and entity of my choice.
 		
+	In CmdSystem.h some sort of name completion is used for all file names/types. 
+
+	
+	I need to figure out if there is a way to spawn inaniment objects.
+	I will say that I feel like I am jumping around a lot but I feel like when
+	its better to leave and come back when I get stuck than to just sit there.
+
+	So in the map files the map's functions are called throughout like "walker::functionName".
+	All map functions are located in pak010.pk4/scripts/maps
+	
 
 
+-1105, 3259, -2000
 
 
-
+	
 
 
 
