@@ -86,9 +86,19 @@
 	the correct hud that I had been messing with.
 	Progress is finally being made.
 
-
+11/1/21 
+	< idEntity *newEnt = NULL;
+	  gameLocal.SpawnEntityDef( dict, &newEnt ); >
+	is the code I believe that specifically spawns the new entity.
+	The dict is foramtted as follows:
+	{	classname = <string: name of monster>
+		angle = <float: direction entity faces?>
+		origin = <idVec3: position entity spawns in> 
+	}
+	I also think the NULL idEntity created is used to get a new memory address.
 	
-
+	It took way longer than it should have but I can finally spawn stuff using
+	a key or weapon shot. Now I can choose the location and entity of my choice.
 		
 
 

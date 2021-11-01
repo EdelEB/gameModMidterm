@@ -1138,6 +1138,7 @@ void Cmd_Spawn_f( const idCmdArgs &args ) {
 	org = player->GetPhysics()->GetOrigin() + idAngles( 0, yaw, 0 ).ToForward() * 80 + idVec3( 0, 0, 1 );
 	dict.Set( "origin", org.ToString() );
 
+
 	for( i = 2; i < args.Argc() - 1; i += 2 ) {
 
 		key = args.Argv( i );
@@ -1145,6 +1146,8 @@ void Cmd_Spawn_f( const idCmdArgs &args ) {
 
 		dict.Set( key, value );
 	}
+
+	dict.Print();
 
 // RAVEN BEGIN
 // kfuller: want to know the name of the entity I spawned

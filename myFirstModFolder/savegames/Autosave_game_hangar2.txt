@@ -1,4 +1,0 @@
-"Autosave game/hangar2"
-"^:Map Start	^0INTERIOR HANGAR"
-"gfx/guis/loadscreens/hangar2"
-nooverwrite

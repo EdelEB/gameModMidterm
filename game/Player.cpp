@@ -8551,73 +8551,54 @@ void idPlayer::PerformImpulse( int impulse ) {
    			break;
    		}
 //EDEL BEGIN
-		case IMPULSE_23: { //prints player position to console
-			idVec3 myVec = gameLocal.GetLocalPlayer()->GetChestPosition();
+		case IMPULSE_23: { //prints player position to console ; bind 'l'
+			idPlayer *player = gameLocal.GetLocalPlayer();
+			idVec3 myVec = player->GetChestPosition();
 			gameLocal.Printf("%f %f %f\n", myVec.x, myVec.y, myVec.z);
+			gameLocal.Printf(player->GetPhysics()->GetOrigin().ToString());
 			break;
 		}
 
-		case IMPULSE_24: {
-			/*void Cmd_Spawn_f( const idCmdArgs &args ) {
-#ifndef _MPBETA
-	const char *key, *value;
-	int			i;
-	float		yaw;
-	idVec3		org;
-	idPlayer	*player;
-	idDict		dict;
+		case IMPULSE_24: { //spawns strogg berserker ; bind 'k'
+			const char *key, *spawn_name;
+			int			i;
+			float		player_angle;
+			idVec3		org;
+			idPlayer	*player;
+			idDict		dict;
 
-	player = gameLocal.GetLocalPlayer();
-	if ( !player || !gameLocal.CheatsOk( false ) ) {
-		return;
-	}
+			player = gameLocal.GetLocalPlayer();
+			if ( !player ) {break;}
 
-	if ( args.Argc() & 1 ) {	// must always have an even number of arguments
-		gameLocal.Printf( "usage: spawn classname [key/value pairs]\n" );
-		return;
-	}
+			player_angle = player->viewAngles.yaw;
 
-	yaw = player->viewAngles.yaw;
+			spawn_name = "monster_berserker";
+			dict.Set( "classname", spawn_name );
+			dict.Set( "angle", va( "%f", player_angle + 180 ) );
 
-	value = args.Argv( 1 );
-	dict.Set( "classname", value );
-	dict.Set( "angle", va( "%f", yaw + 180 ) );
+			org = player->GetPhysics()->GetOrigin() + idAngles( 0, player_angle, 0 ).ToForward() * 80 + idVec3( 0, 0, 1 );
+			dict.Set( "origin", org.ToString() );
 
-	org = player->GetPhysics()->GetOrigin() + idAngles( 0, yaw, 0 ).ToForward() * 80 + idVec3( 0, 0, 1 );
-	dict.Set( "origin", org.ToString() );
+			idEntity *newEnt = NULL;
+			gameLocal.SpawnEntityDef( dict, &newEnt );
 
-	for( i = 2; i < args.Argc() - 1; i += 2 ) {
-
-		key = args.Argv( i );
-		value = args.Argv( i + 1 );
-
-		dict.Set( key, value );
-	}
-
-// RAVEN BEGIN
-// kfuller: want to know the name of the entity I spawned
-	idEntity *newEnt = NULL;
-	gameLocal.SpawnEntityDef( dict, &newEnt );
-
-	if (newEnt)	{
-		gameLocal.Printf("spawned entity '%s'\n", newEnt->name.c_str());
-	}
-// RAVEN END
-#endif // !_MPBETA
-}
-*/
-
-
-		case IMPULSE_25: { // help menu gui
-			 
+			if (newEnt)	{
+				gameLocal.Printf("spawned entity '%s'\n", newEnt->name.c_str());
+			}
+				
+			break;
 		}
 
-		case IMPULSE_26: { // buy menu gui
-			
+
+		case IMPULSE_25: { // buy menu gui ; bind: 'b'
+			break;
+		}
+
+		case IMPULSE_26: { // help menu gui ; bind 'h'
+			break;
 		}
 
 //EDEL END
-		}
 				
 		case IMPULSE_28: {
  			if ( gameLocal.isClient || entityNumber == gameLocal.localClientNum ) {

@@ -1,4 +1,0 @@
-"Autosave game/walker"
-"^:Map Start	^0CONSTRUCTION ZONE"
-"gfx/guis/loadscreens/walker"
-nooverwrite
