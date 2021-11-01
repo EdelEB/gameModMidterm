@@ -1,4 +1,0 @@
-"Autosave game/convoy2"
-"^:Map Start	^0AQUEDUCTS"
-"gfx/guis/loadscreens/convoy2"
-nooverwrite

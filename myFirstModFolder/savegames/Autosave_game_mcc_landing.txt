@@ -1,4 +1,0 @@
-"Autosave game/mcc_landing"
-"^:Map Start	^0MCC LANDING SITE"
-"gfx/guis/loadscreens/mcc_landing"
-nooverwrite
