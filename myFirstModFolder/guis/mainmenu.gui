@@ -240,22 +240,22 @@ windowDef Desktop
 		if ("desktop::curr" == 0 && "desktop::active" == 0 && "gui::ingame" != 0) {
 			namedevent "p_btns::hideMain" ;
 			resettime "anim_out" "0" ;
-			set "cmd" "play main_menu_selection" ;
+			//set "cmd" "play main_menu_selection" ;
 		} else if ("desktop::curr" == 1 && "desktop::active" == 0) {
 			set "desktop::active" "1" ;
 			resettime "anim_newOut" "0" ;
 			set "desktop::dest" "0" ;
-			set "cmd" "play main_menu_selection" ;
+			//set "cmd" "play main_menu_selection" ;
 		} else if ("desktop::curr" == 2 && "desktop::active" == 0) {
 			set "desktop::active" "1" ;
 			resettime "anim_loadOut" "0" ;
 			set "desktop::dest" "0" ;
-			set "cmd" "play main_menu_selection" ;
+			//set "cmd" "play main_menu_selection" ;
 		} else if ("desktop::curr" == 3 && "desktop::active" == 0) {
 			set "desktop::active" "1" ;
 			resettime "anim_mpOut" "0" ;
 			set "desktop::dest" "0" ;
-			set "cmd" "play main_menu_selection" ;
+			//set "cmd" "play main_menu_selection" ;
 		} else if (("desktop::curr" == 4 || "desktop::curr" == 9 || "desktop::curr" == 10 || "desktop::curr" == 11 || "desktop::curr" == 12 || "desktop::curr" == 20 || "desktop::curr" == 21 || "desktop::curr" == 22)&& "desktop::active" == 0) {
 			if ("desktop::vidwarn" == 0) {
 				set "desktop::active" "1" ;
@@ -266,42 +266,42 @@ windowDef Desktop
 				resettime "anim_pop_vidwarnIn" "0" ;
 				set "desktop::dest" "4" ;
 			}			
-			set "cmd" "play main_menu_selection" ;
+			//set "cmd" "play main_menu_selection" ;
 		} else if ("desktop::curr" == 5 && "desktop::active" == 0) {
 			set "desktop::active" "1" ;
 			resettime "anim_pop_modsOut" "0" ;
 			set "desktop::dest" "0" ;
-			set "cmd" "play main_menu_selection" ;
+			//set "cmd" "play main_menu_selection" ;
 		} else if ("desktop::curr" == 6 && "desktop::active" == 0) {
 			set "desktop::active" "1" ;
 			resettime "anim_pop_updatesOut" "0" ;
 			set "desktop::dest" "0" ;
-			set "cmd" "play main_menu_selection" ;
+			//set "cmd" "play main_menu_selection" ;
 		} else if ("desktop::curr" == 7 && "desktop::active" == 0) {
 			set "desktop::active" "1" ;
 			resettime "anim_creditsOut" "0" ;
 			set "desktop::dest" "0" ;
-			set "cmd" "play main_menu_selection" ;
+			//set "cmd" "play main_menu_selection" ;
 		} else if ("desktop::curr" == 8 && "desktop::active" == 0) {
 			set "desktop::active" "1" ;
 			resettime "anim_pop_exitOut" "0" ;
 			set "desktop::dest" "0" ;
-			set "cmd" "play main_menu_selection" ;
+			//set "cmd" "play main_menu_selection" ;
 		} else if ("desktop::curr" == 14 && "desktop::active" == 0) {
 			set "desktop::active" "1" ;
 			resettime "anim_mpBrowseOut" "0" ;
 			set "desktop::dest" "3" ;
-			set "cmd" "play main_menu_selection" ;
+			//set "cmd" "play main_menu_selection" ;
 		} else if ("desktop::curr" == 15 && "desktop::active" == 0) {
 			set "desktop::active" "1" ;
 			resettime "anim_mpFriendsOut" "0" ;
 			set "desktop::dest" "3" ;
-			set "cmd" "play main_menu_selection" ;
+			//set "cmd" "play main_menu_selection" ;
 		} else if ("desktop::curr" == 16 && "desktop::active" == 0) {
 			set "desktop::active" "1" ;
 			resettime "anim_pop_joinIpOut" "0" ;
 			set "desktop::dest" "14" ;
-			set "cmd" "play main_menu_selection" ;
+			//set "cmd" "play main_menu_selection" ;
 		} else if ("desktop::curr" == 17 && "desktop::active" == 0) {			
 			if ("desktop::vidwarn" == 0) {
 				set "desktop::active" "1" ;
@@ -312,7 +312,7 @@ windowDef Desktop
 				resettime "anim_pop_vidwarnIn" "0" ;
 				set "desktop::dest" "17" ;
 			}			
-			set "cmd" "play main_menu_selection" ;
+			//set "cmd" "play main_menu_selection" ;
 		} else if ("desktop::curr" == 18 && "desktop::active" == 0) {
 			if ("desktop::vidwarn" == 0) {
 				set "desktop::active" "1" ;
@@ -323,68 +323,68 @@ windowDef Desktop
 				resettime "anim_pop_vidwarnIn" "0" ;
 				set "desktop::dest" "18" ;
 			}			
-			set "cmd" "play main_menu_selection" ;
+			//set "cmd" "play main_menu_selection" ;
 		} else if ("desktop::curr" == 19 && "desktop::active" == 0) {
 			set "desktop::active" "1" ;
 			resettime "anim_pop_foOut" "0" ;
 			set "desktop::dest" "14" ;
-			set "cmd" "play main_menu_selection" ;
+			//set "cmd" "play main_menu_selection" ;
 		} else if ("desktop::curr" == 23 && "desktop::active" == 0) {
 			set "desktop::active" "1" ;
 			resettime "anim_saveOut" "0" ;
 			set "desktop::dest" "0" ;
-			set "cmd" "play main_menu_selection" ;
+			//set "cmd" "play main_menu_selection" ;
 		} else if ("desktop::curr" == 24 && "desktop::active" == 0) {
 			set "desktop::active" "1" ;
 			resettime "anim_pop_createAdvOut" "0" ;
 			set "desktop::dest" "17" ;
-			set "cmd" "play main_menu_selection" ;
+			//set "cmd" "play main_menu_selection" ;
 		} else if ("desktop::curr" == 25 && "desktop::active" == 0) {
 			set "desktop::active" "1" ;
 			resettime "anim_pop_defaultsOut" "0" ;
 			set "desktop::dest" "4" ;
-			set "cmd" "play main_menu_selection" ;
+			//set "cmd" "play main_menu_selection" ;
 		} else if ("desktop::curr" == 26 && "desktop::active" == 0) {
 			set "desktop::active" "1" ;
 			resettime "anim_pop_setAdvOut" "0" ;
 			set "desktop::dest" "4" ;
-			set "cmd" "play main_menu_selection" ;
+			//set "cmd" "play main_menu_selection" ;
 		} else if ("desktop::curr" == 27 && "desktop::active" == 0) {
 			set "desktop::active" "1" ;
 			resettime "anim_pop_discOut" "0" ;
 			set "desktop::dest" "0" ;
-			set "cmd" "play main_menu_selection" ;
+			//set "cmd" "play main_menu_selection" ;
 		} else if ("desktop::curr" == 28 && "desktop::active" == 0) {
 			set "desktop::active" "1" ;
 			resettime "anim_pop_loaddelOut" "0" ;
 			set "desktop::dest" "2" ;
-			set "cmd" "play main_menu_selection" ;
+			//set "cmd" "play main_menu_selection" ;
 		} else if ("desktop::curr" == 29 && "desktop::active" == 0) {
 			set "desktop::active" "1" ;
 			resettime "anim_pop_fpcOut" "0" ;
 			set "desktop::dest" "14" ;
-			set "cmd" "play main_menu_selection" ;
+			//set "cmd" "play main_menu_selection" ;
 		} else if ("desktop::curr" == 30 && "desktop::active" == 0) {
 			set "desktop::active" "1" ;
 			resettime "anim_pop_autoOut" "0" ;
 			set "desktop::dest" "22" ;
-			set "cmd" "play main_menu_selection" ;
+			//set "cmd" "play main_menu_selection" ;
 		} else if ("desktop::curr" == 31 && "desktop::active" == 0) {
 			set "desktop::active" "1" ;
 			resettime "anim_pop_ultrawarnOut" "0" ;
 			set "desktop::dest" "22" ;
-			set "cmd" "play main_menu_selection" ;
+			//set "cmd" "play main_menu_selection" ;
 		} else if ("desktop::curr" == 32 && "desktop::active" == 0) {
 			set "desktop::active" "1" ;
 			resettime "anim_pop_overwriteOut" "0" ;
 			namedevent "p_anims::saveReset" ;	
 			set "desktop::dest" "23" ;
-			set "cmd" "play main_menu_selection" ;
+			//set "cmd" "play main_menu_selection" ;
 		} else if ("desktop::curr" == 33 && "desktop::active" == 0) {
 			set "desktop::active" "1" ;
 			resettime "anim_pop_createAdv_banlistOut" "0" ;
 			set "desktop::dest" "24" ;
-			set "cmd" "play main_menu_selection" ;
+			//set "cmd" "play main_menu_selection" ;
 		} else if ("desktop::curr" == 34 && "desktop::active" == 0) {
 			//			consolecmd "vid_restart" ;
 			
@@ -396,13 +396,13 @@ windowDef Desktop
 			set "desktop::active" "1" ;	
 			resettime "anim_pop_vidwarnOut" "0" ;
 			
-			set "cmd" "play main_menu_selection" ;
+			//set "cmd" "play main_menu_selection" ;
 			
 		}  else if ("desktop::curr" == 35 && "desktop::active" == 0) {
 			set "desktop::active" "1" ;
 			resettime "anim_pop_sndadvOut" "0" ;
 			set "desktop::dest" "22" ;
-			set "cmd" "play main_menu_selection" ;
+			//set "cmd" "play main_menu_selection" ;
 		}
 		
 	}
@@ -436,7 +436,7 @@ windowDef Desktop
 		set "pop_overwrite_title::text" "#str_200266" ;
 		set "pop_overwrite_text::text" "#str_200982" ;
 		
-		set "cmd" "play main_menu_selection" ;
+		//set "cmd" "play main_menu_selection" ;
 	}
 
 	onNamedEvent saveGameOverwrite {
@@ -447,7 +447,7 @@ windowDef Desktop
 		set "pop_overwrite_title::text" "#str_200252" ;
 		set "pop_overwrite_text::text" "#str_200253" ;
 		
-		set "cmd" "play main_menu_selection" ;
+		//set "cmd" "play main_menu_selection" ;
 	}
 
 	onNamedEvent ingameCheck {
@@ -1185,7 +1185,7 @@ windowDef Desktop
 				maxchars	20
 
 				onEnter {
-					set "cmd" "play main_menu_selection ; saveGame" ;
+					//set "cmd" "play main_menu_selection ; saveGame" ;
 				}
 
 			}
@@ -1263,12 +1263,12 @@ windowDef Desktop
 				}
 
 				onAction {
-					set "cmd" "play main_menu_selection" ;
+					//set "cmd" "play main_menu_selection" ;
 					set "cmd" "updateSaveGameInfo" ;
 				}
 
 				onEnter {
-					set "cmd" "play main_menu_selection" ;	
+					//set "cmd" "play main_menu_selection" ;	
 					set "cmd" "updateSaveGameInfo" ;
 				}
 
@@ -1667,12 +1667,12 @@ windowDef Desktop
 				}
 
 				onAction {
-					set "cmd" "play main_menu_selection" ;
+					//set "cmd" "play main_menu_selection" ;
 					set "cmd" "updateSaveGameInfo" ;
 				}
 
 				onEnter {
-					set "cmd" "play main_menu_selection" ;	
+					//set "cmd" "play main_menu_selection" ;	
 					set "cmd" "loadGame" ;
 				}
 
@@ -3468,7 +3468,7 @@ windowDef Desktop
 				}
 
 				onAction {
-					set "cmd" "play main_menu_selection" ;
+					//set "cmd" "play main_menu_selection" ;
 				}
 
 			}
@@ -3493,7 +3493,7 @@ windowDef Desktop
 				cvar	net_menulanserver
 
 				onAction {
-					set "cmd" "play main_menu_selection" ;
+					//set "cmd" "play main_menu_selection" ;
 				}
 
 			}
@@ -3519,7 +3519,7 @@ windowDef Desktop
 				cvar	net_serverMenuDedicated
 
 				onAction {
-					set "cmd" "play main_menu_selection" ;
+					//set "cmd" "play main_menu_selection" ;
 				}
 
 			}
@@ -3546,7 +3546,7 @@ windowDef Desktop
 				gui	currentGametype
 
 				onAction {
-					set "cmd" "play main_menu_selection" ;
+					//set "cmd" "play main_menu_selection" ;
 					set "cmd" "MAPScan" ;
 				}
 
@@ -3576,7 +3576,7 @@ windowDef Desktop
 				cvar	si_autobalance
 
 				onAction {
-					set "cmd" "play main_menu_selection" ;
+					//set "cmd" "play main_menu_selection" ;
 				}
 
 			}
@@ -3604,7 +3604,7 @@ windowDef Desktop
 				}
 
 				onAction {
-					set "cmd" "play main_menu_selection" ;
+					//set "cmd" "play main_menu_selection" ;
 				}
 
 			}
@@ -3632,7 +3632,7 @@ windowDef Desktop
 				}
 
 				onAction {
-					set "cmd" "play main_menu_selection" ;
+					//set "cmd" "play main_menu_selection" ;
 				}
 
 			}
@@ -3660,7 +3660,7 @@ windowDef Desktop
 				}
 
 				onAction {
-					set "cmd" "play main_menu_selection" ;
+					//set "cmd" "play main_menu_selection" ;
 				}
 
 			}
@@ -3688,7 +3688,7 @@ windowDef Desktop
 				}
 
 				onAction {
-					set "cmd" "play main_menu_selection" ;
+					//set "cmd" "play main_menu_selection" ;
 				}
 
 			}
@@ -3716,7 +3716,7 @@ windowDef Desktop
 				}
 
 				onAction {
-					set "cmd" "play main_menu_selection" ;
+					//set "cmd" "play main_menu_selection" ;
 				}
 
 			}
@@ -3745,7 +3745,7 @@ windowDef Desktop
 				}
 
 				onAction {
-					set "cmd" "play main_menu_selection" ;
+					//set "cmd" "play main_menu_selection" ;
 				}
 
 				onActionRelease {
@@ -3778,7 +3778,7 @@ windowDef Desktop
 				}
 
 				onAction {
-					set "cmd" "play main_menu_selection" ;
+					//set "cmd" "play main_menu_selection" ;
 				}
 
 				onActionRelease {
@@ -3807,7 +3807,7 @@ windowDef Desktop
 				cvar	si_allowVoting
 
 				onAction {
-					set "cmd" "play main_menu_selection" ;
+					//set "cmd" "play main_menu_selection" ;
 				}
 
 			}
@@ -3831,7 +3831,7 @@ windowDef Desktop
 				choiceType	0
 
 				onAction {
-					set "cmd" "play main_menu_selection" ;
+					//set "cmd" "play main_menu_selection" ;
 					set "cmd"	"punkbusterServerToggle" ;
 					set "cmd"	"initCreateServerSettings" ;
 				}
@@ -3858,7 +3858,7 @@ windowDef Desktop
 				cvar	si_teamDamage
 
 				onAction {
-					set "cmd" "play main_menu_selection" ;
+					//set "cmd" "play main_menu_selection" ;
 				}
 
 			}
@@ -4251,7 +4251,7 @@ windowDef Desktop
 						}
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -4274,7 +4274,7 @@ windowDef Desktop
 						}
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 							setfocus "pop_createAdv_setpass_val" ;
 						}
 
@@ -4291,7 +4291,7 @@ windowDef Desktop
 						password	1
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 						onEnter {
@@ -4311,7 +4311,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -4326,7 +4326,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -4342,7 +4342,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -4358,7 +4358,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -4375,7 +4375,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -4391,7 +4391,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -4407,7 +4407,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -4423,7 +4423,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -4439,7 +4439,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -4503,7 +4503,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -4815,7 +4815,7 @@ windowDef Desktop
 				}
 
 				onAction {
-					set "cmd" "play main_menu_selection" ;
+					//set "cmd" "play main_menu_selection" ;
 				}
 
 			}
@@ -4834,7 +4834,7 @@ windowDef Desktop
 				}
 
 				onAction {
-					set "cmd" "play main_menu_selection" ;
+					//set "cmd" "play main_menu_selection" ;
 				}
 
 			}
@@ -4854,7 +4854,7 @@ windowDef Desktop
 					set "set_model_list::forecolor_w" "1" ;
 					set "cmd"	"update_model" ;
 					setfocus "mp_b_set_back" ;
-					set "cmd" "play main_menu_selection" ;
+					//set "cmd" "play main_menu_selection" ;
 				}
 
 			}
@@ -4874,7 +4874,7 @@ windowDef Desktop
 					set "set_model_list::forecolor_w" "1" ;
 					set "cmd"	"update_model" ;
 					setfocus "mp_b_set_back" ;
-					set "cmd" "play main_menu_selection" ;
+					//set "cmd" "play main_menu_selection" ;
 				}
 
 			}
@@ -4894,7 +4894,7 @@ windowDef Desktop
 					set "set_model_list::forecolor_w" "1" ;
 					set "cmd"	"update_model" ;
 					setfocus "mp_b_set_back" ;
-					set "cmd" "play main_menu_selection" ;
+					//set "cmd" "play main_menu_selection" ;
 				}
 
 			}
@@ -4911,7 +4911,7 @@ windowDef Desktop
 				choiceType	1
 
 				onAction {
-					set "cmd" "play main_menu_selection" ;
+					//set "cmd" "play main_menu_selection" ;
 				}
 
 			}
@@ -4926,9 +4926,9 @@ windowDef Desktop
 				choiceType	0
 
 				onAction {
-					set "cmd" "play main_menu_selection" ;
+					//set "cmd" "play main_menu_selection" ;
 					set "cmd"	"punkbusterToggle" ;
-					set "cmd" "play main_menu_selection" ;
+					//set "cmd" "play main_menu_selection" ;
 				}
 
 				onActionRelease {
@@ -5564,7 +5564,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -5578,7 +5578,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -5592,7 +5592,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -5606,7 +5606,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -5620,7 +5620,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -5634,7 +5634,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -5648,7 +5648,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -5662,7 +5662,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -5676,7 +5676,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -5690,7 +5690,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -5799,7 +5799,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -5813,7 +5813,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -5827,7 +5827,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -5841,7 +5841,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -5855,7 +5855,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -5869,7 +5869,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -5883,7 +5883,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -5897,7 +5897,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -5911,7 +5911,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -5925,7 +5925,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -5939,7 +5939,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -5953,7 +5953,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -6080,7 +6080,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -6094,7 +6094,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -6108,7 +6108,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -6122,7 +6122,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -6136,7 +6136,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -6150,7 +6150,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -6164,7 +6164,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -6178,7 +6178,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -6192,7 +6192,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -6206,7 +6206,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -6220,7 +6220,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -6234,7 +6234,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -6361,7 +6361,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -6375,7 +6375,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -6389,7 +6389,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -6403,7 +6403,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -6417,7 +6417,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -6431,7 +6431,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -6445,7 +6445,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -6459,7 +6459,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -6473,7 +6473,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -6487,7 +6487,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -6501,7 +6501,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -6515,7 +6515,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -6529,7 +6529,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -6688,7 +6688,7 @@ windowDef Desktop
 						choiceType	0
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -6725,7 +6725,7 @@ windowDef Desktop
 						choiceType	0
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -6762,7 +6762,7 @@ windowDef Desktop
 						choiceType	0
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -6799,7 +6799,7 @@ windowDef Desktop
 						choiceType	0
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -6836,7 +6836,7 @@ windowDef Desktop
 						choiceType	0
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -6890,7 +6890,7 @@ windowDef Desktop
 								consoleCMD "g_gunZ 0";
 								consoleCMD "g_weaponFovEffect 1";
 							}
-							set "cmd" "play main_menu_selection" ; 
+							//set "cmd" "play main_menu_selection" ; 
 						}
 
 					}
@@ -6927,7 +6927,7 @@ windowDef Desktop
 						choiceType	0
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -6975,7 +6975,7 @@ windowDef Desktop
 								consoleCMD "g_forceMarineModel null";
 								consoleCMD "g_forcestroggmodel null";
 							}
-							set "cmd" "play main_menu_selection" ; 
+							//set "cmd" "play main_menu_selection" ; 
 						}
 
 					}
@@ -7013,7 +7013,7 @@ windowDef Desktop
 						choiceType	1
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -7073,7 +7073,7 @@ windowDef Desktop
 						}
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -7133,7 +7133,7 @@ windowDef Desktop
 						}
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -7170,7 +7170,7 @@ windowDef Desktop
 						choiceType	0
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 						onActionRelease {
@@ -7283,7 +7283,7 @@ windowDef Desktop
 						notime	1
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 						onActionRelease {
@@ -7445,7 +7445,7 @@ windowDef Desktop
 					text	"#str_200143"
 
 					onAction {
-						set "cmd" "play main_menu_selection" ;
+						//set "cmd" "play main_menu_selection" ;
 						if ( "desktop::com_machineSpec" == 0 ) {
 							set "cmd" "video medium" ;	
 							
@@ -7474,7 +7474,7 @@ windowDef Desktop
 					}
 
 					onBackAction {
-						set "cmd" "play main_menu_selection" ;
+						//set "cmd" "play main_menu_selection" ;
 						if ( "desktop::com_machineSpec" == 0 ) {
 							namedevent "p_anims::popReset0" ;
 							resettime "anim_pop_ultrawarnIn" "0" ;
@@ -7539,7 +7539,7 @@ windowDef Desktop
 					}
 
 					onAction {
-						set "cmd" "play main_menu_selection" ;
+						//set "cmd" "play main_menu_selection" ;
 					}
 
 				}
@@ -7564,7 +7564,7 @@ windowDef Desktop
 					}
 
 					onAction {
-						set "cmd" "play main_menu_selection" ;
+						//set "cmd" "play main_menu_selection" ;
 					}
 
 				}
@@ -7589,7 +7589,7 @@ windowDef Desktop
 					}
 
 					onAction {
-						set "cmd" "play main_menu_selection" ;
+						//set "cmd" "play main_menu_selection" ;
 					}
 
 				}
@@ -7615,7 +7615,7 @@ windowDef Desktop
 					font	"fonts/lowpixel"
 
 					onActionRelease {
-						set "cmd" "play main_menu_selection" ;
+						//set "cmd" "play main_menu_selection" ;
 						set "set_sys_notice::visible" "1" ;
 						//						set "set_vidrestart::visible" "1" ;
 						//						set "set_t_vidrestart::visible" "1" ;
@@ -7672,7 +7672,7 @@ windowDef Desktop
 					}
 
 					onAction {
-						set "cmd" "play main_menu_selection" ;
+						//set "cmd" "play main_menu_selection" ;
 					}
 
 				}
@@ -7720,7 +7720,7 @@ windowDef Desktop
 					}
 
 					onAction {
-						set "cmd" "play main_menu_selection" ;
+						//set "cmd" "play main_menu_selection" ;
 					}
 
 				}
@@ -7833,7 +7833,7 @@ windowDef Desktop
 					visible	1
 
 					onAction {
-						set "cmd" "play main_menu_selection" ;
+						//set "cmd" "play main_menu_selection" ;
 					}
 
 				}
@@ -7852,7 +7852,7 @@ windowDef Desktop
 					}
 
 					onAction {
-						set "cmd" "play main_menu_selection" ;
+						//set "cmd" "play main_menu_selection" ;
 					}
 
 				}
@@ -7916,7 +7916,7 @@ windowDef Desktop
 					visible	0
 
 					onAction {
-						set "cmd" "play main_menu_selection" ;
+						//set "cmd" "play main_menu_selection" ;
 					}
 
 				}
@@ -7959,7 +7959,7 @@ windowDef Desktop
 					visible	0
 
 					onAction {
-						set "cmd" "play main_menu_selection" ;
+						//set "cmd" "play main_menu_selection" ;
 					}
 
 				}
@@ -8216,7 +8216,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ; 
+							//set "cmd" "play main_menu_selection" ; 
 						}
 
 					}
@@ -8241,7 +8241,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ; 
+							//set "cmd" "play main_menu_selection" ; 
 						}
 
 					}
@@ -8266,7 +8266,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ; 
+							//set "cmd" "play main_menu_selection" ; 
 						}
 
 					}
@@ -8291,7 +8291,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ; 
+							//set "cmd" "play main_menu_selection" ; 
 						}
 
 					}
@@ -8316,7 +8316,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ; 
+							//set "cmd" "play main_menu_selection" ; 
 						}
 
 					}
@@ -8341,7 +8341,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ; 
+							//set "cmd" "play main_menu_selection" ; 
 						}
 
 						onActionRelease {
@@ -8398,7 +8398,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ; 
+							//set "cmd" "play main_menu_selection" ; 
 						}
 
 					}
@@ -8417,7 +8417,7 @@ windowDef Desktop
 						}
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 					}
@@ -8442,7 +8442,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ; 
+							//set "cmd" "play main_menu_selection" ; 
 						}
 
 					}
@@ -8469,7 +8469,7 @@ windowDef Desktop
 
 						onAction {
 							//set "pop_setAdv_notice::visible" "1" ;
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 							set "set_sys_notice::visible" "1" ;
 							//							set "set_vidrestart::visible" "1" ;
 							//							set "set_t_vidrestart::visible" "1" ;
@@ -8500,7 +8500,7 @@ windowDef Desktop
 
 						onAction {
 							set "pop_setAdv_notice::visible" "1" ;
-							set "cmd" "play main_menu_selection" ; 
+							//set "cmd" "play main_menu_selection" ; 
 						}
 
 					}
@@ -8972,7 +8972,7 @@ windowDef Desktop
 						values	"0;1"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ;
+							//set "cmd" "play main_menu_selection" ;
 						}
 
 						onActionRelease {
@@ -9004,7 +9004,7 @@ windowDef Desktop
 						values	"gui::device_name"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ; 
+							//set "cmd" "play main_menu_selection" ; 
 						}
 
 						onActionRelease {
@@ -9033,7 +9033,7 @@ windowDef Desktop
 						font	"fonts/lowpixel"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ; 
+							//set "cmd" "play main_menu_selection" ; 
 						}
 
 						onActionRelease {
@@ -9063,7 +9063,7 @@ windowDef Desktop
 						values	"2;6"
 
 						onAction {
-							set "cmd" "play main_menu_selection" ; 
+							//set "cmd" "play main_menu_selection" ; 
 						}
 
 						onActionRelease {
@@ -19955,7 +19955,7 @@ windowDef Desktop
 			onAction {
 				namedevent "p_btns::hideMain" ;
 				resettime "anim_out" "0" ;
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -19998,7 +19998,7 @@ windowDef Desktop
 				set "new_bstart_corner::matcolor" "$desktop::corner" ; 
 				set "new_t_bstart::textscale" "0.33" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -20040,7 +20040,7 @@ windowDef Desktop
 				set "save_t_b1::forecolor" "$desktop::white_8" ; 
 				set "save_t_b1::textscale" "0.31" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -20085,7 +20085,7 @@ windowDef Desktop
 				set "load_t_b2::forecolor" "$desktop::white_8" ; 
 				set "load_t_b2::textscale" "0.31" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -20125,7 +20125,7 @@ windowDef Desktop
 				set "desktop::active" "1" ;
 				resettime "anim_pop_discIn" "0" ;				
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -20165,7 +20165,7 @@ windowDef Desktop
 				set "desktop::active" "1" ;
 				resettime "anim_pop_discIn" "0" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -20203,7 +20203,7 @@ windowDef Desktop
 				resettime "anim_mainOut" "0" ;
 				set "desktop::dest" "3" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -20241,7 +20241,7 @@ windowDef Desktop
 				resettime "anim_mainOut" "0" ;
 				set "desktop::dest" "4" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -20277,7 +20277,7 @@ windowDef Desktop
 			onAction {
 				set "cmd" "close" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -20313,7 +20313,7 @@ windowDef Desktop
 				resettime "anim_pop_modsIn" "0" ;
 				namedevent "p_anims::popReset0" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -20382,7 +20382,7 @@ windowDef Desktop
 				resettime "anim_mainOut" "0" ;
 				set "desktop::dest" "7" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -20418,7 +20418,7 @@ windowDef Desktop
 				resettime "anim_pop_exitIn" "0" ;
 				namedevent "p_anims::popReset0" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -20453,7 +20453,7 @@ windowDef Desktop
 				namedevent "p_btns::showNew" ;
 				namedevent "p_btns::skillCheck" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -20488,7 +20488,7 @@ windowDef Desktop
 				namedevent "p_btns::showNew" ;
 				namedevent "p_btns::skillCheck" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -20523,7 +20523,7 @@ windowDef Desktop
 				namedevent "p_btns::showNew" ;
 				namedevent "p_btns::skillCheck" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -20558,7 +20558,7 @@ windowDef Desktop
 				namedevent "p_btns::showNew" ;
 				namedevent "p_btns::skillCheck" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -20596,7 +20596,7 @@ windowDef Desktop
 				consoleCMD "notarget"; // EDEL
 				consoleCMD "give all"; // EDEL
 
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -20634,7 +20634,7 @@ windowDef Desktop
 				resettime "anim_newOut" "0" ;
 				set "desktop::dest" "0" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -20709,7 +20709,7 @@ windowDef Desktop
 						set "desktop::active" "1" ;
 						set "desktop::dest" "28" ;
 						
-						set "cmd" "play main_menu_selection" ;
+						//set "cmd" "play main_menu_selection" ;
 					}
 				}
 			}
@@ -20749,7 +20749,7 @@ windowDef Desktop
 				resettime "anim_loadOut" "0" ;
 				set "desktop::dest" "0" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -20821,7 +20821,7 @@ windowDef Desktop
 				resettime "anim_saveOut" "0" ;
 				set "desktop::dest" "0" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -20898,7 +20898,7 @@ windowDef Desktop
 				set "set_t_b3::forecolor" "$desktop::white_8" ; 
 				set "set_t_b3::textscale" "0.31" ;	
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -20987,7 +20987,7 @@ windowDef Desktop
 				set "set_t_b3::forecolor" "$desktop::white_8" ; 
 				set "set_t_b3::textscale" "0.31" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -21062,7 +21062,7 @@ windowDef Desktop
 				set "set_t_b2::forecolor" "$desktop::white_8" ; 
 				set "set_t_b2::textscale" "0.31" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -21098,7 +21098,7 @@ windowDef Desktop
 				resettime "anim_pop_defaultsIn" "0" ;
 				namedevent "p_anims::popReset0" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -21141,7 +21141,7 @@ windowDef Desktop
 					resettime "anim_pop_vidwarnIn" "0" ;
 					set "desktop::dest" "4" ;
 				}
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -21217,7 +21217,7 @@ windowDef Desktop
 				set "set_ctrl_t_b4::forecolor" "$desktop::white_8"; 
 				set "set_ctrl_t_b4::textscale" "0.23" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -21278,7 +21278,7 @@ windowDef Desktop
 				set "set_ctrl_t_b4::forecolor" "$desktop::white_8"; 
 				set "set_ctrl_t_b4::textscale" "0.23" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -21350,7 +21350,7 @@ windowDef Desktop
 				set "set_ctrl_t_b4::forecolor" "$desktop::white_8"; 
 				set "set_ctrl_t_b4::textscale" "0.23" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -21409,7 +21409,7 @@ windowDef Desktop
 				set "set_ctrl_t_b4::forecolor" "$desktop::orange"; 
 				set "set_ctrl_t_b4::textscale" "0.24" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -21976,12 +21976,12 @@ windowDef Desktop
 
 			onAction {
 				set "cmd" "chooseCrosshair" "1" ;
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 			onBackAction {
 				set "cmd" "chooseCrosshair" "-1" ;
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -22060,7 +22060,7 @@ windowDef Desktop
 					set "set_game_xhaircolor_xcolor6::rect" "328,9,12,12" ;
 					set "set_game_xhaircolor_xcolor7::rect" "342,9,12,12" ;
 					
-					set "cmd" "play main_menu_selection" ;
+					//set "cmd" "play main_menu_selection" ;
 				}
 
 			}
@@ -22087,7 +22087,7 @@ windowDef Desktop
 					set "set_game_xhaircolor_xcolor6::rect" "328,9,12,12" ;
 					set "set_game_xhaircolor_xcolor7::rect" "342,9,12,12" ;
 					
-					set "cmd" "play main_menu_selection" ;
+					//set "cmd" "play main_menu_selection" ;
 				}
 
 			}
@@ -22114,7 +22114,7 @@ windowDef Desktop
 					set "set_game_xhaircolor_xcolor6::rect" "328,9,12,12" ;
 					set "set_game_xhaircolor_xcolor7::rect" "342,9,12,12" ;
 					
-					set "cmd" "play main_menu_selection" ;
+					//set "cmd" "play main_menu_selection" ;
 				}
 
 			}
@@ -22141,7 +22141,7 @@ windowDef Desktop
 					set "set_game_xhaircolor_xcolor6::rect" "328,9,12,12" ;
 					set "set_game_xhaircolor_xcolor7::rect" "342,9,12,12" ;
 					
-					set "cmd" "play main_menu_selection" ;
+					//set "cmd" "play main_menu_selection" ;
 				}
 
 			}
@@ -22168,7 +22168,7 @@ windowDef Desktop
 					set "set_game_xhaircolor_xcolor6::rect" "328,9,12,12" ;
 					set "set_game_xhaircolor_xcolor7::rect" "342,9,12,12" ;
 					
-					set "cmd" "play main_menu_selection" ;
+					//set "cmd" "play main_menu_selection" ;
 				}
 
 			}
@@ -22195,7 +22195,7 @@ windowDef Desktop
 					set "set_game_xhaircolor_xcolor6::rect" "328,9,12,12" ;
 					set "set_game_xhaircolor_xcolor7::rect" "342,9,12,12" ;				
 					
-					set "cmd" "play main_menu_selection" ;
+					//set "cmd" "play main_menu_selection" ;
 				}
 
 			}
@@ -22222,7 +22222,7 @@ windowDef Desktop
 					set "set_game_xhaircolor_xcolor6::rect" "328,9,12,16" ;
 					set "set_game_xhaircolor_xcolor7::rect" "342,9,12,12" ;
 					
-					set "cmd" "play main_menu_selection" ;
+					//set "cmd" "play main_menu_selection" ;
 				}
 
 			}
@@ -22249,7 +22249,7 @@ windowDef Desktop
 					set "set_game_xhaircolor_xcolor6::rect" "328,9,12,12" ;
 					set "set_game_xhaircolor_xcolor7::rect" "342,9,12,16" ;
 					
-					set "cmd" "play main_menu_selection" ;
+					//set "cmd" "play main_menu_selection" ;
 				}
 
 			}
@@ -22438,7 +22438,7 @@ windowDef Desktop
 				resettime "anim_pop_setAdvIn" "0" ;
 				namedevent "p_anims::popReset0" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -22575,7 +22575,7 @@ windowDef Desktop
 					set "mp_browse_map::forecolor" "$desktop::white_8" ;
 				}
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -22613,7 +22613,7 @@ windowDef Desktop
 				resettime "anim_mpOut" "0" ;
 				set "desktop::dest" "15" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -22671,7 +22671,7 @@ windowDef Desktop
 				set "mp_create_server_corner::matcolor" "$desktop::corner" ; 
 				set "mp_create_server::textscale" "0.32" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -22709,7 +22709,7 @@ windowDef Desktop
 				resettime "anim_mpOut" "0" ;
 				set "desktop::dest" "18" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -22747,7 +22747,7 @@ windowDef Desktop
 				resettime "anim_mpOut" "0" ;
 				set "desktop::dest" "0" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -23323,7 +23323,7 @@ windowDef Desktop
 				resettime "anim_pop_joinIpIn" "0" ;
 				namedevent "p_anims::popReset0" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -23361,7 +23361,7 @@ windowDef Desktop
 				resettime "anim_pop_fpcIn" "0" ;
 				namedevent "p_anims::popReset0" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -23467,7 +23467,7 @@ windowDef Desktop
 				resettime "anim_mpBrowseOut" "0" ;
 				set "desktop::dest" "3" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -23493,7 +23493,7 @@ windowDef Desktop
 			onAction {	
 				namedEvent "mp_browse_serverlist::scrollUp" ;
 				transition "mp_browse_uparrow::matcolor" "$desktop::white" "$desktop::yellow_8" "300" ;
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -23519,7 +23519,7 @@ windowDef Desktop
 			onAction {	
 				namedEvent "mp_browse_serverlist::scrollDown" ;
 				transition "mp_browse_dnarrow::matcolor" "$desktop::white" "$desktop::yellow_8" "300" ;
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -23821,7 +23821,7 @@ windowDef Desktop
 				resettime "anim_pop_createAdvIn" "0" ;
 				namedevent "p_anims::popReset0" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -23899,7 +23899,7 @@ windowDef Desktop
 					set "desktop::dest" "17" ;
 				}
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -23943,7 +23943,7 @@ windowDef Desktop
 					set "desktop::dest" "18" ;
 				}
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -24094,7 +24094,7 @@ windowDef Desktop
 				set "railcolor6::rect" "283,244,12,12" ;
 				set "railcolor7::rect" "297,244,12,12" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -24113,7 +24113,7 @@ windowDef Desktop
 				set "railcolor6::rect" "283,244,12,12" ;
 				set "railcolor7::rect" "297,244,12,12" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -24132,7 +24132,7 @@ windowDef Desktop
 				set "railcolor6::rect" "283,244,12,12" ;
 				set "railcolor7::rect" "297,244,12,12" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -24151,7 +24151,7 @@ windowDef Desktop
 				set "railcolor6::rect" "283,244,12,12" ;
 				set "railcolor7::rect" "297,244,12,12" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -24170,7 +24170,7 @@ windowDef Desktop
 				set "railcolor6::rect" "283,244,12,12" ;
 				set "railcolor7::rect" "297,244,12,12" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -24189,7 +24189,7 @@ windowDef Desktop
 				set "railcolor6::rect" "283,244,12,16" ;
 				set "railcolor7::rect" "297,244,12,12" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -24208,7 +24208,7 @@ windowDef Desktop
 				set "railcolor6::rect" "283,244,12,12" ;
 				set "railcolor7::rect" "297,244,12,16" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -24244,7 +24244,7 @@ windowDef Desktop
 			onAction {
 				set "cmd" "quit" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -24281,7 +24281,7 @@ windowDef Desktop
 				set "desktop::active" "1" ;
 				resettime "anim_pop_exitOut" "0" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -24355,7 +24355,7 @@ windowDef Desktop
 				set "desktop::active" "1" ;
 				resettime "anim_pop_modsOut" "0" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -24393,7 +24393,7 @@ windowDef Desktop
 				resettime "anim_creditsOut" "0" ;
 				set "desktop::dest" "0" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -24474,7 +24474,7 @@ windowDef Desktop
 				set "desktop::active" "1" ;
 				resettime "anim_pop_joinIpOut" "0" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -24585,7 +24585,7 @@ windowDef Desktop
 				set "desktop::active" "1" ;
 				resettime "anim_pop_defaultsOut" "0" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -24842,7 +24842,7 @@ windowDef Desktop
 				set "desktop::active" "1" ;
 				resettime "anim_pop_setAdvOut" "0" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -25165,7 +25165,7 @@ windowDef Desktop
 				set "desktop::active" "1" ;
 				resettime "anim_pop_createAdv_banlistIn" "0" ;
 				set "cmd" "populateBanList" ;
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -25202,7 +25202,7 @@ windowDef Desktop
 				set "desktop::active" "1" ;
 				resettime "anim_pop_createAdvOut" "0" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -25239,7 +25239,7 @@ windowDef Desktop
 				set "desktop::active" "1" ;
 				resettime "anim_pop_discOut" "0" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -25273,7 +25273,7 @@ windowDef Desktop
 			}
 
 			onAction {
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 				set "desktop::dest" "0" ;
 				set "desktop::active" "1" ;
 				
@@ -25315,7 +25315,7 @@ windowDef Desktop
 				resettime "anim_pop_loaddelOut" "0" ;
 				namedevent "p_anims::loadReset" ;	
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -25391,7 +25391,7 @@ windowDef Desktop
 				resettime "anim_mpFriendsOut" "0" ;
 				set "desktop::dest" "3" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -25590,7 +25590,7 @@ windowDef Desktop
 				set "desktop::active" "1" ;
 				resettime "anim_pop_fpcOut" "0" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -25628,7 +25628,7 @@ windowDef Desktop
 					transition "pop_fpc_clan::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ; 
 					transition "pop_fpc_clan::textscale" "0.23" "0.22" "300" ;
 					
-					set "cmd" "play main_menu_selection" ;
+					//set "cmd" "play main_menu_selection" ;
 				}
 			}
 
@@ -25667,7 +25667,7 @@ windowDef Desktop
 					transition "pop_fpc_player::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ; 
 					transition "pop_fpc_player::textscale" "0.23" "0.22" "300" ;
 					
-					set "cmd" "play main_menu_selection" ;
+					//set "cmd" "play main_menu_selection" ;
 				}
 			}
 
@@ -25706,7 +25706,7 @@ windowDef Desktop
 				resettime "anim_pop_overwriteOut" "0" ;
 				namedevent "p_anims::saveReset" ;	
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -25782,7 +25782,7 @@ windowDef Desktop
 				resettime "anim_pop_overwriteOut" "0" ;
 				namedevent "p_anims::saveReset" ;	
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -25819,7 +25819,7 @@ windowDef Desktop
 				set "desktop::active" "1" ;
 				resettime "anim_pop_autoOut" "0" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -25917,7 +25917,7 @@ windowDef Desktop
 					set "set_sys_vidqual_val::text" "#str_200262" ;
 					set "desktop::com_machineSpec" "2" ;							
 				}
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -25955,7 +25955,7 @@ windowDef Desktop
 				
 				set "set_sys_vidqual_val::text" "#str_200268" ;
 				set "desktop::com_machineSpec" "3" ;
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 				set "desktop::active" "1" ;
 				resettime "anim_pop_ultrawarnOut" "0" ;
 				set "set_sys_notice::visible" "1" ;
@@ -25997,7 +25997,7 @@ windowDef Desktop
 
 			onAction {
 				set "cmd" "handleServerAdminRemoveBan" ;
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -26039,7 +26039,7 @@ windowDef Desktop
 				set "pop_createAdv_banlist_corner::matcolor" "$desktop::corner" ; 
 				set "pop_createAdv_banlist::textscale" "0.28" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -26083,7 +26083,7 @@ windowDef Desktop
 				set "desktop::active" "1" ;	
 				resettime "anim_pop_vidwarnOut" "0" ;
 				
-				set "cmd" "play main_menu_selection" ;
+				//set "cmd" "play main_menu_selection" ;
 			}
 
 		}
@@ -26208,11 +26208,11 @@ windowDef Desktop
 				set "desktop::active" "1" ;	
 				if ("desktop::sndwarn" == 1) {
 					resettime "pop_set_sndAdv_warning" "0" ;		
-					set "cmd" "play main_menu_selection" ;
+					//set "cmd" "play main_menu_selection" ;
 				} else {
 					resettime "anim_pop_sndadvOut" "0" ;
 					
-					set "cmd" "play main_menu_selection" ;
+					//set "cmd" "play main_menu_selection" ;
 					
 				}
 				

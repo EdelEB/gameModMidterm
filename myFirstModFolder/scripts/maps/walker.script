@@ -32,7 +32,7 @@ void mostHorrendousHackEver()	{
 //--
 
 // Start fighter #1
-void initFighter1()	{
+void initFighter1()	{ return; //Edel
 
 	//sys.wait( .5 );
 	setNewTimes( $introMarineFighter_1 , 2 , .5 , .5 );
@@ -53,7 +53,7 @@ void initFighter1()	{
 }
 
 // Start fighter #2
-void initFighter2()	{
+void initFighter2()	{ return; //Edel
 
 	setNewTimes( $introMarineFighter_2 , 1 , .25 , .25 );
 	$introMarineFighter_2.rotateOnce( '-75 0 0' );
@@ -73,8 +73,7 @@ void initFighter2()	{
 }
 
 // Start the full sequence (thread this from main() )
-void initFlyby()	{
-	
+void initFlyby()	{ return; //EDEL
 	sys.wait( .5 );
 	$introMarineFighterBase_1.startSpline( $introFighterPath_1 );
 	$introMarineFighterBase_2.startSpline( $introFighterPath_2 );
@@ -88,7 +87,7 @@ void initFlyby()	{
 // Radio chatter signaling the retreat to Waste
 //-- 
 
-void initialRetreatMessage()	{
+void initialRetreatMessage()	{ //return; //Edel
 	radioChatterPlayWait( $radio_retreat_1 , "");
 	//sys.trigger( $item_objective_1 );
 	sys.wait( .5 );
@@ -737,14 +736,23 @@ void endDropships()	{
 }
 
 
+// EDEL START
+void zooGuests(){ 
+	while(true){
+		sys.println("ZOO GUEST");
+		sys.wait(5);
+	}
+}
+// EDEL END
 
 void main()
 {
-	thread initFlyby();
+	//thread initFlyby();
 	
 	thread lowerLifts();	
-	
-	thread mostHorrendousHackEver();
+	thread zooGuests();
+
+	//thread mostHorrendousHackEver();
 }
 
 }	//end namespace

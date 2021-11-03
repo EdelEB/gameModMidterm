@@ -1846,8 +1846,8 @@ void idPlayer::Spawn( void ) {
 		
 		objectiveSystem = NULL;
 
-		if ( spawnArgs.GetString( "hud", "", temp ) ) {
-			hud = uiManager->FindGui( temp, true, false, true );
+		if ( spawnArgs.GetString( "hud", "", temp ) ) { //EDEL
+			hud = uiManager->FindGui( "guis/hud.gui" , true, false, true);
 		} else {
 			gameLocal.Warning( "idPlayer::Spawn() - No hud for player." );
 		}
@@ -8590,10 +8590,21 @@ void idPlayer::PerformImpulse( int impulse ) {
 
 
 		case IMPULSE_25: { // buy menu gui ; bind: 'b'
-			break;
+
+			
 		}
 
 		case IMPULSE_26: { // help menu gui ; bind 'h'
+			
+			if (hud == uiManager->FindGui("guis/zoohelp.gui", true, false, true)) {
+				hud = uiManager->FindGui("guis/hud.gui", true, false, true);
+			}
+			else {
+				hud = uiManager->FindGui("guis/zoohelp.gui", true, false, true);
+			}
+
+			break;
+			
 			break;
 		}
 

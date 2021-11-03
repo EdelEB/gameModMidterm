@@ -13,6 +13,10 @@ windowDef Desktop
 	definevec4	"ws_grey"	0.190,0.284,0.168,0.6
 	definevec4	"typecolor"	0.866,0.921,0.764,1
 	definevec4	"typecolor_strogg"	0.988,1,0.784,1
+	definevec4	"healthicon"	0.658,0.639,0.376,0.6
+	definevec4	"armoricon"	0.658,0.639,0.376,0.6
+	definevec4	"healthicon_mp"	0.980,0.168,0.0196,0.8
+	definevec4	"armoricon_mp"	0.968,0.752,0.0156,0.8
 	definevec4	"white"	1,1,1,1
 	float	"objdone"	0
 	float	"weapswitch"	0
@@ -162,6 +166,12 @@ windowDef Desktop
 		}
 	}
 
+	onNamedEvent updateArmor {
+		if ( "gui::player_armordelta" < 0 )
+		{
+			resettime "armor_amount" "0" ;
+		}
+	}
 
 	onNamedEvent weaponChange {
 		namedEvent "clipCheck";
@@ -260,6 +270,26 @@ windowDef Desktop
 	onNamedEvent radioChatterDown {
 		set "p_radio::visible" "0" ;
 	}
+
+	onNamedEvent showBrackets {
+		set "brackets::alpha" "1";
+		set "brackets::visible" "1";
+		stopTransitions "brackets";
+		resetTime "brackets" "0";
+		set "brackets::notime" "1";
+	}
+
+	onNamedEvent fadeBrackets {
+		resetTime "brackets" "0";
+	}
+
+	onNamedEvent hideBrackets {
+		stopTransitions "brackets";
+		resetTime "brackets" "0";
+		set "brackets::notime" "1";
+		set "brackets::visible" "0";
+	}
+
 	onNamedEvent playerHit {
 		resetTime "hit_indicator" "0";	
 	}
@@ -273,6 +303,47 @@ windowDef Desktop
 		set "gui::powerup_flag_visible" "0";
 	}
 
+	onNamedEvent fadeout {
+		resettime "anim_fade" "0" ;
+	}
+
+	onNamedEvent resetfade {
+		set "fade::backcolor" "0,0,0,0" ;
+		set "failedtext::forecolor" "0,0,0,0" ;
+	}
+
+	onNamedEvent showBossBar {
+		set "BossBar::visible" "1";
+	}
+
+	onNamedEvent hideBossBar {
+		set "BossBar::visible" "0";
+	}
+
+	onNamedEvent showBossShieldBar {
+		set "p_boss_shield_bar_left::visible" "1";
+		set "p_boss_shield_bar_right::visible" "1";
+	}
+
+	onNamedEvent hideBossShieldBar {
+		set "p_boss_shield_bar_left::visible" "0";
+		set "p_boss_shield_bar_right::visible" "0";
+	}
+
+	onNamedEvent showBossShieldWarn {
+		set "p_boss_shield_bar_leftwarn::visible" "1";
+		set "p_boss_shield_bar_rightwarn::visible" "1";
+		set "p_boss_shield_bar_left::visible" "0";
+		set "p_boss_shield_bar_right::visible" "0";
+	}
+
+	onNamedEvent hideBossShieldWarn {
+		set "p_boss_shield_bar_leftwarn::visible" "0";
+		set "p_boss_shield_bar_rightwarn::visible" "0";
+		set "p_boss_shield_bar_left::visible" "1";
+		set "p_boss_shield_bar_right::visible" "1";
+	}
+
 	onNamedEvent showExit {
 		set "p_exit_level::visible" "1";
 		resettime "anim_levelExitAlert" "0";
@@ -280,6 +351,30 @@ windowDef Desktop
 
 	onNamedEvent hideExit {
 		set "p_exit_level::visible" "0";
+	}
+
+	onNamedEvent setTeam_marine {	
+		set "health_valbar_mp::matcolor" "0.698,0.811,0.427,0.2" ;
+		set "health_val_mp::matcolor" "0.698,0.811,0.427,0.5" ;
+		
+		set "armor_valbar_mp::matcolor" "0.698,0.811,0.427,0.2" ;
+		set "armor_val_mp::matcolor" "0.698,0.811,0.427,0.5" ;
+		
+		set "powerup_flag_icon::matcolor" "1,0.482,0.0156,0.8";
+		
+		set "desktop::teamstrogg" "0" ;
+	}
+
+	onNamedEvent setTeam_strogg {	
+		set "health_valbar_mp::matcolor" "1,0.5,0,0.2" ;
+		set "health_val_mp::matcolor" "1,0.5,0,0.5" ;
+		
+		set "armor_valbar_mp::matcolor" "1,0.5,0,0.2" ;
+		set "armor_val_mp::matcolor" "1,0.5,0,0.5" ;
+		
+		set "powerup_flag_icon::matcolor" "0.415,0.643,0.168,0.8";
+		
+		set "desktop::teamstrogg" "1" ;
 	}
 
 	onNamedEvent enterFlatbed {
@@ -300,6 +395,40 @@ windowDef Desktop
 		set "quicksave_msg::forecolor_w" "1" ;
 		set "quicksave_msg::visible" "1" ;
 		resettime "quicksave_msg" "0" ;
+	}
+
+	onNamedEvent missileThreatUp {
+		set "missile_indicator::visible" "1";
+		resetTime "missile_indicator" "0";	
+		
+		set "missile_text::visible" "1";
+		resetTime "missile_text" "0";	
+	}
+
+	onNamedEvent missileThreatDown {
+		set "missile_indicator::visible" "0";
+		stoptransitions "missile_indicator";	
+		set "missile_indicator::matcolor" "1,.1,.1,.7" ;
+		
+		set "missile_text::visible" "0";
+		stoptransitions "missile_text";	
+		set "missile_text::forecolor" "1,.1,.1,.7" ;
+	}
+
+	onNamedEvent showSpeed {
+		set	"speed::visible" "1" ;
+	}
+
+	onNamedEvent hideSpeed {
+		set "speed::visible" "0" ;
+	}
+
+	onNamedEvent showViewComments {
+		set "ViewComments::visible" "1";
+	}
+
+	onNamedEvent hideViewComments {
+		set "ViewComments::visible" "0";
 	}
 
 	windowDef p_flatbed
@@ -491,7 +620,7 @@ windowDef Desktop
 	}
 	windowDef p_health
 	{
-		rect	0,0,640,480
+		rect	-319,-410,640,480
 		visible	1
 		windowDef health_backbar
 		{
@@ -511,7 +640,7 @@ windowDef Desktop
 		}
 		windowDef health_ekg
 		{
-			rect	155,202,303,59
+			rect	190,420,125,59
 			visible	1
 			background	"gfx/guis/hud/ekg"
 			matcolor	0.0862,0.105,0.0549,1
@@ -533,12 +662,12 @@ windowDef Desktop
 		}
 		windowDef d_health_amount
 		{
-			rect	246,307,58,31
+			rect	254,427,58,31
 			visible	0
 		}
 		windowDef health_amount
 		{
-			rect	441,173,52,26
+			rect	256,429,52,26
 			visible	1
 			forecolor	0.866,0.921,0.764,1
 			text	"gui::player_health"
@@ -557,7 +686,13 @@ windowDef Desktop
 			}
 
 		}
-
+		windowDef icon_health
+		{
+			rect	288,458,16,16
+			visible	1
+			background	"gfx/guis/hud/icons/item_health"
+			matcolor	0.658,0.639,0.376,0.6
+		}
 		windowDef health_backbar_add
 		{
 			rect	190,420,125,59
@@ -1215,6 +1350,65 @@ windowDef Desktop
 			shear	0,-.22
 		}
 	}
+	windowDef p_itempickup
+	{
+		rect	0,0,640,480
+		visible	0
+		notime	1
+
+		onTime 3000 {
+			set "visible" "0";
+		}
+
+		windowDef pickup_backbar
+		{
+			rect	21,401,230,24
+			visible	1
+			background	"gfx/guis/hud/pickupbar"
+			matcolor	0,0,0,0.5
+			shear	0,-.22
+		}
+		windowDef t_pickupname
+		{
+			rect	42,404,236,15
+			visible	1
+			forecolor	0.862,0.917,0.760,1
+			text	"gui::itemtext"
+			textscale	0.2
+			font	"fonts/marine"
+			textspacing	0
+		}
+		windowDef icon_pickup
+		{
+			rect	26,405,16,16
+			visible	1
+			background	"gui::itemicon"
+			matcolor	0.666,0.674,0.435,0.8
+		}
+	}
+	windowDef deathanim_remove
+	{
+		visible	0
+		rect	0,0,1,1
+
+		onTime 0 {
+			set "deathhistory1::visible" "1";
+			set "deathhistory1_fade::visible" "0";
+		}
+
+		onTime +2000 {
+			set "deathhistory1::visible" "0";
+			set "deathhistory1_fade::visible" "1";
+			set "deathhistory1_fade::forecolor" "1,1,.552,1";
+			transition "deathhistory1_fade::forecolor_w" "1" "0" 1000;
+		}
+
+		onTime +1100 {
+			set "deathhistory1_fade::visible" "0";
+			namedEvent "removeDeathLine";
+		}
+
+	}
 	windowDef p_deathhistory
 	{
 		rect	351,5,284,70
@@ -1275,6 +1469,253 @@ windowDef Desktop
 			nowrap	1
 		}
 	}
+	windowDef p_deathhistory_tourney
+	{
+		rect	351,5,284,70
+		visible	("gui::gametype" ==2)
+		windowDef deathhistory1_tourney
+		{
+			rect	0,33,282,18
+			forecolor	1,1,.552,1
+			textscale	0.25
+			font	"fonts/lowpixel"
+			visible	0
+			textstyle	1
+			textalign	2
+			nowrap	1
+		}
+		windowDef deathhistory1_fade_tourney
+		{
+			rect	0,33,282,18
+			forecolor	1,1,.552,1
+			textscale	0.25
+			font	"fonts/lowpixel"
+			visible	0
+			textstyle	1
+			textalign	2
+			nowrap	1
+		}
+		windowDef deathhistory2_tourney
+		{
+			rect	0,48,282,18
+			forecolor	1,1,.552,1
+			textscale	0.25
+			font	"fonts/lowpixel"
+			visible	0
+			textstyle	1
+			textalign	2
+			nowrap	1
+		}
+	}
+	windowDef brackets
+	{
+		visible	0
+		rect	"gui::bracket_left" - 10, "gui::bracket_top" - 10, "gui::bracket_width" + 20, "gui::bracket_height" + 20
+		noclip	1
+		notime	1
+		float	"alpha"	1
+
+		onTime 400 {
+			transition "brackets::alpha" "1" "0" 400;
+		}
+
+		onTime +400 {
+			set "visible" "0";
+		}
+
+		windowDef bracket_text
+		{
+			rect	-50,-30,"gui::bracket_width"+120,30
+			text	"#str_200277"
+			font	"fonts/marine"
+			textalign	1
+			forecolor	0.686,0.870,0.564,"brackets::alpha"
+			textscale	.25
+		}
+		windowDef left_bracket
+		{
+			rect	0,0,2,"gui::bracket_height" + 20
+			backcolor	0.686,0.870,0.564,"brackets::alpha"
+			noclip	1
+			windowDef lbt_prong
+			{
+				rect	2,0,5,2
+				backcolor	0.686,0.870,0.564,"brackets::alpha"
+			}
+			windowDef lbb_prong
+			{
+				rect	2,"gui::bracket_height"+18,5,2
+				backcolor	0.686,0.870,0.564,"brackets::alpha"
+			}
+		}
+		windowDef right_bracket
+		{
+			rect	"gui::bracket_width" + 18,0,2,"gui::bracket_height" + 20
+			backcolor	0.686,0.870,0.564,"brackets::alpha"
+			visible	1
+			noclip	1
+			windowDef rbt_prong
+			{
+				rect	-5,0,5,2
+				backcolor	0.686,0.870,0.564,"brackets::alpha"
+			}
+			windowDef rbb_prong
+			{
+				rect	-5,"gui::bracket_height"+18,5,2
+				backcolor	0.686,0.870,0.564,"brackets::alpha"
+			}
+		}
+	}
+	windowDef Bossbar
+	{
+		rect	-20,0,640,480
+		visible	0
+		windowDef boss_backbar
+		{
+			rect	240,40,200,50
+			visible	1
+			background	"gfx/guis/hud/s_bossbar"
+			matcolor	0,0,0,0.5
+		}
+		windowDef boss_healthicon
+		{
+			rect	334,75,12,12
+			visible	1
+			background	"gfx/guis/hud/icons/item_health"
+			matcolor	1,1,1,0.2
+		}
+		windowDef boss_health_bar2
+		{
+			rect	239,40,200,50
+			visible	1
+			background	"gfx/guis/hud/s_boss_healthbar"
+			matcolor	0.917,0.560,0.0823,0.2
+		}
+		windowDef boss_shield_bar_left2
+		{
+			rect	240,40,100,50
+			visible	1
+			background	"gfx/guis/hud/s_boss_shieldbar"
+			matcolor	0.415,0.549,0.541,0.2
+		}
+		windowDef boss_shield_bar_right2
+		{
+			rect	340,40,100,50
+			visible	1
+			background	"gfx/guis/hud/s_boss_shieldbar"
+			matcolor	0.415,0.549,0.541,0.2
+			matscalex	-1
+		}
+		windowDef p_boss_health_bar
+		{
+			rect	266,40,149 * "gui::boss_health" / ("gui::boss_maxhealth" + 1),50
+			visible	1
+			windowDef boss_health_bar
+			{
+				rect	-26,0,200,50
+				visible	1
+				background	"gfx/guis/hud/s_boss_healthbar"
+				matcolor	0.917,0.560,0.0823,0.35
+			}
+		}
+		windowDef p_boss_shield_bar_left
+		{
+			rect	250,40,89 * "gui::boss_shield_percent",50
+			visible	0
+			windowDef boss_shield_bar_left
+			{
+				rect	-10,0,100,50
+				visible	1
+				background	"gfx/guis/hud/s_boss_shieldbar"
+				matcolor	0.415,0.549,0.541,0.35
+			}
+		}
+		windowDef p_boss_shield_bar_right
+		{
+			rect	341 + 89 * ( 1 - "gui::boss_shield_percent" ),40,89,50
+			visible	0
+			windowDef boss_shield_bar_right
+			{
+				rect	-90 * ( 1 - "gui::boss_shield_percent" ),0,100,50
+				visible	1
+				background	"gfx/guis/hud/s_boss_shieldbar"
+				matcolor	0.415,0.549,0.541,0.35
+				matscalex	-1
+			}
+		}
+		windowDef p_boss_shield_bar_leftwarn
+		{
+			rect	250,40,89 * "gui::boss_shield_percent",50
+			visible	0
+			windowDef boss_shield_bar_leftwarn
+			{
+				rect	-9,0,100,50
+				visible	1
+				background	"gfx/guis/hud/s_boss_shieldbar"
+				matcolor	1,0.25,0,1*guitable_10_5[time*0.002]
+			}
+		}
+		windowDef p_boss_shield_bar_rightwarn
+		{
+			rect	341 + 89 * ( 1 - "gui::boss_shield_percent" ),40,89,50
+			visible	0
+			windowDef boss_shield_bar_rightwarn
+			{
+				rect	-90 * ( 1 - "gui::boss_shield_percent" ),0,100,50
+				visible	1
+				background	"gfx/guis/hud/s_boss_shieldbar"
+				matcolor	1,0.25,0,1*guitable_10_5[time*0.002]
+				matscalex	-1
+			}
+		}
+	}
+	windowDef missile_indicator
+	{
+		rect	0,0,640,480
+		background	"gfx/guis/hud/directional_hit2"
+		matcolor	1,.1,.1,.7
+		rotate	"gui::missiledir"
+		visible	0
+		notime	1
+
+		onTime 0 {
+			transition "matcolor_w" "0.7" "0.3" "200" ;
+		}
+
+		onTime +200 {
+			transition "matcolor_w" "0.3" "0.7" "200" ;
+		}
+
+		onTime +400 {
+			resettime "0" ;
+		}
+
+	}
+	windowDef missile_text
+	{
+		rect	0,61,640,33
+		visible	0
+		notime	1
+		forecolor	1,.1,.1,.7
+		text	"#str_200891"
+		textscale	0.4
+		font	"fonts/marine"
+		textalign	1
+		textspacing	-2
+
+		onTime 0 {
+			transition "forecolor_w" "0.7" "0.3" "200" ;
+		}
+
+		onTime +200 {
+			transition "forecolor_w" "0.3" "0.7" "200" ;
+		}
+
+		onTime +400 {
+			resettime "0" ;
+		}
+
+	}
 	windowDef p_exit_level
 	{
 		rect	0,0,640,75
@@ -1334,6 +1775,40 @@ windowDef Desktop
 
 		onTime +1000 {
 			set "quicksave_msg::visible" "0" ;
+		}
+
+	}
+	windowDef hit_indicator
+	{
+		rect	0,0,640,480
+		background	"gfx/guis/hud/directional_hit"
+		matcolor	1,.1,.1,.7
+		rotate	"gui::hitdir"
+		visible	0
+		notime	1
+
+		onTime 0 {
+			set "visible" "1";
+			transition "matcolor" "1,.1,.1,.7" "1,.1,.1,0" "500" ;
+		}
+
+		onTime +600 {
+			set "visible" "0";
+		}
+
+	}
+	windowDef anim_fade
+	{
+		rect	0,0,1,1
+		visible	1
+		notime	1
+
+		onTime 0 {
+			transition "fade::backcolor" "0,0,0,0" "0,0,0,1" "3000" ;
+		}
+
+		onTime 3000 {
+			transition "failedtext::forecolor" "1,1,1,0" "1,1,1,1" "250" ;
 		}
 
 	}

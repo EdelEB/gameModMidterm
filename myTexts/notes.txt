@@ -114,13 +114,51 @@
 
 	So in the map files the map's functions are called throughout like "walker::functionName".
 	All map functions are located in pak010.pk4/scripts/maps
+
+	player.cpp has DrawHud(idUserInterface *_hud)
+	The only delaration I see is: 
+		idUserInterface* GetZoomGui ( void ) const;
+	which does not explain where the gui's are being pulled from.
+	
+11/2/21
+
+	inside hud.gui:
+		onNamedEvent functionName { <gui code> }
+	inside code:
+		gameLocal.GetLocalPlayer()->hud->HandleNamedEvent("functionName");
+
+	
+	Where is the gui assigned to the hud variable??
+	in player.cpp in spawn function:
+		if ( spawnArgs.GetString( "hud", "", temp ) ) {
+			hud = uiManager->FindGui( temp, true, false, true );
+		} else {
+			gameLocal.Warning( "idPlayer::Spawn() - No hud for player." );
+		}
+
+	GetString makes temp = "guis/hud.gui"
+	but when I put "guis/myHud.gui" it does not work.
+	GetString first checks if hud is in a idDict (presumably containing all the guis)
+	then it makes it a string. I don't know where that idDict is created, but it
+	doesn't matter if I forgo the if statement and ensure I don't get the filename
+	wrong: bad practice, I know. I was not really concerned with being able to use
+	a hud gui with a different name. I was more concerned with seeing how any gui
+	is called and drawn by the game. Now I can make my own menus. Apparantly the way
+	the mainmenu/pause menu guis are handled differently?
+
+	walker.script at the bottom is where you thread a function to run when the map starts.
+	This is probably whereI will have to spawn guest regularly in a looped thread.
+
 	
 
 
--1105, 3259, -2000
-
-
 	
+
+
+
+
+
+
 
 
 
