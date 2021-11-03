@@ -735,13 +735,44 @@ void endDropships()	{
 	$endDropShipBase_2.remove();
 }
 
-
 // EDEL START
+void guestLife(){
+	string ent_string;
+	vector spawn_location;
+	float y = sys.randomInt(3); //determines marine type spawned
+	if(y==1){		ent_string = "char_marine";			spawn_location = '-1438 335 -1807';}		
+	else if(y==2){	ent_string = "char_marine_tech";	spawn_location = '-1456 1339 -1807';}
+	else{			ent_string = "char_marine_medic";	spawn_location = '-1415 2370 -1807';}
+
+	entity guest = sys.spawn(ent_string);
+	guest.disableTarget();
+	guest.becomePassive(1);
+	guest.setOrigin(spawn_location);
+
+	sys.wait(sys.randomInt(30)+10);
+	guest.remove();
+
+}
+
 void zooGuests(){ 
 	while(true){
-		sys.println("ZOO GUEST");
-		sys.wait(5);
+
+		float x = sys.randomInt(5); // random number of guests being spawned
+
+		while(x > 0){
+			thread guestLife();
+			x = x-1;
+		}
+		sys.wait(15);
 	}
+}
+
+void addMoney(){
+	return;
+}
+
+void test(){
+	sys.println("lets do research");
 }
 // EDEL END
 
@@ -749,8 +780,15 @@ void main()
 {
 	//thread initFlyby();
 	
-	thread lowerLifts();	
+	entity scientist = sys.spawn("char_marine_medic");
+	scientist.disableTarget();
+	scientist.becomePassive(1);
+	scientist.setOrigin('-400 3927 -1818');
+	scientist.setScript("onclick", "test");
+	
 	thread zooGuests();
+	thread lowerLifts();	
+	thread addMoney();
 
 	//thread mostHorrendousHackEver();
 }

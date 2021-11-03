@@ -149,12 +149,20 @@
 	walker.script at the bottom is where you thread a function to run when the map starts.
 	This is probably whereI will have to spawn guest regularly in a looped thread.
 
-	
+11/3/21
 
+	guest spawn spots:
+		-1438 335 -1807
+		-1456 1339 -1807
+		-1415 2370 -1807
+		
+	When the map is loading random numbers of zoo guests are spawned one of 3 locations
+	They do not targeted by nor target strogg. Gettting them to move around is not yet
+	working. The functions available in events.script are limited. 
 
-	
-
-
+	events.script allows for gui interaction and onclick interactions. I am considering
+	having an AI that you can spawn in to be your research guy. Potentially you can
+	open a gui through him. 
 
 
 
