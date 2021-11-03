@@ -1,0 +1,704 @@
+windowDef Desktop
+{
+	visible	1
+	menugui	1
+	rect	0,0,640,480
+	backcolor	0,0,0,1
+	::	mousey
+	-	186
+	definevec4	"corner"	0.564,0.603,0.286,0.4
+	definevec4	"corner_0"	0.564,0.603,0.286,0
+	definevec4	"white"	1,1,1,1
+	definevec4	"white_8"	1,1,1,0.8
+	definevec4	"white_5"	1,1,1,0.5
+	definevec4	"white_4"	1,1,1,0.4
+	definevec4	"white_0"	1,1,1,0
+	definevec4	"cr_orange"	1,0.501,0,0.8
+	definevec4	"cr_orange_0"	1,0.501,0,0
+	definevec4	"cr_green"	0.835,1,0.654,0.8
+	definevec4	"cr_green_0"	0.835,1,0.654,0
+	definevec4	"white_6"	1,1,1,0.6
+	definevec4	"black"	0,0,0,1
+	definevec4	"orange"	0.890,0.537,0,1
+	definevec4	"yellow_8"	1,0.745,0.137,0.8
+	definevec4	"grey1_4"	0.435,0.435,0.435,0.4
+	definefloat	"tooltip_x_offset"	gui
+	definefloat	"tooltip_y_offset"	gui
+	defineicon	"fve"	"gfx/guis/mainmenu/icon_favorite.tga"
+	defineicon	"pse"	"gfx/guis/mainmenu/icon_locked.tga"
+	defineicon	"dse"	"gfx/guis/mainmenu/icon_dedserver.tga"
+	defineicon	"pbe"	"gfx/guis/mainmenu/icon_pb.tga"
+	defineicon	"rpe"	"gfx/guis/mainmenu/icon_repeater.tga"
+	defineicon	"arr"	"gfx/guis/mainmenu/icon_arrow.tga"
+	float	"active"	0
+	float	"dest"	0
+	float	"curr"	0
+	float	"undercurr"	0
+	float	"sort"	0
+	float	"friendsort"	0
+	float	"loaddefaults"	0
+	float	"com_machineSpec"	0
+	float	"skill"	1
+	float	"tooltip_x"	0
+	float	"tooltip_y"	0
+	float	"tooltip_w"	0
+	float	"tooltip_h"	0
+	float	"music"	0
+	float	"video_num"	0
+	float	"video_check"	0
+	float	"credits"	0
+	float	"overwrite_auto"	0
+	float	"vidwarn"	0
+	float	"blockBrowser"	0
+	float	"sndwarn"	0
+	float	"motd"	0
+
+	onEvent {
+		set "desktop::tooltip_w" "270";						
+		set "desktop::tooltip_h" "186";
+		if( "gui::mousex" < 370 ) {
+			set "desktop::tooltip_x" "$gui::mousex";			
+		} else {
+			set "desktop::tooltip_x" "$desktop::tooltip_x_offset";
+		}
+		
+		// if serverlist gets longer, set to 294
+		//if( "gui::mousey" < 294 ) {
+			if( "gui::mousey" < 480 ) { 
+				set "desktop::tooltip_y" "$gui::mousey";
+			} else {
+				set "desktop::tooltip_y" "$desktop::tooltip_y_offset";
+			}
+			
+		}
+
+	onNamedEvent forceAspect0 {	
+		set "set_sys_screensize_val_0::visible" "1" ;
+		set "set_sys_screensize_val_1::visible" "0" ;
+		set "set_sys_screensize_val_2::visible" "0" ;		
+	}
+
+	onNamedEvent ingame {
+		// gui::ingame
+		// 0 = not in a game
+		// 1 = in a sp game
+		// 2 = in a mp game
+	}
+
+	onNamedEvent sort {
+		// mp browser sorting
+		// 0 = no sorting
+		// 1 = friends
+		// 2 = locked
+		// 3 = dedicated/punkbuster
+		// 4 = server
+		// 5 = ping
+		// 6 = players
+		// 7 = gametype
+		// 8 = map
+	}
+
+	onNamedEvent dest_and_curr {
+		// 1 = new game
+		// 2 = load game
+		// 3 = multiplayer
+		// 4 = settings
+		// 5 = mods
+		// 6 = updates
+		// 7 = credits
+		// 8 = exit
+		// 9 = settings_controls_movement
+		// 10 = settings_controls_weapons
+		// 11 = settings_controls_attack
+		// 12 = settings_controls_other
+		// 13 = multiplayer_instantaction
+		// 14 = multiplayer_gamebrowser
+		// 15 = multiplayer_friendslist
+		// 16 = multiplayer_joinipaddress
+		// 17 = multiplayer_createserver
+		// 18 = multiplayer_settings
+		// 19 = popup_gamebrowser_filter_options
+		// 20 = settings_controls
+		// 21 = settings_gameoptions
+		// 22 = settings_system
+		// 23 = save game
+		// 24 = popup_create_advanced_options
+		// 25 = popup_defaults
+		// 26 = popup_settings_advanced_options
+		// 27 = popup_disconnect
+		// 28 = load_delete_game
+		// 29 = popup_find_player_or_clan
+		// 30 = popup_auto_detect_settings
+		// 31 = popup_ultra_quality_warning
+		// 32 = popup_save_overwrite
+		// 33 = popup_create_advanced_banlist
+		// 34 = popup_vidsettings_warning
+		// 35 = popup_advanced_sound_settings
+	}
+
+	onActivate {
+		//resetTime "MenuMusic" "0" ;
+		
+		if ("desktop::curr" == 0) {
+			resetTime "anim_in" "0" ;
+			namedevent "ingameCheck" ;
+			//} else if ("desktop::curr" != 17 && "desktop::curr" != 0) {
+			//	transition "fade::backcolor_w" "1" "0" "250" ;
+		} else if ("desktop::curr" == 17) {
+			set "desktop::curr" "0" ;
+			set "desktop::active" "0" ;
+			set "p_main::visible" "1" ;
+			
+			namedevent "p_btns::showMain" ;
+			namedevent "p_btns::hideMp" ;			
+			namedevent "p_btns::hideMpCreate" ;
+			namedevent "p_anims::mpReset" ;
+			namedevent "p_anims::mpCreateReset" ;			
+			namedevent "p_anims::backReset0" ;
+			namedevent "p_anims::mainReset0" ;
+			
+			transition "p_multiplayer::rect" "$d_main_r::rect" "$d_main::rect" "0" ;
+			transition "p_mp_create::rect" "$d_main::rect" "$d_main_l::rect" "0" ;
+			transition "p_main::rect" "$d_main_r::rect" "$d_main::rect" "0" ;
+			transition "p_multiplayer::rect" "$d_main::rect" "$d_main_l::rect" "0" ;
+			transition "topbar::rect"  "$d_topbar::rect"  "$topbar::rect" "0" ;
+			transition "btmbar::rect"  "$d_btmbar::rect"  "$btmbar::rect" "0" ;
+			
+			set "grad5::matcolor_w" "0" ;
+			set "t_mp_create_title::forecolor_w" "0" ;
+			set "mp_create_back::matcolor_w" "0" ;
+			set "mp_create_t_back::forecolor_w" "0" ; 
+			set "mp_create_back_corner::matcolor_w" "0" ; 
+			set "p_mp_create::visible" "0" ;			
+			set "t_mp_title::forecolor_w"  "0" ;
+			set "mp_back::matcolor_w" "0" ;
+			set "mp_t_back::forecolor_w" "0" ; 
+			set "mp_back_corner::matcolor_w" "0" ; 
+			
+			transition "q4logo::matcolor" "$desktop::black" "$desktop::white" "0" ;
+			transition "q4text::matcolor" "$desktop::black" "$desktop::white" "0" ;
+			
+			set "bg2::matcolor_w" "0.3" ; 
+			set "main_b1::matcolor_w" "0.4" ;
+			set "main_t_b1::forecolor_w" "0.8" ; 
+			set "main_b1_corner::matcolor_w" "0.4" ;
+			set "main_b2::matcolor_w" "0.4" ;
+			set "main_t_b2::forecolor_w" "0.8" ; 
+			set "main_b2_corner::matcolor_w" "0.4" ;
+			set "main_b4::matcolor_w" "0.4" ;
+			set "main_t_b4::forecolor_w" "0.8" ; 
+			set "main_b4_corner::matcolor_w" "0.4" ;
+			set "main_t_b8::forecolor_w" "0.5" ; 
+			set "main_b8_corner::matcolor_w" "0.4" ; 			
+			set "main_b3::matcolor_w" "0.4" ;
+			set "main_t_b3::forecolor_w" "0.8" ; 
+			set "main_b3_corner::matcolor_w" "0.4" ;
+			set "main_t_b5::forecolor_w" "0.5" "150" ; 
+			set "main_b5_corner::matcolor_w" "0.4" ; 
+			set "main_t_b6::forecolor_w" "0.5" ; 
+			set "main_b6_corner::matcolor_w" "0.4" ; 
+			set "main_t_b7::forecolor_w" "0.5" ; 
+			set "main_b7_corner::matcolor_w" "0.4" ;			
+		}
+	}
+
+	onESC {
+		if ("desktop::video_check" == 1 ) {
+			if ("desktop::video_num" == 1 ) { 
+				stoptransitions "p_video" ;
+				set "p_video::notime" "1" ;
+				resettime "video_raven" "0" ;
+			} else if ("desktop::video_num" == 2) {
+				stoptransitions "p_video" ;
+				set "p_video::notime" "1" ;
+				set "video_raven::notime" "1" ;
+				stoptransitions "video_raven" ;
+				resettime "video_bethsoft" "0" ;
+			} else if ("desktop::video_num" == 3) {
+				stoptransitions "p_video" ;
+				set "p_video::notime" "1" ;
+				set "video_bethsoft::notime" "1" ;
+				stoptransitions "video_bethsoft" ;
+				
+				set "desktop::video_num" "0" ;
+				set "desktop::video_check" "0" ;
+				set "video_id::visible" "0" ;
+				set "video_raven::visible" "0" ;
+				set "video_bethsoft::visible" "0" ;
+				
+				showcursor "1" ;
+				
+				namedevent "desktop::ingameCheck" ;
+				resetTime "videoBlack" "0" ;
+				
+				set "desktop::motd" "1" ;
+				
+				resetTime "MenuMusic" "0" ;	
+			} 
+		}
+		
+		if ("desktop::curr" == 0 && "desktop::active" == 0 && "gui::ingame" != 0) {
+			namedevent "p_btns::hideMain" ;
+			resettime "anim_out" "0" ;
+			//set "cmd" "play main_menu_selection" ;
+		} else if ("desktop::curr" == 1 && "desktop::active" == 0) {
+			set "desktop::active" "1" ;
+			resettime "anim_newOut" "0" ;
+			set "desktop::dest" "0" ;
+			//set "cmd" "play main_menu_selection" ;
+		} else if ("desktop::curr" == 2 && "desktop::active" == 0) {
+			set "desktop::active" "1" ;
+			resettime "anim_loadOut" "0" ;
+			set "desktop::dest" "0" ;
+			//set "cmd" "play main_menu_selection" ;
+		} else if ("desktop::curr" == 3 && "desktop::active" == 0) {
+			set "desktop::active" "1" ;
+			resettime "anim_mpOut" "0" ;
+			set "desktop::dest" "0" ;
+			//set "cmd" "play main_menu_selection" ;
+		} else if (("desktop::curr" == 4 || "desktop::curr" == 9 || "desktop::curr" == 10 || "desktop::curr" == 11 || "desktop::curr" == 12 || "desktop::curr" == 20 || "desktop::curr" == 21 || "desktop::curr" == 22)&& "desktop::active" == 0) {
+			if ("desktop::vidwarn" == 0) {
+				set "desktop::active" "1" ;
+				resettime "anim_settingsOut" "0" ;
+				set "desktop::dest" "0" ;
+			} else {
+				set "desktop::active" "1" ;
+				resettime "anim_pop_vidwarnIn" "0" ;
+				set "desktop::dest" "4" ;
+			}			
+			//set "cmd" "play main_menu_selection" ;
+		} else if ("desktop::curr" == 5 && "desktop::active" == 0) {
+			set "desktop::active" "1" ;
+			resettime "anim_pop_modsOut" "0" ;
+			set "desktop::dest" "0" ;
+			//set "cmd" "play main_menu_selection" ;
+		} else if ("desktop::curr" == 6 && "desktop::active" == 0) {
+			set "desktop::active" "1" ;
+			resettime "anim_pop_updatesOut" "0" ;
+			set "desktop::dest" "0" ;
+			//set "cmd" "play main_menu_selection" ;
+		} else if ("desktop::curr" == 7 && "desktop::active" == 0) {
+			set "desktop::active" "1" ;
+			resettime "anim_creditsOut" "0" ;
+			set "desktop::dest" "0" ;
+			//set "cmd" "play main_menu_selection" ;
+		} else if ("desktop::curr" == 8 && "desktop::active" == 0) {
+			set "desktop::active" "1" ;
+			resettime "anim_pop_exitOut" "0" ;
+			set "desktop::dest" "0" ;
+			//set "cmd" "play main_menu_selection" ;
+		} else if ("desktop::curr" == 14 && "desktop::active" == 0) {
+			set "desktop::active" "1" ;
+			resettime "anim_mpBrowseOut" "0" ;
+			set "desktop::dest" "3" ;
+			//set "cmd" "play main_menu_selection" ;
+		} else if ("desktop::curr" == 15 && "desktop::active" == 0) {
+			set "desktop::active" "1" ;
+			resettime "anim_mpFriendsOut" "0" ;
+			set "desktop::dest" "3" ;
+			//set "cmd" "play main_menu_selection" ;
+		} else if ("desktop::curr" == 16 && "desktop::active" == 0) {
+			set "desktop::active" "1" ;
+			resettime "anim_pop_joinIpOut" "0" ;
+			set "desktop::dest" "14" ;
+			//set "cmd" "play main_menu_selection" ;
+		} else if ("desktop::curr" == 17 && "desktop::active" == 0) {			
+			if ("desktop::vidwarn" == 0) {
+				set "desktop::active" "1" ;
+				resettime "anim_mpCreateOut" "0" ;
+				set "desktop::dest" "3" ;
+			} else {
+				set "desktop::active" "1" ;
+				resettime "anim_pop_vidwarnIn" "0" ;
+				set "desktop::dest" "17" ;
+			}			
+			//set "cmd" "play main_menu_selection" ;
+		} else if ("desktop::curr" == 18 && "desktop::active" == 0) {
+			if ("desktop::vidwarn" == 0) {
+				set "desktop::active" "1" ;
+				resettime "anim_mpSetOut" "0" ;
+				set "desktop::dest" "3" ;
+			} else {
+				set "desktop::active" "1" ;
+				resettime "anim_pop_vidwarnIn" "0" ;
+				set "desktop::dest" "18" ;
+			}			
+			//set "cmd" "play main_menu_selection" ;
+		} else if ("desktop::curr" == 19 && "desktop::active" == 0) {
+			set "desktop::active" "1" ;
+			resettime "anim_pop_foOut" "0" ;
+			set "desktop::dest" "14" ;
+			//set "cmd" "play main_menu_selection" ;
+		} else if ("desktop::curr" == 23 && "desktop::active" == 0) {
+			set "desktop::active" "1" ;
+			resettime "anim_saveOut" "0" ;
+			set "desktop::dest" "0" ;
+			//set "cmd" "play main_menu_selection" ;
+		} else if ("desktop::curr" == 24 && "desktop::active" == 0) {
+			set "desktop::active" "1" ;
+			resettime "anim_pop_createAdvOut" "0" ;
+			set "desktop::dest" "17" ;
+			//set "cmd" "play main_menu_selection" ;
+		} else if ("desktop::curr" == 25 && "desktop::active" == 0) {
+			set "desktop::active" "1" ;
+			resettime "anim_pop_defaultsOut" "0" ;
+			set "desktop::dest" "4" ;
+			//set "cmd" "play main_menu_selection" ;
+		} else if ("desktop::curr" == 26 && "desktop::active" == 0) {
+			set "desktop::active" "1" ;
+			resettime "anim_pop_setAdvOut" "0" ;
+			set "desktop::dest" "4" ;
+			//set "cmd" "play main_menu_selection" ;
+		} else if ("desktop::curr" == 27 && "desktop::active" == 0) {
+			set "desktop::active" "1" ;
+			resettime "anim_pop_discOut" "0" ;
+			set "desktop::dest" "0" ;
+			//set "cmd" "play main_menu_selection" ;
+		} else if ("desktop::curr" == 28 && "desktop::active" == 0) {
+			set "desktop::active" "1" ;
+			resettime "anim_pop_loaddelOut" "0" ;
+			set "desktop::dest" "2" ;
+			//set "cmd" "play main_menu_selection" ;
+		} else if ("desktop::curr" == 29 && "desktop::active" == 0) {
+			set "desktop::active" "1" ;
+			resettime "anim_pop_fpcOut" "0" ;
+			set "desktop::dest" "14" ;
+			//set "cmd" "play main_menu_selection" ;
+		} else if ("desktop::curr" == 30 && "desktop::active" == 0) {
+			set "desktop::active" "1" ;
+			resettime "anim_pop_autoOut" "0" ;
+			set "desktop::dest" "22" ;
+			//set "cmd" "play main_menu_selection" ;
+		} else if ("desktop::curr" == 31 && "desktop::active" == 0) {
+			set "desktop::active" "1" ;
+			resettime "anim_pop_ultrawarnOut" "0" ;
+			set "desktop::dest" "22" ;
+			//set "cmd" "play main_menu_selection" ;
+		} else if ("desktop::curr" == 32 && "desktop::active" == 0) {
+			set "desktop::active" "1" ;
+			resettime "anim_pop_overwriteOut" "0" ;
+			namedevent "p_anims::saveReset" ;	
+			set "desktop::dest" "23" ;
+			//set "cmd" "play main_menu_selection" ;
+		} else if ("desktop::curr" == 33 && "desktop::active" == 0) {
+			set "desktop::active" "1" ;
+			resettime "anim_pop_createAdv_banlistOut" "0" ;
+			set "desktop::dest" "24" ;
+			//set "cmd" "play main_menu_selection" ;
+		} else if ("desktop::curr" == 34 && "desktop::active" == 0) {
+			//			consolecmd "vid_restart" ;
+			
+			set "set_sys_notice::visible" "0" ;
+			//			set "set_vidrestart::visible" "0" ;
+			//			set "set_t_vidrestart::visible" "0" ;
+			//			set "set_b_vidrestart::visible" "0" ;
+			
+			set "desktop::active" "1" ;	
+			resettime "anim_pop_vidwarnOut" "0" ;
+			
+			//set "cmd" "play main_menu_selection" ;
+			
+		}  else if ("desktop::curr" == 35 && "desktop::active" == 0) {
+			set "desktop::active" "1" ;
+			resettime "anim_pop_sndadvOut" "0" ;
+			set "desktop::dest" "22" ;
+			//set "cmd" "play main_menu_selection" ;
+		}
+		
+	}
+
+	onNamedEvent NoIntro {
+		
+	}
+
+	onNamedEvent PlayIntro {
+		namedevent "p_btns::hideMain" ;
+		showcursor "0" ;
+		resetTime "p_video" "0" ;
+		set "desktop::video_check" "1" ;
+		set "desktop::video_num" "1" ;
+		
+		set "videoBlack::visible" "1" ;
+		set "videoBlack::backcolor_w" "1" ;
+		
+		resetVideo "video_id" ;
+		set "video_id::visible" "1" ;
+		set "video_raven::visible" "0" ;
+		set "video_bethsoft::visible" "0" ;
+	}
+
+	onNamedEvent autosaveOverwriteError {
+		set "desktop::active" "1" ;
+		set "desktop::overwrite_auto" "1" ;
+		resettime "anim_pop_overwriteIn" "0" ;
+		namedevent "p_anims::popReset0" ;
+		
+		set "pop_overwrite_title::text" "#str_200266" ;
+		set "pop_overwrite_text::text" "#str_200982" ;
+		
+		//set "cmd" "play main_menu_selection" ;
+	}
+
+	onNamedEvent saveGameOverwrite {
+		set "desktop::active" "1" ;
+		resettime "anim_pop_overwriteIn" "0" ;
+		namedevent "p_anims::popReset0" ;
+		
+		set "pop_overwrite_title::text" "#str_200252" ;
+		set "pop_overwrite_text::text" "#str_200253" ;
+		
+		//set "cmd" "play main_menu_selection" ;
+	}
+
+	onNamedEvent ingameCheck {
+		if ("gui::ingame" == 0 && "desktop::curr" != 16) {
+			set "main_b3::matcolor_w" "0.4" ; 
+			set "main_t_b3::forecolor_w" "0.8" ; 
+			set "main_b3_corner::matcolor_w" "0.4" ; 
+			set "main_t_b5::forecolor_w" "0.5" ; 
+			set "main_b5_corner::matcolor_w" "0.4" ; 
+			set "main_t_b6::forecolor_w" "0.5" ; 
+			set "main_b6_corner::matcolor_w" "0.4" ; 
+			set "main_t_b7::forecolor_w" "0.5" ; 
+			set "main_b7_corner::matcolor_w" "0.4" ;
+			set "main_b9::matcolor_w" "0" ; 
+			set "main_t_b9::forecolor_w" "0" ; 
+			set "main_b9_corner::matcolor_w" "0" ; 
+			
+			set "main_b_returnmp::visible" "0" ;		
+			set "main_b_newgame::visible" "1" ;
+			set "main_b_savegame::visible" "0" ;
+			set "main_b_quitcurrent::visible" "0" ;
+			set "main_b_disconnect::visible" "0" ;
+			set "main_b_multiplayer::visible" "1" ;
+			set "main_b_return::visible" "0" ;
+			set "main_b_mods::visible" "1" ;
+			set "main_b_updates::visible" "1" ;
+			set "main_b_credits::visible" "1" ;
+			set "main_b_loadgame::visible" "1" ;
+			set "main_b_settings::visible" "1" ;
+			set "main_b_exit::visible" "1" ;
+			
+			set "main_t_b1::text" "#str_200000" ;
+			set "main_t_b2::text" "#str_200001" ;
+			set "main_t_b3::text" "#str_200002" ;
+			
+			set "desktop::music" "0" ;
+		} else if ("gui::ingame" == 1 && "desktop::curr" != 16) {
+			set "main_b3::matcolor_w" "0.4" ; 
+			set "main_t_b3::forecolor_w" "0.8" ; 
+			set "main_b3_corner::matcolor_w" "0.4" ; 
+			set "main_t_b5::forecolor_w" "0" ; 
+			set "main_b5_corner::matcolor_w" "0" ; 
+			set "main_t_b6::forecolor_w" "0" ; 
+			set "main_b6_corner::matcolor_w" "0" ; 
+			set "main_t_b7::forecolor_w" "0" ; 
+			set "main_b7_corner::matcolor_w" "0" ;
+			set "main_b9::matcolor_w" "0.4" ; 
+			set "main_t_b9::forecolor_w" "0.8" ; 
+			set "main_b9_corner::matcolor_w" "0.4" ; 
+			
+			set "main_b_returnmp::visible" "0" ;
+			set "main_b_newgame::visible" "0" ;
+			set "main_b_savegame::visible" "1" ;
+			set "main_b_quitcurrent::visible" "1" ;
+			set "main_b_disconnect::visible" "0" ;
+			set "main_b_multiplayer::visible" "0" ;
+			set "main_b_return::visible" "1" ;
+			set "main_b_mods::visible" "0" ;
+			set "main_b_updates::visible" "0" ;
+			set "main_b_credits::visible" "0" ;			
+			set "main_b_loadgame::visible" "1" ;
+			set "main_b_settings::visible" "1" ;
+			set "main_b_exit::visible" "1" ;
+			
+			set "main_t_b1::text" "#str_200003" ;
+			set "main_t_b2::text" "#str_200001" ;
+			set "main_t_b3::text" "#str_200004" ;
+			
+			set "desktop::music" "1" ;
+			
+			set "desktop::video_check" "0" ;
+		} else if ("gui::ingame" == 2 && "desktop::curr" != 16) {
+			set "main_b3::matcolor_w" "0.4" ; 
+			set "main_t_b3::forecolor_w" "0.8" ; 
+			set "main_b3_corner::matcolor_w" "0.4" ; 
+			set "main_t_b5::forecolor_w" "0.5" ; 
+			set "main_b5_corner::matcolor_w" "0.4" ; 
+			set "main_t_b6::forecolor_w" "0.5" ; 
+			set "main_b6_corner::matcolor_w" "0.4" ; 
+			set "main_t_b7::forecolor_w" "0.5" ; 
+			set "main_b7_corner::matcolor_w" "0.4" ;
+			set "main_b9::matcolor_w" "0" ; 
+			set "main_t_b9::forecolor_w" "0" ; 
+			set "main_b9_corner::matcolor_w" "0" ; 
+			
+			set "main_b_returnmp::visible" "1" ;
+			set "main_b_newgame::visible" "0" ;
+			set "main_b_savegame::visible" "0" ;
+			set "main_b_quitcurrent::visible" "0" ;
+			set "main_b_disconnect::visible" "1" ;
+			set "main_b_multiplayer::visible" "1" ;
+			set "main_b_return::visible" "0" ;
+			set "main_b_mods::visible" "1" ;
+			set "main_b_updates::visible" "1" ;
+			set "main_b_credits::visible" "1" ;			
+			set "main_b_loadgame::visible" "0" ;
+			set "main_b_settings::visible" "1" ;
+			set "main_b_exit::visible" "1" ;
+			
+			set "main_t_b1::text" "#str_200005" ;
+			set "main_t_b2::text" "#str_200006" ;
+			
+			set "desktop::music" "1" ;
+			
+			set "desktop::video_check" "0" ;
+		}
+	}
+
+	onNamedEvent fromMp_toControls {
+		set "desktop::active" "1" ;
+		resettime "anim_in" "0" ;
+		set "desktop::dest" "4" ;
+	}
+
+	onNamedEvent fromMp_toGameoptions {
+		set "desktop::active" "1" ;
+		resettime "anim_in" "0" ;
+		set "desktop::dest" "21" ;
+	}
+
+	onNamedEvent fromMp_toSystem {
+		set "desktop::active" "1" ;
+		resettime "anim_in" "0" ;
+		set "desktop::dest" "22" ;
+	}
+
+	onNamedEvent fromRestart_toLoad {
+		set "desktop::active" "1" ;
+		resettime "anim_in" "0" ;
+		set "desktop::dest" "2" ;
+	}
+
+	onNamedEvent NoIntro {
+		if ("activate2" == 0) { 
+			set	"activate2" "1" ; 
+			if ("gui::inGame" == 0) {
+				resetTime "MenuMusic" "0" ;
+			}			
+			if ("gui::inGame" >= 1) {
+				resetTime "MenuMusic" "0" ;
+			}
+		}
+	}
+
+	onNamedEvent MusicRestart {
+		resetTime "MenuMusic" "0" ;		
+	}
+
+	onNamedEvent main_to_browser {
+		if ("desktop::blockBrowser" == 0) {
+			
+			// Ugly h4x to fix friendslist/gamebrowser overlap
+			// ----------------
+			
+			set "p_mp_Friends::visible" "0" ;
+			namedevent "p_anims::mpReset" ;		
+			namedevent "p_btns::hideMpFriends" ;				
+			set "p_multiplayer::rect" "$d_main::rect" ;
+			set "p_mp_Friends::rect""$d_main_l::rect" ;
+			set "grad6::matcolor_w" "0" ;
+			set "screen2::matcolor" "$desktop::black" ;
+			set "t_mp_Friends_title::forecolor_w" "0" ;
+			set "mp_Friends_back::matcolor_w" "0" ;
+			set "mp_Friends_t_back::forecolor_w" "0" ; 
+			set "mp_Friends_back_corner::matcolor_w" "0" ; 	
+			
+			// ----------------		
+			
+			set "desktop::dest" "14" ;
+			resettime "anim_mainOut" "0" ;
+		}
+	}
+
+	windowDef MenuMusic
+	{
+		rect	0,0,0,0
+		visible	1
+		notime	1
+
+		onTime 0 {
+		}
+
+		onTime 10 {
+			if ("desktop::music" == 0) {
+				set	"cmd"	"music main_menu checkKeys" ;
+			} else {
+				set	"cmd"	"music main_menu_gameplay checkKeys" ;
+			}
+		}
+
+		onTime 169000 {
+			if ("gui::inGame" == 0) {
+				resetTime "10" ;
+			}
+		}
+
+	}
+	windowDef p_mainmenu
+	{
+		rect	0,0,640,480
+		visible	1
+		windowDef screen
+		{
+			rect	-2,-426,643,1342
+			visible	1
+			background	"gfx/guis/mainmenu/screen"
+			matcolor	0.7,0.7,0.7,1
+		}
+		windowDef topbar
+		{
+			rect	-400,0,1045,129
+			visible	1
+			background	"gfx/guis/mainmenu/topbar"
+			matcolor	1,1,1,1
+		}
+		windowDef btmbar
+		{
+			rect	-399,351,1045,129
+			visible	1
+			background	"gfx/guis/mainmenu/btmbar"
+			matcolor	1,1,1,1
+		}
+		windowDef p_main
+		{
+			rect	0,0,640,480
+			visible	1
+			windowDef q4logo
+			{
+				rect	366,125,274,260
+				visible	1
+				background	"gfx/guis/mainmenu/q4logo"
+				matcolor	1,1,1,1
+			}
+			windowDef zooTitle
+			{
+				rect	20,18,523,66
+				visible	1
+				forecolor	1,1,1,0.8
+				text	"Help"
+				textscale	0.93
+				font	"fonts/marine"
+			}
+			windowDef helpText
+			{
+				rect	10,110,612,288
+				visible	1
+				forecolor	1,1,1,0.8
+				text	"-buy everything from the buy menu (press b)\n\n-more Strogg => more visitors\n\n-more shops => more money per visitor\n\n-conduct research to unlcok new Strogg\n\n-press h to return to game"
+				textscale	0.42
+				font	"fonts/marine"
+			}
+		}
+	}
+}

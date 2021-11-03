@@ -1,0 +1,32 @@
+windowDef Desktop
+{
+	rect	0,0,640,480
+	windowDef background
+	{
+		rect	0,0,640,480
+		visible	1
+		background	"gfx/guis/weapons/napalmgun/fire_base01"
+		matcolor	1,1,1,1
+	}
+	windowDef numbers
+	{
+		rect	225,43,200,206
+		visible	1
+		background	"gfx/guis/weapons/napalmgun/fire_basenumbers"
+		matcolor	1,1,1,1
+	}
+	windowDef text
+	{
+		rect	69,58,496,146
+		visible	1
+		background	"gfx/guis/weapons/napalmgun/fire_basetext"
+		matcolor	1,1,1,1
+	}
+	windowDef topglowthing
+	{
+		rect	0,266,640,226
+		visible	1
+		background	"gfx/guis/weapons/napalmgun/fire_topglow"
+		matcolor	1,1,1,1
+	}
+}
