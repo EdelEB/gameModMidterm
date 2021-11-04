@@ -8554,8 +8554,8 @@ void idPlayer::PerformImpulse( int impulse ) {
 		case IMPULSE_23: { //prints player position to console ; bind 'l'
 			idPlayer *player = gameLocal.GetLocalPlayer();
 			idVec3 myVec = player->GetChestPosition();
-			gameLocal.Printf("%f %f %f\n", myVec.x, myVec.y, myVec.z);
 			gameLocal.Printf(player->GetPhysics()->GetOrigin().ToString());
+			gameLocal.Printf("\n");
 			break;
 		}
 
@@ -8577,6 +8577,8 @@ void idPlayer::PerformImpulse( int impulse ) {
 
 			org = player->GetPhysics()->GetOrigin() + idAngles( 0, player_angle, 0 ).ToForward() * 80 + idVec3( 0, 0, 1 );
 			dict.Set( "origin", org.ToString() );
+
+			dict.Print();
 
 			idEntity *newEnt = NULL;
 			gameLocal.SpawnEntityDef( dict, &newEnt );

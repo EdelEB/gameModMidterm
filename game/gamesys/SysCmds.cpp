@@ -3048,10 +3048,116 @@ void Cmd_PrintPlayerPos_f(const idCmdArgs& args) {
 	gameLocal.Printf("%d %d %d",myVec.x, myVec.y, myVec.z);
 }
 
+idVec3 ** Helper_BuyStorggSmallCageNumber(char cage) {
+
+	idVec3* bill , *joe, *tom; //locations of each  
+
+	switch (cage) {
+		case '1': {
+			bill->x, bill->y, bill->z = -1578, 2914, -2085;
+			joe->x, joe->y, joe->z = -1600, 2689, -2085;
+			tom->x, tom->y, tom->z = -1767, 2839, -2085;
+		}
+		case '2': {
+			bill->x, bill->y, bill->z = -1600, 1993, -2085;
+			joe->x, joe->y, joe->z = -1627, 1622, -2085;
+			tom->x, tom->y, tom->z = -1867, 1789, -2085;
+		}
+		case '3': {
+			bill->x, bill->y, bill->z = 0;
+			joe->x, joe->y, joe->z = 0;
+			tom->x, tom->y, tom->z = 0;
+		}
+		case '4': {
+			bill->x, bill->y, bill->z = 0;
+			joe->x, joe->y, joe->z = 0;
+			tom->x, tom->y, tom->z = 0;
+		}
+
+	}
+
+	idVec3* ret[3] = { bill, joe, tom };
+	return ret;
+}
+
+void Cmd_BuyStroggSmall_f(const idCmdArgs& args) {
+	const char* key;
+	const char* spawn_name = args.Argv(1);
+	const char * cage = args.Argv(2);
+	
+	gameLocal.Printf(cage);
+	gameLocal.Printf(args.Argv(2));
+
+
+
+	float		player_angle;
+	//idVec3	**	orgs;
+	idPlayer* player;
+	idDict	dict1, dict2, dict3;
+
+	player = gameLocal.GetLocalPlayer();
+	if (!player) {return;}
+	player_angle = player->viewAngles.yaw;
+
+	dict1.Set("classname", spawn_name);
+	dict2.Set("classname", spawn_name);
+	dict3.Set("classname", spawn_name);
+	dict1.Set("angle", va("%f", player_angle + 180));
+	dict2.Set("angle", va("%f", player_angle + 180));
+	dict3.Set("angle", va("%f", player_angle + 180));
+
+	//orgs = Helper_BuyStorggSmallCageNumber(*cage);
+	idVec3 bill, joe, tom; //locations of each 
+
+	switch (*cage) {
+		case '1': {
+			gameLocal.Printf("FOUND CASE 1");
+			bill = idVec3(-1578, 2914, -2090);
+			joe = idVec3(-1600, 2689, -2090);
+			tom = idVec3(-1767, 2839, -2090);
+			break;
+		}
+		case '2': {
+			bill = idVec3(-1600, 1993, -2090);
+			joe = idVec3(-1627, 1622, -2090);
+			tom = idVec3(-1867, 1789, -2090);
+			break;
+		}
+		case '3': {
+			bill = idVec3();
+			joe = idVec3();
+			tom = idVec3();
+			break;
+		}
+		case '4': {
+			bill = idVec3();
+			joe = idVec3();
+			tom = idVec3();
+			break;
+		}
+
+	}
+	idVec3 orgs[3] = { bill, joe, tom };
+	
+	gameLocal.Printf(bill.ToString());
+
+	dict1.Set("origin", orgs[0].ToString());
+	dict2.Set("origin", orgs[1].ToString());
+	dict3.Set("origin", orgs[2].ToString());
+
+	dict1.Print();
+	//dict2.Print();
+	//dict3.Print();
+
+	idEntity* newEnt1 = NULL;
+	idEntity* newEnt2 = NULL;
+	idEntity* newEnt3 = NULL;
+	gameLocal.SpawnEntityDef(dict1, &newEnt1);
+	gameLocal.SpawnEntityDef(dict2, &newEnt2);
+	gameLocal.SpawnEntityDef(dict3, &newEnt3);
+}
+
 //EDEL END
-
-
-
 
 /*
 =================
@@ -3252,10 +3358,9 @@ void idGameLocal::InitConsoleCommands( void ) {
 
 //EDEL BEGIN
 
-
-
 	cmdSystem->AddCommand("playerPos", Cmd_PrintPlayerPos_f, CMD_FL_GAME, "prints player position");
-
+	cmdSystem->AddCommand("buyStroggSmall", Cmd_BuyStroggSmall_f, CMD_FL_GAME | CMD_FL_CHEAT, "spawns a chosen strogg in chosen cage", idCmdSystem::ArgCompletion_Decl<DECL_ENTITYDEF>);
+	
 //EDEL END
 }
 
