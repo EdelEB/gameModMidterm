@@ -116,7 +116,7 @@
 	All map functions are located in pak010.pk4/scripts/maps
 
 	player.cpp has DrawHud(idUserInterface *_hud)
-	The only delaration I see is: 
+	The only declaration I see is: 
 		idUserInterface* GetZoomGui ( void ) const;
 	which does not explain where the gui's are being pulled from.
 	
@@ -163,6 +163,105 @@
 	events.script allows for gui interaction and onclick interactions. I am considering
 	having an AI that you can spawn in to be your research guy. Potentially you can
 	open a gui through him. 
+	
+	All the events in events.script are described in Script_Thread.cpp
+
+	.gui files have a lot of calls like gui::ingame or p_btns::visible. These are not
+	functions from other classes they are WindowDef's declared in the same file and
+	they are used to refer to their functions and attributes. 
+	
+	In the guis onMouseEnter and onMouseExit are used for MENU ANIMATIONS!!!
+	onAction is the thing that matters. From guis I can use console commands which would 
+	help with the buy menu, if I ever get it working. I can pull up a gui like I do with the
+	help screen but I don't know how to pull a gui up with buttons and a mouse. With this knowledge
+	I just need to figure out how to pull up one of those guis and I can finish at least 
+	2 deliverables: research, enclosures, and probably the new user hud.
+
+	onNamedEvent dest_and_curr {
+		// 1 = new game
+		// 2 = load game
+		// 3 = multiplayer
+		// 4 = settings
+		// 5 = mods
+		// 6 = updates
+		// 7 = credits
+		// 8 = exit
+		// 9 = settings_controls_movement
+		// 10 = settings_controls_weapons
+		// 11 = settings_controls_attack
+		// 12 = settings_controls_other
+		// 13 = multiplayer_instantaction
+		// 14 = multiplayer_gamebrowser
+		// 15 = multiplayer_friendslist
+		// 16 = multiplayer_joinipaddress
+		// 17 = multiplayer_createserver
+		// 18 = multiplayer_settings
+		// 19 = popup_gamebrowser_filter_options
+		// 20 = settings_controls
+		// 21 = settings_gameoptions
+		// 22 = settings_system
+		// 23 = save game
+		// 24 = popup_create_advanced_options
+		// 25 = popup_defaults
+		// 26 = popup_settings_advanced_options
+		// 27 = popup_disconnect
+		// 28 = load_delete_game
+		// 29 = popup_find_player_or_clan
+		// 30 = popup_auto_detect_settings
+		// 31 = popup_ultra_quality_warning
+		// 32 = popup_save_overwrite
+		// 33 = popup_create_advanced_banlist
+		// 34 = popup_vidsettings_warning
+		// 35 = popup_advanced_sound_settings
+	}
+
+original box orientation"rotation" "-0.495134 -0.76285 -0.415815 0.857597 -0.505796 -0.0932612 -0.139173 -0.402778 0.904655"
+
+"-704 200 -1856"//EDEL
+
+cage_1 wall : -1313 2856 -2086 
+	plate : -1000 3000 -2093
+cage_2 wall : -1285 1820 -2065
+	plate : -1000 1985 -2093
+cage_3 wall : -1328 785 -2099
+	plate : -1000 950 -2093
+cage_4 wall : -1328 -300 -2099
+	plate : -1000 -235 -2093
+
+
+"0.902875 0.392963 -0.174347 -0.395408 0.918243 0.0219785 0.16873 0.0490944 0.984439"
+
+-1748 2366 -1807
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

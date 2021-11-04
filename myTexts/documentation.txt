@@ -31,12 +31,15 @@ walker.map
 
 UsercmdGen.h
 	IMPULSE_23 : print player location to console
+	IMPULSE_24
+	IMPULSE_25
+	IMPULSE_26
 
 SysCmds.cpp & Player.cpp
 	add playerPos command that prints player position
 
 Config file
-	new binding for 'l'
+	new binding for 'l', 'b', 'h'
 
 
 	

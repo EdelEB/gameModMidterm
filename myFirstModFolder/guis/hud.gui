@@ -620,9 +620,9 @@ windowDef Desktop
 	}
 	windowDef p_health
 	{
-		rect	-319,-410,640,480
+		rect	-55,-407,640,480
 		visible	1
-		windowDef health_backbar
+		/*EDELwindowDef health_backbar
 		{
 			rect	190,420,125,59
 			visible	1
@@ -659,7 +659,7 @@ windowDef Desktop
 				matcolor	0.701,0.815,0.431,0.35
 				shear	0,-.22
 			}
-		}
+		}EDEL*/
 		windowDef d_health_amount
 		{
 			rect	254,427,58,31
@@ -686,7 +686,7 @@ windowDef Desktop
 			}
 
 		}
-		windowDef icon_health
+		/*EDELwindowDef icon_health
 		{
 			rect	288,458,16,16
 			visible	1
@@ -700,7 +700,7 @@ windowDef Desktop
 			background	"gfx/guis/hud/backbar_add"
 			matcolor	1*guitable_10_5[time*0.002],0,0,1
 			shear	0,-.22
-		}
+		}EDEL*/
 	}
 	windowDef p_weapswitch
 	{

@@ -1555,7 +1555,7 @@ void idPlayer::Init( void ) {
 	playerView.ClearEffects();
 
 	// damage values
-	fl.takedamage			= false;
+	fl.takedamage			= true;
 	ClearPain();
 
 	// restore persistent data

@@ -32,7 +32,7 @@ void mostHorrendousHackEver()	{
 //--
 
 // Start fighter #1
-void initFighter1()	{ return; //Edel
+void initFighter1()	{ 
 
 	//sys.wait( .5 );
 	setNewTimes( $introMarineFighter_1 , 2 , .5 , .5 );
@@ -53,7 +53,7 @@ void initFighter1()	{ return; //Edel
 }
 
 // Start fighter #2
-void initFighter2()	{ return; //Edel
+void initFighter2()	{ 
 
 	setNewTimes( $introMarineFighter_2 , 1 , .25 , .25 );
 	$introMarineFighter_2.rotateOnce( '-75 0 0' );
@@ -73,7 +73,7 @@ void initFighter2()	{ return; //Edel
 }
 
 // Start the full sequence (thread this from main() )
-void initFlyby()	{ return; //EDEL
+void initFlyby()	{
 	sys.wait( .5 );
 	$introMarineFighterBase_1.startSpline( $introFighterPath_1 );
 	$introMarineFighterBase_2.startSpline( $introFighterPath_2 );
@@ -772,7 +772,8 @@ void addMoney(){
 }
 
 void test(){
-	sys.println("lets do research");
+	//sys.println("lets do research");
+	
 }
 // EDEL END
 

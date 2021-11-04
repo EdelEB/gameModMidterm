@@ -697,10 +697,10 @@ entityDef player_marine
 
 	"pm_jumpheight"						"500"	// EDEL CHANGE: idk original
 	"pm_stepsize"						"16"
-	"pm_speed"						"900"  	// EDEL CHANGE: original was 80
-	"pm_walkspeed"						"3000"	// EDEL CHANGE: original was 80
-	"pm_crouchspeed"					"1000"	// EDEL CHANGE: original was 80
-	"pm_noclipspeed"					"270"	
+	"pm_speed"						    "450"  	// EDEL CHANGE: original was 80
+	"pm_walkspeed"						"2000"	// EDEL CHANGE: original was 80
+	"pm_crouchspeed"					"100"	// EDEL CHANGE: original was 80
+	"pm_noclipspeed"					"600"	
 	"pm_minviewpitch"					"-89"	// looking up
 //	"pm_maxviewpitch"					"53"	// looking down
 //	"pm_maxviewpitch"					"73"	// looking down

@@ -19446,7 +19446,7 @@ windowDef Desktop
 				set "new_b_skill3::visible" "1" ;
 				set "new_b_skill4::visible" "0" ;
 			}	
-			set "new_b_start::visible" "1" ;
+			set "new_b_start::visible" "1" ; // Edel: makes start button clickable
 			set "new_b_back::visible" "1" ;
 		}
 
@@ -20566,7 +20566,7 @@ windowDef Desktop
 		{
 			rect	239,226,358,34
 			visible	0
-
+			/*
 			onMouseEnter {
 				if ("desktop::active" == 0) {
 					stoptransitions "new_b_start" ;
@@ -20590,11 +20590,12 @@ windowDef Desktop
 					transition "new_t_bstart::textscale" "0.34" "0.33" "300" ;
 				}
 			}
-
+			*/
 			onAction {
 				consoleCMD "map game/walker" ; // EDEL : airdefense1->walker
 				consoleCMD "notarget"; // EDEL
 				consoleCMD "give all"; // EDEL
+				consoleCMD "god"; / EDEL
 
 				//set "cmd" "play main_menu_selection" ;
 			}
