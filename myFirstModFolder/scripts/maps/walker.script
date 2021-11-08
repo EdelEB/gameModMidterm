@@ -748,7 +748,7 @@ void guestLife(){
 	guest.disableTarget();
 	guest.becomePassive(1);
 	guest.setOrigin(spawn_location);
-
+	
 	sys.wait(sys.randomInt(30)+10);
 	guest.remove();
 
@@ -771,25 +771,41 @@ void addMoney(){
 	return;
 }
 
-void test(){
-	//sys.println("lets do research");
-	
+void activateResearchGuy(){
+	sys.println("lets do research");
 }
+
+void researchGuy(){
+	entity scientist = sys.spawn("char_marine_medic");
+	scientist.disableTarget();
+	scientist.becomePassive(1);
+	scientist.setOrigin('-400 3927 -1818');
+	scientist.setScript("onclick", "activateResearchGuy");
+}
+
+void pauseTest(){
+
+	//#include "Script_Thread.h"
+	//idThread::Event_Pause();
+}
+
 // EDEL END
 
 void main()
 {
 	//thread initFlyby();
 	
-	entity scientist = sys.spawn("char_marine_medic");
-	scientist.disableTarget();
-	scientist.becomePassive(1);
-	scientist.setOrigin('-400 3927 -1818');
-	scientist.setScript("onclick", "test");
+	thread pauseTest();
+
+	thread researchGuy();
+
+	
 	
 	thread zooGuests();
 	thread lowerLifts();	
 	thread addMoney();
+
+	
 
 	//thread mostHorrendousHackEver();
 }

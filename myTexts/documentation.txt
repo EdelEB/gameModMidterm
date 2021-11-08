@@ -8,8 +8,8 @@ shotgun.h
 	fire rate faster
 	flash is green
 
-blaster.h / hyperblaster.h  <i don't remember>
-	fire rate faster
+blaster.h
+	damage boost
 
 WeaponBlaster.cpp 
 	Blaster cannot fire

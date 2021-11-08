@@ -3112,27 +3112,33 @@ void Cmd_BuyStroggSmall_f(const idCmdArgs& args) {
 	switch (*cage) {
 		case '1': {
 			gameLocal.Printf("FOUND CASE 1");
-			bill = idVec3(-1578, 2914, -2090);
-			joe = idVec3(-1600, 2689, -2090);
-			tom = idVec3(-1767, 2839, -2090);
+			bill = idVec3(-1578, 2914, -2070);
+			joe = idVec3(-1600, 2689, -2070);
+			tom = idVec3(-1767, 2839, -2070);
 			break;
 		}
 		case '2': {
-			bill = idVec3(-1600, 1993, -2090);
-			joe = idVec3(-1627, 1622, -2090);
-			tom = idVec3(-1867, 1789, -2090);
+			bill = idVec3(-1600, 1993, -2070);
+			joe = idVec3(-1627, 1622, -2070);
+			tom = idVec3(-1867, 1789, -2060);
 			break;
 		}
 		case '3': {
-			bill = idVec3();
-			joe = idVec3();
-			tom = idVec3();
+			bill = idVec3(-1636, 636, -2080);
+			joe = idVec3(-1609, 948, -2080);
+			tom = idVec3(-1910, 785, -2080);
 			break;
 		}
 		case '4': {
-			bill = idVec3();
-			joe = idVec3();
-			tom = idVec3();
+			bill = idVec3(-1571, -37, -2080);
+			joe = idVec3(-1574, -426, -2080);
+			tom = idVec3(-1833, -188, -2080);
+			break;
+		}
+		case '5': {
+			bill = idVec3(1888, 356, -2361);
+			joe = idVec3(1450, 298, -2349);
+			tom = idVec3(1388, -192, -2355);
 			break;
 		}
 
@@ -3145,7 +3151,7 @@ void Cmd_BuyStroggSmall_f(const idCmdArgs& args) {
 	dict2.Set("origin", orgs[1].ToString());
 	dict3.Set("origin", orgs[2].ToString());
 
-	dict1.Print();
+	//dict1.Print();
 	//dict2.Print();
 	//dict3.Print();
 

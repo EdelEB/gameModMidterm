@@ -4,17 +4,17 @@
 	ability to a weapon. 
 	
 	Zoo Monster Names:
-		Monster_Berserker
-		Monster_Grunt
-		Monster_Gunner
-		Monster_Gladiator
-		Monster_Scientist
+		Monster_Berserker	100
+		Monster_Grunt		150
+		Monster_Gunner		200
+		Monster_Gladiator	300
+		Monster_Scientist	
 		Monster_Sentry
 		
-		Monster_BossBuddy
+		Monster_BossBuddy		
 		Monster_Fatty
-		monster_strogg_marine
-		monster_network_guardian
+		monster_strogg_marine		100
+		monster_network_guardian	600
 
 	Zoo Guest Names:
 		char_marine
@@ -221,24 +221,28 @@ original box orientation"rotation" "-0.495134 -0.76285 -0.415815 0.857597 -0.505
 
 cage_1 wall : -1313 2856 -2086 
 					plate : -1000 3000 -2093
-	strogg1: -1578 2914 -2090
-	strogg2: -1600 2689 -2090
-	strogg3: -1767 2839 -2090
+	strogg1: -1578 2914 -2080
+	strogg2: -1600 2689 -2080
+	strogg3: -1767 2839 -2080
 cage_2 wall : -1285 1820 -2065
 					plate : -1000 1985 -2093
-	strogg1: -1600 1993 -2090
-	strogg2: -1627 1622 -2090
-	strogg3: -1867 1789 -2090
+	strogg1: -1600 1993 -2080
+	strogg2: -1627 1622 -2080
+	strogg3: -1867 1789 -2080
 cage_3 wall : -1328 785 -2099
 	plate : -1000 950 -2093
-	strogg1: 
-	strogg2: 
-	strogg3: 
+	strogg1: -1636, 636, -2090
+	strogg2: -1609, 948, -2090
+	strogg3: -1910, 785, -2090
 cage_4 wall : -1328 -300 -2099
 	plate : -1000 -235 -2093
-	strogg1: 
-	strogg2: 
-	strogg3: 
+	strogg1: -1571, -37, -2090
+	strogg2: -1574, -426, -2090
+	strogg3: -1833, -188, -2090
+cage_5 walls : 789 -244 -2174       848 340 -2189
+	strogg1: 1888, 356, -2361
+	strogg2: 1450, 298, -2349
+	strogg3: 1388, -192, -2355
 
 "0.902875 0.392963 -0.174347 -0.395408 0.918243 0.0219785 0.16873 0.0490944 0.984439"
 
@@ -246,9 +250,27 @@ cage_4 wall : -1328 -300 -2099
 
 
 
+11/5/21
+	windowDef main_t_b4 controls the "return to game button" that only shows up in 
+	the pause menu
+11/6/21
+	buttons have 3 main parts: text,picture,hidden pressable.
 
+	I have created my own button that appears in the pause menu that i can use to run 
+	my own consol commands. However I need to figure out how to pick specific cages and monsters
+	without a ridiculous number of buttons. Also research and how to unlock buttons.
 
+11/7/21
+	Now that I have a button working the unlocks should be simple. I need to decide how money is
+	implemented. Also, there is a glitch sometimes where the mainmenu gui doesn't run the commands
+	when them game starts (godmode, notarget, giveall)
+	
+	I intend on making money a player attribute. I need to create system commands that affect the money.
+	I may also be able to implement some sort of system commands to handle guest instead of having it
+	in the map script; that is not my main concern though.
 
+	Having the cages able to be open and closed is still up in the air.
+	
 
 
 

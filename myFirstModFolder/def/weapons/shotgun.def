@@ -93,18 +93,18 @@ entityDef weapon_shotgun
 	"def_hitscan"				"hitscan_shotgun_pellet"
 	"mtr_crosshair"				"gfx/guis/crosshairs/crosshair_shotgun"
 	"ammoType"				"ammo_shotgun"
-	"clipSize"				"8"
+	"clipSize"				"80"
 	"ammoRequired"				"1"
 	"gui"					"guis/weapons/shotgun_ammo.gui"
 	"mtr_icon"				"gfx/guis/hud/icons/gun_shotgun"
 
-	"muzzle_kick_time"			"0.5"
-	"muzzle_kick_maxtime"			"0.8"
+	"muzzle_kick_time"			"0.2"
+	"muzzle_kick_maxtime"			"0.4"
 	"muzzle_kick_angles"			"0 0 0"
 	"muzzle_kick_offset"			"5.5 .15 .15" // 1 1 2" //"2.5 1 2"
 
 	"ammoRegenStep"				"1"
-	"ammoRegenTime"				"1500"
+	"ammoRegenTime"				"1"
 
 	"ejectOffset"				"6 -4 -3"
 
@@ -336,7 +336,7 @@ entityDef hitscan_shotgun_pellet
 entityDef damage_pellet
 {
 	"inherit"					"damage_bullet"
-	"damage"					"0" //EDEL CHANGE: was 14
+	"damage"					"100" //EDEL CHANGE: was 14
 
 	"splat_size"				"128"
 	

@@ -53,6 +53,24 @@ windowDef Desktop
 	float	"sndwarn"	0
 	float	"motd"	0
 
+	//EDEL START
+	//these are all bools for weather or not the specified item is ulocked: 0 is locked
+	//enclosures
+	float	"enc1" 0
+	float	"enc2" 0
+	float	"enc3" 0
+	float	"enc4" 0
+	float	"enc5" 0
+	float	"network_guardian"	0
+	float	"gladiator"	0
+	float	"bossbuddy"	0
+	float	"shop1"	0
+	float	"shop2" 0
+	float	"shop3" 0
+	float	"myBuyMenuState" 0		// 0:enc,shop,research ; 1:enc1 ; 2:enc2 ; 3:enc3 ; 4:enc4 ; 5:enc5 ; 6:shop ; 7:research ; 9:enclosures
+	
+	//EDEL END
+
 	onEvent {
 		set "desktop::tooltip_w" "270";						
 		set "desktop::tooltip_h" "186";
@@ -71,6 +89,7 @@ windowDef Desktop
 			}
 			
 		}
+
 
 	onNamedEvent forceAspect0 {	
 		set "set_sys_screensize_val_0::visible" "1" ;
@@ -150,10 +169,10 @@ windowDef Desktop
 			set "p_main::visible" "1" ;
 			
 			namedevent "p_btns::showMain" ;
-			namedevent "p_btns::hideMp" ;			
+			namedevent "p_btns::hideMp" ;
 			namedevent "p_btns::hideMpCreate" ;
 			namedevent "p_anims::mpReset" ;
-			namedevent "p_anims::mpCreateReset" ;			
+			namedevent "p_anims::mpCreateReset" ;
 			namedevent "p_anims::backReset0" ;
 			namedevent "p_anims::mainReset0" ;
 			
@@ -178,7 +197,10 @@ windowDef Desktop
 			transition "q4logo::matcolor" "$desktop::black" "$desktop::white" "0" ;
 			transition "q4text::matcolor" "$desktop::black" "$desktop::white" "0" ;
 			
-			set "bg2::matcolor_w" "0.3" ; 
+			set "myBuyMenu1::matcolor_w" "0.4";		//Edel
+			set "myBuyMenuText1::fotecolor_w" "0.8";	//Edel
+			
+			set "bg2::matcolor_w" "0.3" ;
 			set "main_b1::matcolor_w" "0.4" ;
 			set "main_t_b1::forecolor_w" "0.8" ; 
 			set "main_b1_corner::matcolor_w" "0.4" ;
@@ -211,7 +233,7 @@ windowDef Desktop
 			} else if ("desktop::video_num" == 2) {
 				stoptransitions "p_video" ;
 				set "p_video::notime" "1" ;
-				set "video_raven::notime" "1" ;
+				set "video_raven::notime" "1" ;e
 				stoptransitions "video_raven" ;
 				resettime "video_bethsoft" "0" ;
 			} else if ("desktop::video_num" == 3) {
@@ -433,8 +455,8 @@ windowDef Desktop
 		resettime "anim_pop_overwriteIn" "0" ;
 		namedevent "p_anims::popReset0" ;
 		
-		set "pop_overwrite_title::text" "#str_200266" ;
-		set "pop_overwrite_text::text" "#str_200982" ;
+		set "pop_overwrite_title::text" "str_200266" ;
+		set "pop_overwrite_text::text" "str_200982" ;
 		
 		//set "cmd" "play main_menu_selection" ;
 	}
@@ -444,8 +466,8 @@ windowDef Desktop
 		resettime "anim_pop_overwriteIn" "0" ;
 		namedevent "p_anims::popReset0" ;
 		
-		set "pop_overwrite_title::text" "#str_200252" ;
-		set "pop_overwrite_text::text" "#str_200253" ;
+		set "pop_overwrite_title::text" "str_200252" ;
+		set "pop_overwrite_text::text" "str_200253" ;
 		
 		//set "cmd" "play main_menu_selection" ;
 	}
@@ -479,9 +501,27 @@ windowDef Desktop
 			set "main_b_settings::visible" "1" ;
 			set "main_b_exit::visible" "1" ;
 			
-			set "main_t_b1::text" "#str_200000" ;
-			set "main_t_b2::text" "#str_200001" ;
-			set "main_t_b3::text" "#str_200002" ;
+			// Edel Start
+			// this is everything that happens when the main menu loads
+			//set "myBuyMenuText1::text" "main menu text";		
+			set "myBuyMenu1::visible" "0";
+			set "myBuyMenu2::visible" "0";
+			set "myBuyMenu3::visible" "0";
+			set "myBuyMenu4::visible" "0";
+			set "myBuyMenu5::visible" "0";
+			set "myBuyMenuText1::visible" "0";
+			set "myBuyMenuText2::visible" "0";
+			set "myBuyMenuText3::visible" "0";
+			set "myBuyMenuText4::visible" "0";
+			set "myBuyMenuText5::visible" "0";
+			set "myBuyMenuTitle::visible" "0";
+
+			//Edel End
+			
+
+			set "main_t_b1::text" "str_200000" ;
+			set "main_t_b2::text" "str_200001" ;
+			set "main_t_b3::text" "str_200002" ;
 			
 			set "desktop::music" "0" ;
 		} else if ("gui::ingame" == 1 && "desktop::curr" != 16) {
@@ -512,9 +552,24 @@ windowDef Desktop
 			set "main_b_settings::visible" "1" ;
 			set "main_b_exit::visible" "1" ;
 			
-			set "main_t_b1::text" "#str_200003" ;
-			set "main_t_b2::text" "#str_200001" ;
-			set "main_t_b3::text" "#str_200004" ;
+			
+			//Edel Start
+			//this is where the pause menu is loaded
+			//namedevent "desktop::myInitialMenu";
+			set "desktop::myBuyMenuState" "0";
+			set "myBuyMenuText1::text" "Buy Strogg";
+			set "myBuyMenuText2::text" "Buy Shops";
+			set "myBuyMenuText3::text" "Research";
+			set "myBuyMenuText4::text" "";
+			set "myBuyMenuText5::text" "";
+			
+			//set "myBuyTitle::text" "Buy Menu";
+
+			//END
+
+			set "main_t_b1::text" "str_200003" ;
+			set "main_t_b2::text" "str_200001" ;
+			set "main_t_b3::text" "str_200004" ;
 			
 			set "desktop::music" "1" ;
 			
@@ -547,8 +602,13 @@ windowDef Desktop
 			set "main_b_settings::visible" "1" ;
 			set "main_b_exit::visible" "1" ;
 			
-			set "main_t_b1::text" "#str_200005" ;
-			set "main_t_b2::text" "#str_200006" ;
+			//Edel
+			//This is what happens when the pause menu opens
+			set "myBuyMenuText1::text" "Buy_5";		
+			
+
+			set "main_t_b1::text" "Return to Zoo" ;
+			set "main_t_b2::text" "str_200006" ;
 			
 			set "desktop::music" "1" ;
 			
@@ -859,7 +919,6 @@ windowDef Desktop
 				rect	44,214,314,23
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"OPEN A ZOO"
 				textscale	0.33
 				font	"fonts/marine"
 			}
@@ -886,7 +945,7 @@ windowDef Desktop
 				rect	44,304,314,23
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200009"
+				text	"Set Stuff"
 				textscale	.33
 				font	"fonts/marine"
 			}
@@ -895,7 +954,7 @@ windowDef Desktop
 				rect	44,334,314,23
 				visible	1
 				forecolor	1,1,1,0
-				text	"#str_200005"
+				text	"Return to Zoo"
 				textscale	.33
 				font	"fonts/marine"
 			}
@@ -939,7 +998,7 @@ windowDef Desktop
 				rect	39,403,44,17
 				visible	1
 				forecolor	1,1,1,0.5
-				text	"#str_200010"
+				text	"str_200010"
 				textscale	.22
 				font	"fonts/marine"
 			}
@@ -948,7 +1007,7 @@ windowDef Desktop
 				rect	107,403,86,17
 				visible	1
 				forecolor	1,1,1,0.5
-				text	"#str_200011"
+				text	"str_200011"
 				textscale	.22
 				font	"fonts/marine"
 			}
@@ -957,7 +1016,7 @@ windowDef Desktop
 				rect	199,403,80,17
 				visible	1
 				forecolor	1,1,1,0.5
-				text	"#str_200012"
+				text	"str_200012"
 				textscale	.22
 				font	"fonts/marine"
 			}
@@ -966,7 +1025,7 @@ windowDef Desktop
 				rect	286,403,66,17
 				visible	1
 				forecolor	1,1,1,0.5
-				text	"#str_200013"
+				text	"str_200013"
 				textscale	.22
 				font	"fonts/marine"
 			}
@@ -997,6 +1056,94 @@ windowDef Desktop
 				textscale	0.33
 				font	"fonts/marine"
 			}
+
+			//EDEL START
+			windowDef myBuyMenu1
+			{
+				rect	350,167,413,52
+				visible	1
+				background	"gfx/guis/mainmenu/b1_dark"
+				matcolor	1,1,1,0.4
+			}
+			windowDef myBuyMenu2
+			{
+				rect	349,206,413,52
+				visible	1
+				background	"gfx/guis/mainmenu/b1_dark"
+				matcolor	1,1,1,0.4
+			}
+			windowDef myBuyMenu3
+			{
+				rect	346,242,413,52
+				visible	1
+				background	"gfx/guis/mainmenu/b1_dark"
+				matcolor	1,1,1,0.4
+			}
+			windowDef myBuyMenu4
+			{
+				rect	349,278,413,52
+				visible	1
+				background	"gfx/guis/mainmenu/b1_dark"
+				matcolor	1,1,1,0.4
+			}
+			windowDef myBuyMenu5
+			{
+				rect	350,320,413,52
+				visible	1
+				background	"gfx/guis/mainmenu/b1_dark"
+				matcolor	1,1,1,0.4
+			}
+
+			windowDef myBuyMenuText1
+			{
+				rect	387,176,314,23
+				visible	1
+				forecolor	1,1,1,0.8
+				textscale	0.33
+				font	"fonts/marine"
+			}
+			windowDef myBuyMenuText2
+			{
+				rect	389,219,314,23
+				visible	1
+				forecolor	1,1,1,0.8
+				textscale	0.33
+				font	"fonts/marine"
+			}
+			windowDef myBuyMenuText3
+			{
+				rect	386,253,314,23
+				visible	1
+				forecolor	1,1,1,0.8
+				textscale	0.33
+				font	"fonts/marine"
+			}
+			windowDef myBuyMenuText4
+			{
+				rect	389,291,314,23
+				visible	1
+				forecolor	1,1,1,0.8
+				textscale	0.33
+				font	"fonts/marine"
+			}
+			windowDef myBuyMenuText5
+			{
+				rect	388,332,314,23
+				visible	1
+				forecolor	1,1,1,0.8
+				textscale	0.33
+				font	"fonts/marine"
+			}
+			windowDef myBuyMenuTitle
+			{
+				rect	391,118,314,55
+				visible		1
+				forecolor	1,1,1,0.8
+				textscale	0.83
+				font	"fonts/marine"
+				text	"Buy Menu"
+			}
+			//EDEL END
 		}
 		windowDef d_main
 		{
@@ -1022,7 +1169,7 @@ windowDef Desktop
 				rect	39,19,314,16
 				visible	1
 				forecolor	1,1,1,0
-				text	"#str_200000"
+				text	"str_200000"
 				textscale	.25
 				font	"fonts/marine"
 			}
@@ -1059,7 +1206,7 @@ windowDef Desktop
 				rect	36,184,193,23
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200014"
+				text	"str_200014"
 				textscale	.31
 				font	"fonts/marine"
 			}
@@ -1068,7 +1215,7 @@ windowDef Desktop
 				rect	36,214,193,23
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200015"
+				text	"str_200015"
 				textscale	.31
 				font	"fonts/marine"
 			}
@@ -1077,7 +1224,7 @@ windowDef Desktop
 				rect	36,244,193,23
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200016"
+				text	"str_200016"
 				textscale	.31
 				font	"fonts/marine"
 			}
@@ -1086,7 +1233,7 @@ windowDef Desktop
 				rect	36,274,193,23
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200017"
+				text	"str_200017"
 				textscale	.31
 				font	"fonts/marine"
 			}
@@ -1109,7 +1256,7 @@ windowDef Desktop
 				rect	552,443,88,17
 				visible	1
 				forecolor	1,1,1,0
-				text	"#str_200018"
+				text	"str_200018"
 				textscale	.28
 				font	"fonts/marine"
 			}
@@ -1118,7 +1265,7 @@ windowDef Desktop
 				rect	239,181,345,139
 				visible	1
 				forecolor	1,1,1,0.6
-				text	"#str_200019"
+				text	"str_200019"
 				textscale	0.25
 				font	"fonts/lowpixel"
 			}
@@ -1134,7 +1281,7 @@ windowDef Desktop
 				rect	265,228,198,25
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200020"
+				text	"str_200020"
 				textscale	.33
 				font	"fonts/marine"
 			}
@@ -1155,7 +1302,7 @@ windowDef Desktop
 				rect	39,19,314,16
 				visible	1
 				forecolor	1,1,1,0
-				text	"#str_200003"
+				text	"str_200003"
 				textscale	.25
 				font	"fonts/marine"
 			}
@@ -1201,7 +1348,7 @@ windowDef Desktop
 				rect	415,382,193,23
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200003"
+				text	"str_200003"
 				textscale	.31
 				font	"fonts/marine"
 			}
@@ -1224,7 +1371,7 @@ windowDef Desktop
 				rect	552,443,88,17
 				visible	1
 				forecolor	1,1,1,0
-				text	"#str_200018"
+				text	"str_200018"
 				textscale	.28
 				font	"fonts/marine"
 			}
@@ -1278,7 +1425,7 @@ windowDef Desktop
 				rect	35,62,155,13
 				visible	1
 				forecolor	1,1,1,0.4
-				text	"#str_200925"
+				text	"str_200925"
 				textscale	.18
 				font	"fonts/lowpixel"
 			}
@@ -1287,7 +1434,7 @@ windowDef Desktop
 				rect	214,62,155,13
 				visible	1
 				forecolor	1,1,1,0.4
-				text	"#str_200926"
+				text	"str_200926"
 				textscale	.18
 				font	"fonts/lowpixel"
 			}
@@ -1338,7 +1485,7 @@ windowDef Desktop
 						rect	180,151,146,17
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200021"
+						text	"str_200021"
 						textscale	.28
 						font	"fonts/marine"
 						textspacing	-1
@@ -1348,7 +1495,7 @@ windowDef Desktop
 						rect	182,200,260,51
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200245"
+						text	"str_200245"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -1364,7 +1511,7 @@ windowDef Desktop
 						rect	200,254,88,17
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200157"
+						text	"str_200157"
 						textscale	.28
 						font	"fonts/marine"
 					}
@@ -1387,7 +1534,7 @@ windowDef Desktop
 						rect	358,254,88,17
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200158"
+						text	"str_200158"
 						textscale	.28
 						font	"fonts/marine"
 					}
@@ -1447,7 +1594,7 @@ windowDef Desktop
 						rect	180,149,209,17
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200252"
+						text	"str_200252"
 						textscale	.28
 						font	"fonts/marine"
 						textspacing	-1
@@ -1457,7 +1604,7 @@ windowDef Desktop
 						rect	182,200,260,51
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200253"
+						text	"str_200253"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -1473,7 +1620,7 @@ windowDef Desktop
 						rect	200,254,88,17
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200157"
+						text	"str_200157"
 						textscale	.28
 						font	"fonts/marine"
 					}
@@ -1496,7 +1643,7 @@ windowDef Desktop
 						rect	358,254,88,17
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200158"
+						text	"str_200158"
 						textscale	.28
 						font	"fonts/marine"
 					}
@@ -1519,7 +1666,7 @@ windowDef Desktop
 						rect	200,254,88,17
 						visible	1
 						forecolor	1,1,1,0
-						text	"#str_200923"
+						text	"str_200923"
 						textscale	.28
 						font	"fonts/marine"
 					}
@@ -1542,7 +1689,7 @@ windowDef Desktop
 				rect	39,19,314,16
 				visible	1
 				forecolor	1,1,1,0
-				text	"#str_200001"
+				text	"str_200001"
 				textscale	.25
 				font	"fonts/marine"
 			}
@@ -1579,7 +1726,7 @@ windowDef Desktop
 				rect	39,268,193,23
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200001"
+				text	"str_200001"
 				textscale	.31
 				font	"fonts/marine"
 			}
@@ -1588,7 +1735,7 @@ windowDef Desktop
 				rect	39,305,193,23
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200021"
+				text	"str_200021"
 				textscale	.31
 				font	"fonts/marine"
 			}
@@ -1611,7 +1758,7 @@ windowDef Desktop
 				rect	552,443,88,17
 				visible	1
 				forecolor	1,1,1,0
-				text	"#str_200018"
+				text	"str_200018"
 				textscale	.28
 				font	"fonts/marine"
 			}
@@ -1620,7 +1767,7 @@ windowDef Desktop
 				rect	217,63,190,14
 				visible	1
 				forecolor	1,1,1,0.4
-				text	"#str_200925"
+				text	"str_200925"
 				textscale	0.18
 				font	"fonts/lowpixel"
 			}
@@ -1629,7 +1776,7 @@ windowDef Desktop
 				rect	396,63,190,14
 				visible	1
 				forecolor	1,1,1,0.4
-				text	"#str_200926"
+				text	"str_200926"
 				textscale	0.18
 				font	"fonts/lowpixel"
 			}
@@ -1718,7 +1865,7 @@ windowDef Desktop
 				rect	226,67,84,13
 				visible	0
 				forecolor	1,1,1,0.4
-				text	"#str_200242"
+				text	"str_200242"
 				textscale	.2
 				font	"fonts/lowpixel"
 			}
@@ -1727,7 +1874,7 @@ windowDef Desktop
 				rect	413,67,84,13
 				visible	0
 				forecolor	1,1,1,0.4
-				text	"#str_200243"
+				text	"str_200243"
 				textscale	.2
 				font	"fonts/lowpixel"
 			}
@@ -1736,7 +1883,7 @@ windowDef Desktop
 				rect	505,67,84,13
 				visible	0
 				forecolor	1,1,1,0.4
-				text	"#str_200244"
+				text	"str_200244"
 				textscale	.2
 				font	"fonts/lowpixel"
 			}
@@ -1787,7 +1934,7 @@ windowDef Desktop
 						rect	180,151,146,17
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200021"
+						text	"str_200021"
 						textscale	.28
 						font	"fonts/marine"
 						textspacing	-1
@@ -1797,7 +1944,7 @@ windowDef Desktop
 						rect	182,200,260,51
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200245"
+						text	"str_200245"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -1813,7 +1960,7 @@ windowDef Desktop
 						rect	200,254,88,17
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200157"
+						text	"str_200157"
 						textscale	.28
 						font	"fonts/marine"
 					}
@@ -1836,7 +1983,7 @@ windowDef Desktop
 						rect	358,254,88,17
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200158"
+						text	"str_200158"
 						textscale	.28
 						font	"fonts/marine"
 					}
@@ -1859,7 +2006,7 @@ windowDef Desktop
 				rect	39,19,314,16
 				visible	1
 				forecolor	1,1,1,0
-				text	"#str_200002"
+				text	"str_200002"
 				textscale	.25
 				font	"fonts/marine"
 			}
@@ -1896,7 +2043,7 @@ windowDef Desktop
 				rect	44,181,320,23
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200023"
+				text	"str_200023"
 				textscale	.31
 				font	"fonts/marine"
 			}
@@ -1905,7 +2052,7 @@ windowDef Desktop
 				rect	44,211,320,23
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200024"
+				text	"str_200024"
 				textscale	.31
 				font	"fonts/marine"
 			}
@@ -1914,7 +2061,7 @@ windowDef Desktop
 				rect	44,241,320,23
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200026"
+				text	"str_200026"
 				textscale	.31
 				font	"fonts/marine"
 			}
@@ -1923,7 +2070,7 @@ windowDef Desktop
 				rect	44,271,320,23
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200009"
+				text	"str_200009"
 				textscale	.31
 				font	"fonts/marine"
 			}
@@ -1974,7 +2121,7 @@ windowDef Desktop
 				rect	552,443,88,17
 				visible	1
 				forecolor	1,1,1,0
-				text	"#str_200018"
+				text	"str_200018"
 				textscale	.28
 				font	"fonts/marine"
 			}
@@ -2037,7 +2184,7 @@ windowDef Desktop
 				rect	450,289,162,16
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200951"
+				text	"str_200951"
 				textscale	0.25
 				font	"fonts/marine"
 				textspacing	-1
@@ -2154,7 +2301,7 @@ windowDef Desktop
 				rect	39,19,314,16
 				visible	1
 				forecolor	1,1,1,0
-				text	"#str_200027"
+				text	"str_200027"
 				textscale	.25
 				font	"fonts/marine"
 			}
@@ -2240,7 +2387,7 @@ windowDef Desktop
 				rect	40,337,193,23
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200028"
+				text	"str_200028"
 				textscale	.31
 				font	"fonts/marine"
 				textspacing	-1
@@ -2250,7 +2397,7 @@ windowDef Desktop
 				rect	40,365,219,23
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200029"
+				text	"str_200029"
 				textscale	.31
 				font	"fonts/marine"
 				textspacing	-1
@@ -2260,7 +2407,7 @@ windowDef Desktop
 				rect	40,393,193,23
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200025"
+				text	"str_200025"
 				textscale	.31
 				font	"fonts/marine"
 				textspacing	-1
@@ -2277,7 +2424,7 @@ windowDef Desktop
 				rect	422,337,210,23
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200031"
+				text	"str_200031"
 				textscale	.31
 				font	"fonts/marine"
 				textspacing	-1
@@ -2287,7 +2434,7 @@ windowDef Desktop
 				rect	40,421,193,23
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200182"
+				text	"str_200182"
 				textscale	.31
 				font	"fonts/marine"
 				textspacing	-1
@@ -2342,7 +2489,7 @@ windowDef Desktop
 				rect	27,46,64,16
 				visible	1
 				forecolor	1,1,1,0.6
-				text	"#str_223005"
+				text	"str_223005"
 				textscale	0.22
 				font	"fonts/marine"
 				textalign	2
@@ -2393,7 +2540,7 @@ windowDef Desktop
 				rect	324,46,106,16
 				visible	1
 				forecolor	1,1,1,0.6
-				text	"#str_200032"
+				text	"str_200032"
 				textscale	0.22
 				font	"fonts/marine"
 				textalign	2
@@ -2403,7 +2550,7 @@ windowDef Desktop
 				rect	455,46,96,16
 				visible	1
 				forecolor	0.890,0.537,0,1
-				text	"#str_200033"
+				text	"str_200033"
 				textscale	0.23
 				font	"fonts/marine"
 			}
@@ -2412,7 +2559,7 @@ windowDef Desktop
 				rect	563,46,50,16
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200034"
+				text	"str_200034"
 				textscale	0.22
 				font	"fonts/marine"
 			}
@@ -2449,7 +2596,7 @@ windowDef Desktop
 				rect	112,70,242,16
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200036"
+				text	"str_200036"
 				textscale	0.2
 				font	"fonts/lowpixel"
 				textspacing	-1
@@ -2459,7 +2606,7 @@ windowDef Desktop
 				rect	354,70,47,16
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200037"
+				text	"str_200037"
 				textscale	0.2
 				font	"fonts/lowpixel"
 				textspacing	-1
@@ -2476,7 +2623,7 @@ windowDef Desktop
 				rect	422,70,53,16
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200038"
+				text	"str_200038"
 				textscale	0.2
 				font	"fonts/lowpixel"
 				textspacing	-1
@@ -2486,7 +2633,7 @@ windowDef Desktop
 				rect	474,70,71,16
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200039"
+				text	"str_200039"
 				textscale	0.2
 				font	"fonts/lowpixel"
 				textspacing	-1
@@ -2496,7 +2643,7 @@ windowDef Desktop
 				rect	545,70,67,16
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200040"
+				text	"str_200040"
 				textscale	0.2
 				font	"fonts/lowpixel"
 				textspacing	-1
@@ -2530,7 +2677,7 @@ windowDef Desktop
 				rect	552,443,88,17
 				visible	1
 				forecolor	1,1,1,0
-				text	"#str_200018"
+				text	"str_200018"
 				textscale	.28
 				font	"fonts/marine"
 			}
@@ -2539,7 +2686,7 @@ windowDef Desktop
 				rect	266,427,102,16
 				visible	1
 				forecolor	1,1,1,0.4
-				text	"#str_200927"
+				text	"str_200927"
 				textscale	0.18
 				font	"fonts/lowpixel"
 				textspacing	-1
@@ -2622,7 +2769,7 @@ windowDef Desktop
 					rect	7,27,105,14
 					visible	1
 					forecolor	1,1,1,0.4
-					text	"#str_200038"
+					text	"str_200038"
 					textscale	.16
 					font	"fonts/lowpixel"
 				}
@@ -2631,7 +2778,7 @@ windowDef Desktop
 					rect	92,27,140,14
 					visible	1
 					forecolor	1,1,1,0.4
-					text	"#str_200928"
+					text	"str_200928"
 					textscale	.16
 					font	"fonts/lowpixel"
 				}
@@ -2708,7 +2855,7 @@ windowDef Desktop
 					rect	6,5,201,16
 					visible	1
 					forecolor	1,1,1,0
-					text	"#str_200931"
+					text	"str_200931"
 					textscale	0.2
 					font	"fonts/lowpixel"
 					textspacing	-1
@@ -2761,7 +2908,7 @@ windowDef Desktop
 						rect	180,169,210,17
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200182"
+						text	"str_200182"
 						textscale	.28
 						font	"fonts/marine"
 						textspacing	-1
@@ -2794,7 +2941,7 @@ windowDef Desktop
 						rect	154,194,121,16
 						visible	1
 						forecolor	1,1,1,0.6
-						text	"#str_200254"
+						text	"str_200254"
 						textscale	0.22
 						font	"fonts/marine"
 						textalign	2
@@ -2804,7 +2951,7 @@ windowDef Desktop
 						rect	302,194,89,16
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200255"
+						text	"str_200255"
 						textscale	0.22
 						font	"fonts/marine"
 					}
@@ -2813,7 +2960,7 @@ windowDef Desktop
 						rect	404,194,64,16
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200256"
+						text	"str_200256"
 						textscale	0.22
 						font	"fonts/marine"
 					}
@@ -2857,7 +3004,7 @@ windowDef Desktop
 						rect	200,268,135,17
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200257"
+						text	"str_200257"
 						textscale	.28
 						font	"fonts/marine"
 					}
@@ -2880,7 +3027,7 @@ windowDef Desktop
 						rect	357,268,115,17
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200168"
+						text	"str_200168"
 						textscale	.28
 						font	"fonts/marine"
 					}
@@ -2927,7 +3074,7 @@ windowDef Desktop
 				rect	43,70,165,16
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200242"
+				text	"str_200242"
 				textscale	0.2
 				font	"fonts/lowpixel"
 				textspacing	-1
@@ -2937,7 +3084,7 @@ windowDef Desktop
 				rect	219,70,135,16
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200256"
+				text	"str_200256"
 				textscale	0.2
 				font	"fonts/lowpixel"
 				textspacing	-1
@@ -2947,7 +3094,7 @@ windowDef Desktop
 				rect	326,70,135,16
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200036"
+				text	"str_200036"
 				textscale	0.2
 				font	"fonts/lowpixel"
 				textspacing	-1
@@ -2957,7 +3104,7 @@ windowDef Desktop
 				rect	579,70,48,16
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200037"
+				text	"str_200037"
 				textscale	0.2
 				font	"fonts/lowpixel"
 				textspacing	-1
@@ -2979,7 +3126,7 @@ windowDef Desktop
 				rect	39,19,314,16
 				visible	1
 				forecolor	1,1,1,0
-				text	"#str_200258"
+				text	"str_200258"
 				textscale	.25
 				font	"fonts/marine"
 			}
@@ -3009,7 +3156,7 @@ windowDef Desktop
 				rect	552,443,88,17
 				visible	1
 				forecolor	1,1,1,0
-				text	"#str_200018"
+				text	"str_200018"
 				textscale	.28
 				font	"fonts/marine"
 			}
@@ -3039,7 +3186,7 @@ windowDef Desktop
 				rect	411,397,229,23
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200031"
+				text	"str_200031"
 				textscale	.31
 				font	"fonts/marine"
 			}
@@ -3055,7 +3202,7 @@ windowDef Desktop
 				rect	41,397,228,23
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200249"
+				text	"str_200249"
 				textscale	.31
 				font	"fonts/marine"
 			}
@@ -3108,7 +3255,7 @@ windowDef Desktop
 					rect	7,27,105,14
 					visible	1
 					forecolor	1,1,1,0.4
-					text	"#str_200038"
+					text	"str_200038"
 					textscale	.16
 					font	"fonts/lowpixel"
 				}
@@ -3117,7 +3264,7 @@ windowDef Desktop
 					rect	92,27,140,14
 					visible	1
 					forecolor	1,1,1,0.4
-					text	"#str_200928"
+					text	"str_200928"
 					textscale	.16
 					font	"fonts/lowpixel"
 				}
@@ -3328,7 +3475,7 @@ windowDef Desktop
 				rect	39,19,314,16
 				visible	1
 				forecolor	1,1,1,0
-				text	"#str_200049"
+				text	"str_200049"
 				textscale	.25
 				font	"fonts/marine"
 			}
@@ -3428,7 +3575,7 @@ windowDef Desktop
 				rect	58,53,185,16
 				visible	1
 				forecolor	1,1,1,0.4
-				text	"#str_200050"
+				text	"str_200050"
 				textscale	0.2
 				font	"fonts/lowpixel"
 				textspacing	-1
@@ -3438,7 +3585,7 @@ windowDef Desktop
 				rect	256,53,329,16
 				visible	1
 				forecolor	1,1,1,0.4
-				text	"#str_200051"
+				text	"str_200051"
 				textscale	0.2
 				font	"fonts/lowpixel"
 				textspacing	-1
@@ -3448,7 +3595,7 @@ windowDef Desktop
 				rect	256,75,149,18
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200052"
+				text	"str_200052"
 				textscale	0.24
 				font	"fonts/lowpixel"
 			}
@@ -3477,7 +3624,7 @@ windowDef Desktop
 				rect	256,99,149,18
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200947"
+				text	"str_200947"
 				textscale	0.24
 				font	"fonts/lowpixel"
 			}
@@ -3486,7 +3633,7 @@ windowDef Desktop
 				rect	408,99,185,18
 				visible	1
 				forecolor	1,0.745,0.137,0.8
-				choices	"#str_200056"
+				choices	"str_200056"
 				textscale	0.24
 				font	"fonts/lowpixel"
 				choiceType	0
@@ -3502,7 +3649,7 @@ windowDef Desktop
 				rect	256,123,149,18
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200053"
+				text	"str_200053"
 				textscale	0.24
 				font	"fonts/lowpixel"
 			}
@@ -3511,7 +3658,7 @@ windowDef Desktop
 				rect	408,123,185,18
 				visible	1
 				forecolor	1,0.745,0.137,0.8
-				choices	"#str_200059"
+				choices	"str_200059"
 				values	"0;1"
 				textscale	0.24
 				font	"fonts/lowpixel"
@@ -3528,7 +3675,7 @@ windowDef Desktop
 				rect	256,147,149,18
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200042"
+				text	"str_200042"
 				textscale	0.24
 				font	"fonts/lowpixel"
 			}
@@ -3537,7 +3684,7 @@ windowDef Desktop
 				rect	408,147,185,18
 				visible	1
 				forecolor	1,0.745,0.137,0.8
-				choices	"#str_200929"
+				choices	"str_200929"
 				values	"DM;Tourney;Team DM;CTF;Arena CTF;DeadZone"
 				textscale	0.24
 				font	"fonts/lowpixel"
@@ -3560,7 +3707,7 @@ windowDef Desktop
 				rect	256,171,149,18
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_201008"
+				text	"str_201008"
 				textscale	0.24
 				font	"fonts/lowpixel"
 			}
@@ -3569,7 +3716,7 @@ windowDef Desktop
 				rect	408,171,185,18
 				visible	1
 				forecolor	1,0.745,0.137,0.8
-				choices	"#str_200059"
+				choices	"str_200059"
 				textscale	0.24
 				font	"fonts/lowpixel"
 				choiceType	0
@@ -3585,7 +3732,7 @@ windowDef Desktop
 				rect	256,195,149,18
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200060"
+				text	"str_200060"
 				textscale	0.24
 				font	"fonts/lowpixel"
 			}
@@ -3613,7 +3760,7 @@ windowDef Desktop
 				rect	256,195,149,18
 				visible	0
 				forecolor	1,1,1,0.8
-				text	"#str_200215"
+				text	"str_200215"
 				textscale	0.24
 				font	"fonts/lowpixel"
 			}
@@ -3641,7 +3788,7 @@ windowDef Desktop
 				rect	256,195,149,18
 				visible	0
 				forecolor	1,1,1,0.8
-				text	"#str_222013"
+				text	"str_222013"
 				textscale	0.24
 				font	"fonts/lowpixel"
 			}
@@ -3669,7 +3816,7 @@ windowDef Desktop
 				rect	256,339,149,18
 				visible	0
 				forecolor	1,1,1,0.8
-				text	"#str_200214"
+				text	"str_200214"
 				textscale	0.24
 				font	"fonts/lowpixel"
 			}
@@ -3697,7 +3844,7 @@ windowDef Desktop
 				rect	256,219,149,18
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200061"
+				text	"str_200061"
 				textscale	0.24
 				font	"fonts/lowpixel"
 			}
@@ -3725,7 +3872,7 @@ windowDef Desktop
 				rect	256,243,149,18
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200046"
+				text	"str_200046"
 				textscale	0.24
 				font	"fonts/lowpixel"
 			}
@@ -3758,7 +3905,7 @@ windowDef Desktop
 				rect	256,267,149,18
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_201007"
+				text	"str_201007"
 				textscale	0.24
 				font	"fonts/lowpixel"
 			}
@@ -3791,7 +3938,7 @@ windowDef Desktop
 				rect	256,291,149,18
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_201025"
+				text	"str_201025"
 				textscale	0.24
 				font	"fonts/lowpixel"
 			}
@@ -3800,7 +3947,7 @@ windowDef Desktop
 				rect	408,291,185,18
 				visible	1
 				forecolor	1,0.745,0.137,0.8
-				choices	"#str_200059"
+				choices	"str_200059"
 				textscale	0.24
 				font	"fonts/lowpixel"
 				choiceType	0
@@ -3816,7 +3963,7 @@ windowDef Desktop
 				rect	256,315,149,18
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200247"
+				text	"str_200247"
 				textscale	0.24
 				font	"fonts/lowpixel"
 			}
@@ -3825,7 +3972,7 @@ windowDef Desktop
 				rect	408,315,185,18
 				visible	1
 				forecolor	1,0.745,0.137,0.8
-				choices	"#str_200246"
+				choices	"str_200246"
 				textscale	0.24
 				font	"fonts/lowpixel"
 				choiceType	0
@@ -3842,7 +3989,7 @@ windowDef Desktop
 				rect	256,339,149,18
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200058"
+				text	"str_200058"
 				textscale	0.24
 				font	"fonts/lowpixel"
 			}
@@ -3851,7 +3998,7 @@ windowDef Desktop
 				rect	408,339,185,18
 				visible	1
 				forecolor	1,0.745,0.137,0.8
-				choices	"#str_200059"
+				choices	"str_200059"
 				textscale	0.24
 				font	"fonts/lowpixel"
 				choiceType	0
@@ -3881,7 +4028,7 @@ windowDef Desktop
 				rect	262,368,328,18
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200065"
+				text	"str_200065"
 				textscale	0.26
 				font	"fonts/marine"
 			}
@@ -3904,7 +4051,7 @@ windowDef Desktop
 				rect	287,402,215,25
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200026"
+				text	"str_200026"
 				textscale	0.32
 				font	"fonts/marine"
 			}
@@ -3957,7 +4104,7 @@ windowDef Desktop
 				rect	552,443,88,17
 				visible	1
 				forecolor	1,1,1,0
-				text	"#str_200018"
+				text	"str_200018"
 				textscale	.28
 				font	"fonts/marine"
 			}
@@ -4008,7 +4155,7 @@ windowDef Desktop
 						rect	131,46,286,17
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200066"
+						text	"str_200066"
 						textscale	.28
 						font	"fonts/marine"
 						textspacing	-1
@@ -4116,7 +4263,7 @@ windowDef Desktop
 						rect	132,74,236,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200067"
+						text	"str_200067"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -4125,7 +4272,7 @@ windowDef Desktop
 						rect	132,98,236,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200068"
+						text	"str_200068"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -4134,7 +4281,7 @@ windowDef Desktop
 						rect	132,122,236,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200069"
+						text	"str_200069"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -4143,7 +4290,7 @@ windowDef Desktop
 						rect	132,146,236,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200071"
+						text	"str_200071"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -4152,7 +4299,7 @@ windowDef Desktop
 						rect	132,170,236,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200072"
+						text	"str_200072"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -4161,7 +4308,7 @@ windowDef Desktop
 						rect	132,194,236,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200967"
+						text	"str_200967"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -4170,7 +4317,7 @@ windowDef Desktop
 						rect	132,218,236,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200073"
+						text	"str_200073"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -4179,7 +4326,7 @@ windowDef Desktop
 						rect	132,242,236,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200074"
+						text	"str_200074"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -4188,7 +4335,7 @@ windowDef Desktop
 						rect	132,266,236,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200975"
+						text	"str_200975"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -4197,7 +4344,7 @@ windowDef Desktop
 						rect	132,290,236,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200064"
+						text	"str_200064"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -4206,7 +4353,7 @@ windowDef Desktop
 						rect	132,314,236,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200062"
+						text	"str_200062"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -4215,7 +4362,7 @@ windowDef Desktop
 						rect	132,362,236,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_222000"
+						text	"str_222000"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -4226,7 +4373,7 @@ windowDef Desktop
 						forecolor	1,0.745,0.137,0.8
 						choiceType	0
 						currentChoice	0
-						choices	"#str_200059"
+						choices	"str_200059"
 						cvar	si_usePass
 						textscale	0.24
 						font	"fonts/lowpixel"
@@ -4305,7 +4452,7 @@ windowDef Desktop
 						visible	1
 						forecolor	1,0.745,0.137,0.8
 						choiceType	0
-						choices	"#str_200059"
+						choices	"str_200059"
 						cvar	"net_serverAllowServerMod"
 						textscale	0.24
 						font	"fonts/lowpixel"
@@ -4336,7 +4483,7 @@ windowDef Desktop
 						visible	1
 						forecolor	1,0.745,0.137,0.8
 						choiceType	0
-						choices	"#str_200059"
+						choices	"str_200059"
 						cvar	si_weaponStay
 						textscale	0.24
 						font	"fonts/lowpixel"
@@ -4352,7 +4499,7 @@ windowDef Desktop
 						visible	1
 						forecolor	1,0.745,0.137,0.8
 						choiceType	0
-						choices	"#str_200059"
+						choices	"str_200059"
 						cvar	"si_pure"
 						textscale	0.24
 						font	"fonts/lowpixel"
@@ -4368,7 +4515,7 @@ windowDef Desktop
 						visible	1
 						forecolor	1,0.745,0.137,0.8
 						choiceType	1
-						choices	"#str_200179"
+						choices	"str_200179"
 						cvar	"gui_configServerRate"
 						values	"0;1;2;3;4;5"
 						textscale	0.24
@@ -4385,7 +4532,7 @@ windowDef Desktop
 						visible	1
 						forecolor	1,0.745,0.137,0.8
 						choiceType	0
-						choices	"#str_200059"
+						choices	"str_200059"
 						cvar	si_useReady
 						textscale	0.24
 						font	"fonts/lowpixel"
@@ -4401,7 +4548,7 @@ windowDef Desktop
 						visible	1
 						forecolor	1,0.745,0.137,0.8
 						choiceType	0
-						choices	"#str_200059"
+						choices	"str_200059"
 						cvar	si_spectators
 						textscale	0.24
 						font	"fonts/lowpixel"
@@ -4417,7 +4564,7 @@ windowDef Desktop
 						visible	1
 						forecolor	1,0.745,0.137,0.8
 						choiceType	0
-						choices	"#str_200059"
+						choices	"str_200059"
 						cvar	si_Warmup
 						textscale	0.24
 						font	"fonts/lowpixel"
@@ -4433,7 +4580,7 @@ windowDef Desktop
 						visible	1
 						forecolor	1,0.745,0.137,0.8
 						choiceType	0
-						choices	"#str_200059"
+						choices	"str_200059"
 						cvar	si_isBuyingEnabled
 						textscale	0.24
 						font	"fonts/lowpixel"
@@ -4448,7 +4595,7 @@ windowDef Desktop
 						rect	137,384,389,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200948"
+						text	"str_200948"
 						textscale	0.28
 						font	"fonts/marine"
 					}
@@ -4471,7 +4618,7 @@ windowDef Desktop
 						rect	168,408,354,17
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200075"
+						text	"str_200075"
 						textscale	.28
 						font	"fonts/marine"
 					}
@@ -4487,7 +4634,7 @@ windowDef Desktop
 						rect	132,338,236,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_201021"
+						text	"str_201021"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -4497,7 +4644,7 @@ windowDef Desktop
 						visible	1
 						forecolor	1,0.745,0.137,0.8
 						choiceType	0
-						choices	"#str_200059"
+						choices	"str_200059"
 						cvar	si_voiceChat
 						textscale	0.24
 						font	"fonts/lowpixel"
@@ -4555,7 +4702,7 @@ windowDef Desktop
 							rect	155,124,243,17
 							visible	1
 							forecolor	1,1,1,0.8
-							text	"#str_200921"
+							text	"str_200921"
 							textscale	.28
 							font	"fonts/marine"
 							textspacing	-1
@@ -4584,7 +4731,7 @@ windowDef Desktop
 							rect	179,322,204,17
 							visible	1
 							forecolor	1,1,1,0.8
-							text	"#str_200922"
+							text	"str_200922"
 							textscale	.28
 							font	"fonts/marine"
 						}
@@ -4607,7 +4754,7 @@ windowDef Desktop
 							rect	394,322,88,17
 							visible	1
 							forecolor	1,1,1,0.8
-							text	"#str_200923"
+							text	"str_200923"
 							textscale	.28
 							font	"fonts/marine"
 						}
@@ -4623,7 +4770,7 @@ windowDef Desktop
 							rect	145,151,169,17
 							visible	1
 							forecolor	1,1,1,0.8
-							text	"#str_200242"
+							text	"str_200242"
 							textscale	.2
 							font	"fonts/marine"
 							textspacing	-1
@@ -4633,7 +4780,7 @@ windowDef Desktop
 							rect	318,151,170,17
 							visible	1
 							forecolor	1,1,1,0.8
-							text	"#str_200924"
+							text	"str_200924"
 							textscale	.2
 							font	"fonts/marine"
 							textspacing	-1
@@ -4747,7 +4894,7 @@ windowDef Desktop
 				rect	39,19,314,16
 				visible	1
 				forecolor	1,1,1,0
-				text	"#str_200076"
+				text	"str_200076"
 				textscale	.25
 				font	"fonts/marine"
 			}
@@ -4907,7 +5054,7 @@ windowDef Desktop
 				font	"fonts/lowpixel"
 				values	"16000;25600;10000"
 				cvar	"net_clientMaxRate"
-				choices	"#str_200077"
+				choices	"str_200077"
 				choiceType	1
 
 				onAction {
@@ -4922,7 +5069,7 @@ windowDef Desktop
 				forecolor	1,0.745,0.137,0.8
 				textscale	0.24
 				font	"fonts/lowpixel"
-				choices	"#str_200246"
+				choices	"str_200246"
 				choiceType	0
 
 				onAction {
@@ -4941,7 +5088,7 @@ windowDef Desktop
 				rect	67,171,143,18
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200078"
+				text	"str_200078"
 				textscale	0.24
 				font	"fonts/lowpixel"
 			}
@@ -4950,7 +5097,7 @@ windowDef Desktop
 				rect	67,195,143,18
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200079"
+				text	"str_200079"
 				textscale	0.24
 				font	"fonts/lowpixel"
 			}
@@ -4959,7 +5106,7 @@ windowDef Desktop
 				rect	67,219,143,18
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200080"
+				text	"str_200080"
 				textscale	0.24
 				font	"fonts/lowpixel"
 			}
@@ -4968,7 +5115,7 @@ windowDef Desktop
 				rect	67,267,143,18
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200081"
+				text	"str_200081"
 				textscale	0.24
 				font	"fonts/lowpixel"
 			}
@@ -4977,7 +5124,7 @@ windowDef Desktop
 				rect	67,291,143,18
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200247"
+				text	"str_200247"
 				textscale	0.24
 				font	"fonts/lowpixel"
 			}
@@ -4986,7 +5133,7 @@ windowDef Desktop
 				rect	67,314,143,18
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200082"
+				text	"str_200082"
 				textscale	0.24
 				font	"fonts/lowpixel"
 			}
@@ -5036,7 +5183,7 @@ windowDef Desktop
 				rect	552,443,88,17
 				visible	1
 				forecolor	1,1,1,0
-				text	"#str_200018"
+				text	"str_200018"
 				textscale	.28
 				font	"fonts/marine"
 			}
@@ -5094,7 +5241,7 @@ windowDef Desktop
 				rect	67,243,143,18
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200981"
+				text	"str_200981"
 				textscale	0.24
 				font	"fonts/lowpixel"
 			}
@@ -5290,7 +5437,7 @@ windowDef Desktop
 				rect	39,19,314,16
 				visible	1
 				forecolor	1,1,1,0
-				text	"#str_200007"
+				text	"str_200007"
 				textscale	.25
 				font	"fonts/marine"
 			}
@@ -5327,7 +5474,7 @@ windowDef Desktop
 				rect	31,184,214,23
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200083"
+				text	"str_200083"
 				textscale	.31
 				font	"fonts/marine"
 			}
@@ -5336,7 +5483,7 @@ windowDef Desktop
 				rect	31,214,214,23
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200084"
+				text	"str_200084"
 				textscale	.31
 				font	"fonts/marine"
 			}
@@ -5345,7 +5492,7 @@ windowDef Desktop
 				rect	31,244,214,23
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200085"
+				text	"str_200085"
 				textscale	.31
 				font	"fonts/marine"
 			}
@@ -5354,7 +5501,7 @@ windowDef Desktop
 				rect	31,274,214,23
 				visible	1
 				forecolor	1,1,1,0.8
-				text	"#str_200086"
+				text	"str_200086"
 				textscale	.31
 				font	"fonts/marine"
 			}
@@ -5377,7 +5524,7 @@ windowDef Desktop
 				rect	552,443,88,17
 				visible	1
 				forecolor	1,1,1,0
-				text	"#str_200018"
+				text	"str_200018"
 				textscale	.28
 				font	"fonts/marine"
 			}
@@ -5390,7 +5537,7 @@ windowDef Desktop
 					rect	32,102,189,68
 					visible	1
 					forecolor	1,1,1,0.4
-					text	"#str_200930"
+					text	"str_200930"
 					textscale	.25
 					font	"fonts/lowpixel"
 				}
@@ -5497,7 +5644,7 @@ windowDef Desktop
 					rect	260,102,39,12
 					visible	1
 					forecolor	1,1,1,0.3
-					text	"#str_200087"
+					text	"str_200087"
 					textscale	0.16
 					font	"fonts/lowpixel"
 				}
@@ -5506,7 +5653,7 @@ windowDef Desktop
 					rect	452,102,94,12
 					visible	1
 					forecolor	1,1,1,0.3
-					text	"#str_200088"
+					text	"str_200088"
 					textscale	0.16
 					font	"fonts/lowpixel"
 				}
@@ -5515,7 +5662,7 @@ windowDef Desktop
 					rect	241,76,100,18
 					visible	1
 					forecolor	1,1,1,0.8
-					text	"#str_200090"
+					text	"str_200090"
 					textscale	0.21
 					font	"fonts/marine"
 					textalign	1
@@ -5525,7 +5672,7 @@ windowDef Desktop
 					rect	333,76,99,18
 					visible	1
 					forecolor	1,1,1,0.8
-					text	"#str_200091"
+					text	"str_200091"
 					textscale	0.23
 					font	"fonts/marine"
 					textalign	1
@@ -5535,7 +5682,7 @@ windowDef Desktop
 					rect	423,76,118,18
 					visible	1
 					forecolor	1,1,1,0.8
-					text	"#str_200092"
+					text	"str_200092"
 					textscale	0.22
 					font	"fonts/marine"
 					textalign	1
@@ -5545,7 +5692,7 @@ windowDef Desktop
 					rect	531,76,76,18
 					visible	1
 					forecolor	1,1,1,0.8
-					text	"#str_200093"
+					text	"str_200093"
 					textscale	0.23
 					font	"fonts/marine"
 					textalign	1
@@ -5699,7 +5846,7 @@ windowDef Desktop
 						rect	260,119,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200094"
+						text	"str_200094"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -5708,7 +5855,7 @@ windowDef Desktop
 						rect	260,143,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200095"
+						text	"str_200095"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -5717,7 +5864,7 @@ windowDef Desktop
 						rect	260,167,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200096"
+						text	"str_200096"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -5726,7 +5873,7 @@ windowDef Desktop
 						rect	260,191,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200097"
+						text	"str_200097"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -5735,7 +5882,7 @@ windowDef Desktop
 						rect	260,215,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200098"
+						text	"str_200098"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -5744,7 +5891,7 @@ windowDef Desktop
 						rect	260,239,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200099"
+						text	"str_200099"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -5753,7 +5900,7 @@ windowDef Desktop
 						rect	260,263,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200100"
+						text	"str_200100"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -5762,7 +5909,7 @@ windowDef Desktop
 						rect	260,287,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200101"
+						text	"str_200101"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -5771,7 +5918,7 @@ windowDef Desktop
 						rect	260,311,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200102"
+						text	"str_200102"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -5780,7 +5927,7 @@ windowDef Desktop
 						rect	260,335,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200103"
+						text	"str_200103"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -5962,7 +6109,7 @@ windowDef Desktop
 						rect	260,119,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200966"
+						text	"str_200966"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -5971,7 +6118,7 @@ windowDef Desktop
 						rect	260,143,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200106"
+						text	"str_200106"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -5980,7 +6127,7 @@ windowDef Desktop
 						rect	260,167,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200105"
+						text	"str_200105"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -5989,7 +6136,7 @@ windowDef Desktop
 						rect	260,191,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200107"
+						text	"str_200107"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -5998,7 +6145,7 @@ windowDef Desktop
 						rect	260,215,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200108"
+						text	"str_200108"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6007,7 +6154,7 @@ windowDef Desktop
 						rect	260,239,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200109"
+						text	"str_200109"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6016,7 +6163,7 @@ windowDef Desktop
 						rect	260,263,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200110"
+						text	"str_200110"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6025,7 +6172,7 @@ windowDef Desktop
 						rect	260,287,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200111"
+						text	"str_200111"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6034,7 +6181,7 @@ windowDef Desktop
 						rect	260,311,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200112"
+						text	"str_200112"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6043,7 +6190,7 @@ windowDef Desktop
 						rect	260,335,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200113"
+						text	"str_200113"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6052,7 +6199,7 @@ windowDef Desktop
 						rect	260,359,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_222001"
+						text	"str_222001"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6061,7 +6208,7 @@ windowDef Desktop
 						rect	260,383,189,17
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_222014"
+						text	"str_222014"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6243,7 +6390,7 @@ windowDef Desktop
 						rect	260,119,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200114"
+						text	"str_200114"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6252,7 +6399,7 @@ windowDef Desktop
 						rect	260,143,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200115"
+						text	"str_200115"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6261,7 +6408,7 @@ windowDef Desktop
 						rect	260,167,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200116"
+						text	"str_200116"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6270,7 +6417,7 @@ windowDef Desktop
 						rect	260,191,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200117"
+						text	"str_200117"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6279,7 +6426,7 @@ windowDef Desktop
 						rect	260,215,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200118"
+						text	"str_200118"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6288,7 +6435,7 @@ windowDef Desktop
 						rect	260,239,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200119"
+						text	"str_200119"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6297,7 +6444,7 @@ windowDef Desktop
 						rect	260,263,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200120"
+						text	"str_200120"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6306,7 +6453,7 @@ windowDef Desktop
 						rect	260,287,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200121"
+						text	"str_200121"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6315,7 +6462,7 @@ windowDef Desktop
 						rect	260,311,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200122"
+						text	"str_200122"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6324,7 +6471,7 @@ windowDef Desktop
 						rect	260,335,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200131"
+						text	"str_200131"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6333,7 +6480,7 @@ windowDef Desktop
 						rect	260,359,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200315"
+						text	"str_200315"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6342,7 +6489,7 @@ windowDef Desktop
 						rect	260,383,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200125"
+						text	"str_200125"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6538,7 +6685,7 @@ windowDef Desktop
 						rect	260,119,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200123"
+						text	"str_200123"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6547,7 +6694,7 @@ windowDef Desktop
 						rect	260,143,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200124"
+						text	"str_200124"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6556,7 +6703,7 @@ windowDef Desktop
 						rect	260,167,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200126"
+						text	"str_200126"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6565,7 +6712,7 @@ windowDef Desktop
 						rect	260,191,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200127"
+						text	"str_200127"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6574,7 +6721,7 @@ windowDef Desktop
 						rect	260,215,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200129"
+						text	"str_200129"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6583,7 +6730,7 @@ windowDef Desktop
 						rect	260,239,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200130"
+						text	"str_200130"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6592,7 +6739,7 @@ windowDef Desktop
 						rect	260,263,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200132"
+						text	"str_200132"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6601,7 +6748,7 @@ windowDef Desktop
 						rect	260,287,189,17
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_201009"
+						text	"str_201009"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6610,7 +6757,7 @@ windowDef Desktop
 						rect	260,311,189,17
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200311"
+						text	"str_200311"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6619,7 +6766,7 @@ windowDef Desktop
 						rect	260,335,189,17
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200312"
+						text	"str_200312"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6628,7 +6775,7 @@ windowDef Desktop
 						rect	260,359,189,17
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200313"
+						text	"str_200313"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6637,7 +6784,7 @@ windowDef Desktop
 						rect	260,383,189,17
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200314"
+						text	"str_200314"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6646,7 +6793,7 @@ windowDef Desktop
 						rect	260,407,189,17
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200959"
+						text	"str_200959"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6672,7 +6819,7 @@ windowDef Desktop
 						rect	31,3,210,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200133"
+						text	"str_200133"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6684,7 +6831,7 @@ windowDef Desktop
 						cvar	in_freeLook
 						textscale	0.24
 						font	"fonts/lowpixel"
-						choices	"#str_200059"
+						choices	"str_200059"
 						choiceType	0
 
 						onAction {
@@ -6709,7 +6856,7 @@ windowDef Desktop
 						rect	31,3,210,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200134"
+						text	"str_200134"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6721,7 +6868,7 @@ windowDef Desktop
 						cvar	ui_autoReload
 						textscale	0.24
 						font	"fonts/lowpixel"
-						choices	"#str_200059"
+						choices	"str_200059"
 						choiceType	0
 
 						onAction {
@@ -6746,7 +6893,7 @@ windowDef Desktop
 						rect	31,3,210,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200135"
+						text	"str_200135"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6758,7 +6905,7 @@ windowDef Desktop
 						cvar	ui_autoSwitch
 						textscale	0.24
 						font	"fonts/lowpixel"
-						choices	"#str_200059"
+						choices	"str_200059"
 						choiceType	0
 
 						onAction {
@@ -6783,7 +6930,7 @@ windowDef Desktop
 						rect	31,3,210,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200136"
+						text	"str_200136"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6795,7 +6942,7 @@ windowDef Desktop
 						cvar	g_decals
 						textscale	0.24
 						font	"fonts/lowpixel"
-						choices	"#str_200059"
+						choices	"str_200059"
 						choiceType	0
 
 						onAction {
@@ -6820,7 +6967,7 @@ windowDef Desktop
 						rect	31,3,210,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200138"
+						text	"str_200138"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6832,7 +6979,7 @@ windowDef Desktop
 						cvar	ui_showGun
 						textscale	0.24
 						font	"fonts/lowpixel"
-						choices	"#str_200059"
+						choices	"str_200059"
 						choiceType	0
 
 						onAction {
@@ -6857,7 +7004,7 @@ windowDef Desktop
 						rect	31,3,210,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_223007"
+						text	"str_223007"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6870,7 +7017,7 @@ windowDef Desktop
 						gui	"g_gunXYZ"
 						font	"fonts/lowpixel"
 						choiceType	1
-						choices	"#str_223008"
+						choices	"str_223008"
 						values	"0;1;2"
 
 						onAction {
@@ -6911,7 +7058,7 @@ windowDef Desktop
 						rect	31,3,210,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_223000"
+						text	"str_223000"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6923,7 +7070,7 @@ windowDef Desktop
 						cvar	g_simpleItems
 						textscale	0.24
 						font	"fonts/lowpixel"
-						choices	"#str_200059"
+						choices	"str_200059"
 						choiceType	0
 
 						onAction {
@@ -6948,7 +7095,7 @@ windowDef Desktop
 						rect	31,3,210,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_223006"
+						text	"str_223006"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -6962,7 +7109,7 @@ windowDef Desktop
 						choiceType	1
 						textscale	0.24
 						font	"fonts/lowpixel"
-						choices	"#str_200059"
+						choices	"str_200059"
 
 						onAction {
 							if ("gui::ui_proskins" == "1")
@@ -6996,7 +7143,7 @@ windowDef Desktop
 						rect	31,3,210,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200139"
+						text	"str_200139"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -7008,7 +7155,7 @@ windowDef Desktop
 						cvar	m_pitch
 						textscale	0.24
 						font	"fonts/lowpixel"
-						choices	"#str_200059"
+						choices	"str_200059"
 						values	"0.022;-0.022"
 						choiceType	1
 
@@ -7034,7 +7181,7 @@ windowDef Desktop
 						rect	31,3,210,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200140"
+						text	"str_200140"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -7094,7 +7241,7 @@ windowDef Desktop
 						rect	31,3,210,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200141"
+						text	"str_200141"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -7154,7 +7301,7 @@ windowDef Desktop
 						rect	31,3,210,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200307"
+						text	"str_200307"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -7166,7 +7313,7 @@ windowDef Desktop
 						textscale	0.24
 						font	"fonts/lowpixel"
 						cvar	g_crosshairCustom
-						choices	"#str_200296"
+						choices	"str_200296"
 						choiceType	0
 
 						onAction {
@@ -7209,7 +7356,7 @@ windowDef Desktop
 						rect	31,15,210,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200308"
+						text	"str_200308"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -7265,7 +7412,7 @@ windowDef Desktop
 						rect	31,3,210,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_201010"
+						text	"str_201010"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -7277,7 +7424,7 @@ windowDef Desktop
 						cvar	g_crosshairSize
 						textscale	0.24
 						font	"fonts/lowpixel"
-						choices	"#str_201022"
+						choices	"str_201022"
 						choiceType	1
 						values	"16;24;32;40;48"
 						notime	1
@@ -7316,7 +7463,7 @@ windowDef Desktop
 						rect	31,3,210,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200299"
+						text	"str_200299"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -7387,7 +7534,7 @@ windowDef Desktop
 					rect	259,90,327,13
 					visible	1
 					forecolor	1,1,1,0.4
-					text	"#str_200142"
+					text	"str_200142"
 					textscale	0.2
 					font	"fonts/lowpixel"
 				}
@@ -7431,7 +7578,7 @@ windowDef Desktop
 					rect	259,106,172,18
 					visible	1
 					forecolor	1,1,1,0.8
-					text	"#str_200143"
+					text	"str_200143"
 					textscale	0.24
 					font	"fonts/lowpixel"
 				}
@@ -7442,21 +7589,21 @@ windowDef Desktop
 					forecolor	1,0.745,0.137,0.8
 					textscale	0.24
 					font	"fonts/lowpixel"
-					text	"#str_200143"
+					text	"str_200143"
 
 					onAction {
 						//set "cmd" "play main_menu_selection" ;
 						if ( "desktop::com_machineSpec" == 0 ) {
 							set "cmd" "video medium" ;	
 							
-							set "set_sys_vidqual_val::text" "#str_200261" ;
+							set "set_sys_vidqual_val::text" "str_200261" ;
 							set "desktop::com_machineSpec" "1" ;
 							
 						}	else if ( "desktop::com_machineSpec" == 1 ) {
 							
 							set "cmd" "video high" ;	
 							
-							set "set_sys_vidqual_val::text" "#str_200262" ;
+							set "set_sys_vidqual_val::text" "str_200262" ;
 							set "desktop::com_machineSpec" "2" ;
 							
 						} else if ( "desktop::com_machineSpec" == 2 ) {
@@ -7468,7 +7615,7 @@ windowDef Desktop
 							
 							set "cmd" "video low" ;	
 							
-							set "set_sys_vidqual_val::text" "#str_200263" ;
+							set "set_sys_vidqual_val::text" "str_200263" ;
 							set "desktop::com_machineSpec" "0" ;
 						}
 					}
@@ -7482,20 +7629,20 @@ windowDef Desktop
 						} else if ( "desktop::com_machineSpec" == 1 ) {
 							set "cmd" "video low" ;	
 							
-							set "set_sys_vidqual_val::text" "#str_200263" ;
+							set "set_sys_vidqual_val::text" "str_200263" ;
 							set "desktop::com_machineSpec" "0" ;
 							
 						} else if ( "desktop::com_machineSpec" == 2 ) {
 							
 							set "cmd" "video medium" ;	
 							
-							set "set_sys_vidqual_val::text" "#str_200261" ;
+							set "set_sys_vidqual_val::text" "str_200261" ;
 							set "desktop::com_machineSpec" "1" ;	
 							
 						} else if ( "desktop::com_machineSpec" == 3 ) {
 							set "cmd" "video high" ;	
 							
-							set "set_sys_vidqual_val::text" "#str_200262" ;
+							set "set_sys_vidqual_val::text" "str_200262" ;
 							set "desktop::com_machineSpec" "2" ;
 						}
 					}
@@ -7514,7 +7661,7 @@ windowDef Desktop
 					rect	259,130,172,18
 					visible	1
 					forecolor	1,1,1,0.8
-					text	"#str_200145"
+					text	"str_200145"
 					textscale	0.24
 					font	"fonts/lowpixel"
 				}
@@ -7598,7 +7745,7 @@ windowDef Desktop
 					rect	259,154,172,18
 					visible	1
 					forecolor	1,1,1,0.8
-					text	"#str_200974"
+					text	"str_200974"
 					textscale	0.24
 					font	"fonts/lowpixel"
 				}
@@ -7648,7 +7795,7 @@ windowDef Desktop
 					rect	259,178,172,18
 					visible	1
 					forecolor	1,1,1,0.8
-					text	"#str_200147"
+					text	"str_200147"
 					textscale	0.24
 					font	"fonts/lowpixel"
 				}
@@ -7659,7 +7806,7 @@ windowDef Desktop
 					forecolor	1,0.745,0.137,0.8
 					textscale	0.24
 					font	"fonts/lowpixel"
-					choices	"#str_200059"
+					choices	"str_200059"
 					cvar	"r_fullscreen"
 					choiceType	0
 
@@ -7681,7 +7828,7 @@ windowDef Desktop
 					rect	259,202,172,18
 					visible	1
 					forecolor	1,1,1,0.8
-					text	"#str_200148"
+					text	"str_200148"
 					textscale	0.24
 					font	"fonts/lowpixel"
 				}
@@ -7736,17 +7883,17 @@ windowDef Desktop
 					rect	262,231,328,18
 					visible	1
 					forecolor	1,1,1,0.8
-					text	"#str_200149"
+					text	"str_200149"
 					textscale	0.26
 					font	"fonts/marine"
 					notime	1
 
 					onTime 250 {
-						set "set_sys_t_auto::text" "#str_200176" ;
+						set "set_sys_t_auto::text" "str_200176" ;
 					}
 
 					onTime +2000 {
-						set "set_sys_t_auto::text" "#str_200149" ;
+						set "set_sys_t_auto::text" "str_200149" ;
 					}
 
 				}
@@ -7776,7 +7923,7 @@ windowDef Desktop
 					rect	262,262,328,18
 					visible	1
 					forecolor	1,1,1,0.8
-					text	"#str_200150"
+					text	"str_200150"
 					textscale	0.26
 					font	"fonts/marine"
 				}
@@ -7785,7 +7932,7 @@ windowDef Desktop
 					rect	259,318,326,13
 					visible	1
 					forecolor	1,1,1,0.4
-					text	"#str_200151"
+					text	"str_200151"
 					textscale	0.2
 					font	"fonts/lowpixel"
 				}
@@ -7808,7 +7955,7 @@ windowDef Desktop
 					rect	259,334,172,18
 					visible	1
 					forecolor	1,1,1,0.8
-					text	"#str_201029"
+					text	"str_201029"
 					textscale	0.24
 					font	"fonts/lowpixel"
 				}
@@ -7868,7 +8015,7 @@ windowDef Desktop
 					rect	262,366,328,18
 					visible	1
 					forecolor	1,1,1,0.8
-					text	"#str_201004"
+					text	"str_201004"
 					textscale	0.26
 					font	"fonts/marine"
 				}
@@ -7891,7 +8038,7 @@ windowDef Desktop
 					rect	259,311,172,18
 					visible	0
 					forecolor	1,1,1,0.8
-					text	"#str_201001"
+					text	"str_201001"
 					textscale	0.24
 					font	"fonts/lowpixel"
 				}
@@ -7925,7 +8072,7 @@ windowDef Desktop
 					rect	34,315,197,85
 					visible	0
 					forecolor	0.890,0.537,0,1*guitable_10_5[time*0.001]
-					text	"#str_104137"
+					text	"str_104137"
 					textscale	0.22
 					font	"fonts/lowpixel"
 				}
@@ -7934,7 +8081,7 @@ windowDef Desktop
 					rect	259,335,172,18
 					visible	0
 					forecolor	1,1,1,0.8
-					text	"#str_201006"
+					text	"str_201006"
 					textscale	0.24
 					font	"fonts/lowpixel"
 				}
@@ -8011,7 +8158,7 @@ windowDef Desktop
 						rect	180,149,146,17
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200086"
+						text	"str_200086"
 						textscale	.28
 						font	"fonts/marine"
 						textspacing	-1
@@ -8021,7 +8168,7 @@ windowDef Desktop
 						rect	182,179,260,72
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200156"
+						text	"str_200156"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -8037,7 +8184,7 @@ windowDef Desktop
 						rect	200,253,88,17
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200157"
+						text	"str_200157"
 						textscale	.28
 						font	"fonts/marine"
 					}
@@ -8060,7 +8207,7 @@ windowDef Desktop
 						rect	358,253,88,17
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200158"
+						text	"str_200158"
 						textscale	.28
 						font	"fonts/marine"
 					}
@@ -8120,7 +8267,7 @@ windowDef Desktop
 						rect	141,86,267,17
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200065"
+						text	"str_200065"
 						textscale	.28
 						font	"fonts/marine"
 						textspacing	-1
@@ -8200,7 +8347,7 @@ windowDef Desktop
 						rect	142,118,188,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200159"
+						text	"str_200159"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -8210,7 +8357,7 @@ windowDef Desktop
 						visible	1
 						forecolor	1,0.745,0.137,0.8
 						choiceType	0
-						choices	"#str_200063"
+						choices	"str_200063"
 						cvar	"r_skipNewAmbient"
 						textscale	0.24
 						font	"fonts/lowpixel"
@@ -8225,7 +8372,7 @@ windowDef Desktop
 						rect	142,142,188,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200160"
+						text	"str_200160"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -8235,7 +8382,7 @@ windowDef Desktop
 						visible	1
 						forecolor	1,0.745,0.137,0.8
 						choiceType	0
-						choices	"#str_200059"
+						choices	"str_200059"
 						cvar	"r_shadows"
 						textscale	0.24
 						font	"fonts/lowpixel"
@@ -8250,7 +8397,7 @@ windowDef Desktop
 						rect	142,166,188,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200161"
+						text	"str_200161"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -8260,7 +8407,7 @@ windowDef Desktop
 						visible	1
 						forecolor	1,0.745,0.137,0.8
 						choiceType	0
-						choices	"#str_200063"
+						choices	"str_200063"
 						cvar	"r_skipSpecular"
 						textscale	0.24
 						font	"fonts/lowpixel"
@@ -8275,7 +8422,7 @@ windowDef Desktop
 						rect	142,190,188,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200162"
+						text	"str_200162"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -8285,7 +8432,7 @@ windowDef Desktop
 						visible	1
 						forecolor	1,0.745,0.137,0.8
 						choiceType	0
-						choices	"#str_200063"
+						choices	"str_200063"
 						cvar	"r_skipBump"
 						textscale	0.24
 						font	"fonts/lowpixel"
@@ -8300,7 +8447,7 @@ windowDef Desktop
 						rect	142,214,188,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_223009"
+						text	"str_223009"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -8310,7 +8457,7 @@ windowDef Desktop
 						visible	1
 						forecolor	1,0.745,0.137,0.8
 						choiceType	0
-						choices	"#str_200063"
+						choices	"str_200063"
 						cvar	"r_skipSky"
 						textscale	0.24
 						font	"fonts/lowpixel"
@@ -8325,7 +8472,7 @@ windowDef Desktop
 						rect	142,238,188,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_223002"
+						text	"str_223002"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -8335,7 +8482,7 @@ windowDef Desktop
 						visible	1
 						forecolor	1,0.745,0.137,0.8
 						choiceType	0
-						choices	"#str_200059"
+						choices	"str_200059"
 						gui	"r_forceAmbientOn"
 						textscale	0.24
 						font	"fonts/lowpixel"
@@ -8372,7 +8519,7 @@ windowDef Desktop
 						rect	142,262,188,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_223003"
+						text	"str_223003"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -8426,7 +8573,7 @@ windowDef Desktop
 						rect	142,286,188,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200163"
+						text	"str_200163"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -8436,7 +8583,7 @@ windowDef Desktop
 						visible	1
 						forecolor	1,0.745,0.137,0.8
 						choiceType	0
-						choices	"#str_200059"
+						choices	"str_200059"
 						cvar	"r_swapInterval"
 						textscale	0.24
 						font	"fonts/lowpixel"
@@ -8451,7 +8598,7 @@ windowDef Desktop
 						rect	142,310,188,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200164"
+						text	"str_200164"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -8461,7 +8608,7 @@ windowDef Desktop
 						visible	1
 						forecolor	1,0.745,0.137,0.8
 						choiceType	1
-						choices	"#str_200165"
+						choices	"str_200165"
 						values	"0;2;4;8;16"
 						cvar	"r_multisamples"
 						textscale	0.24
@@ -8483,7 +8630,7 @@ windowDef Desktop
 						rect	142,334,188,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_202043"
+						text	"str_202043"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -8493,7 +8640,7 @@ windowDef Desktop
 						visible	1
 						forecolor	1,0.745,0.137,0.8
 						choiceType	0
-						choices	"#str_200059"
+						choices	"str_200059"
 						cvar	r_useSmp
 						textscale	0.24
 						font	"fonts/lowpixel"
@@ -8516,7 +8663,7 @@ windowDef Desktop
 						rect	203,380,356,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200075"
+						text	"str_200075"
 						textscale	0.26
 						font	"fonts/marine"
 					}
@@ -8532,7 +8679,7 @@ windowDef Desktop
 						rect	205,418,239,48
 						visible	0
 						forecolor	0.890,0.537,0,1*guitable_10_5[time*0.001]
-						text	"#str_200155"
+						text	"str_200155"
 						textscale	0.22
 						font	"fonts/lowpixel"
 					}
@@ -8585,7 +8732,7 @@ windowDef Desktop
 						rect	180,149,208,17
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200264"
+						text	"str_200264"
 						textscale	.28
 						font	"fonts/marine"
 						textspacing	-1
@@ -8595,7 +8742,7 @@ windowDef Desktop
 						rect	182,179,270,72
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200265"
+						text	"str_200265"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -8604,7 +8751,7 @@ windowDef Desktop
 						rect	182,228,270,20
 						visible	0
 						forecolor	0.890,0.537,0,1*guitable_10_5[time*0.001]
-						text	"#str_200979"
+						text	"str_200979"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -8620,7 +8767,7 @@ windowDef Desktop
 						rect	200,253,88,17
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200157"
+						text	"str_200157"
 						textscale	.28
 						font	"fonts/marine"
 					}
@@ -8643,7 +8790,7 @@ windowDef Desktop
 						rect	358,253,88,17
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200158"
+						text	"str_200158"
 						textscale	.28
 						font	"fonts/marine"
 					}
@@ -8703,7 +8850,7 @@ windowDef Desktop
 						rect	180,151,208,17
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200266"
+						text	"str_200266"
 						textscale	.28
 						font	"fonts/marine"
 						textspacing	-1
@@ -8713,7 +8860,7 @@ windowDef Desktop
 						rect	182,179,284,94
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200267"
+						text	"str_200267"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -8729,7 +8876,7 @@ windowDef Desktop
 						rect	200,264,88,17
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200157"
+						text	"str_200157"
 						textscale	.28
 						font	"fonts/marine"
 					}
@@ -8752,7 +8899,7 @@ windowDef Desktop
 						rect	358,264,88,17
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200158"
+						text	"str_200158"
 						textscale	.28
 						font	"fonts/marine"
 					}
@@ -8808,7 +8955,7 @@ windowDef Desktop
 					rect	141,154,267,17
 					visible	0
 					forecolor	1,1,1,0.8
-					text	"#str_200266"
+					text	"str_200266"
 					textscale	.28
 					font	"fonts/marine"
 					textspacing	-1
@@ -8818,7 +8965,7 @@ windowDef Desktop
 					rect	141,212,357,61
 					visible	0
 					forecolor	0.882,0.286,0,1
-					text	"#str_201023"
+					text	"str_201023"
 					textscale	0.31
 					font	"fonts/lowpixel"
 					textspacing	-1
@@ -8917,7 +9064,7 @@ windowDef Desktop
 						rect	141,154,267,17
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_201002"
+						text	"str_201002"
 						textscale	.28
 						font	"fonts/marine"
 						textspacing	-1
@@ -8955,7 +9102,7 @@ windowDef Desktop
 						rect	142,188,188,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200971"
+						text	"str_200971"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -8965,7 +9112,7 @@ windowDef Desktop
 						visible	1
 						forecolor	1,0.745,0.137,0.8
 						choiceType	1
-						choices	"#str_200970"
+						choices	"str_200970"
 						cvar	s_useOpenAL
 						textscale	0.24
 						font	"fonts/lowpixel"
@@ -8987,7 +9134,7 @@ windowDef Desktop
 						rect	142,212,188,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_201005"
+						text	"str_201005"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -9017,7 +9164,7 @@ windowDef Desktop
 						rect	142,236,188,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200972"
+						text	"str_200972"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -9027,7 +9174,7 @@ windowDef Desktop
 						visible	1
 						forecolor	1,0.745,0.137,0.8
 						choiceType	0
-						choices	"#str_200059"
+						choices	"str_200059"
 						cvar	s_useEAXReverb
 						textscale	0.24
 						font	"fonts/lowpixel"
@@ -9046,7 +9193,7 @@ windowDef Desktop
 						rect	142,260,188,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200152"
+						text	"str_200152"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -9056,7 +9203,7 @@ windowDef Desktop
 						visible	1
 						forecolor	1,0.745,0.137,0.8
 						choiceType	1
-						choices	"#str_200059"
+						choices	"str_200059"
 						cvar	s_numberOfSpeakers
 						textscale	0.24
 						font	"fonts/lowpixel"
@@ -9083,7 +9230,7 @@ windowDef Desktop
 						rect	177,300,356,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_201003"
+						text	"str_201003"
 						textscale	0.26
 						font	"fonts/marine"
 					}
@@ -9099,7 +9246,7 @@ windowDef Desktop
 						rect	141,342,372,94
 						visible	( "gui::s_useOpenAL" == 1 )
 						forecolor	0.890,0.537,0,1*guitable_10_5[time*0.001]
-						text	"#str_201024"
+						text	"str_201024"
 						textscale	0.25
 						font	"fonts/lowpixel"
 						textspacing	-1
@@ -9110,7 +9257,7 @@ windowDef Desktop
 						rect	141,342,372,94
 						visible	( "gui::s_loadOpenALFailed" == 1 )
 						forecolor	0.890,0.537,0,1*guitable_10_5[time*0.001]
-						text	"#str_201037"
+						text	"str_201037"
 						textscale	0.25
 						font	"fonts/lowpixel"
 						textspacing	-1
@@ -9166,7 +9313,7 @@ windowDef Desktop
 					rect	177,127,213,17
 					visible	1
 					forecolor	1,1,1,0.8
-					text	"#str_200166"
+					text	"str_200166"
 					textscale	.28
 					font	"fonts/marine"
 					textspacing	-1
@@ -9197,7 +9344,7 @@ windowDef Desktop
 					rect	199,311,141,17
 					visible	1
 					forecolor	1,1,1,0.8
-					text	"#str_200167"
+					text	"str_200167"
 					textscale	.28
 					font	"fonts/marine"
 				}
@@ -9220,7 +9367,7 @@ windowDef Desktop
 					rect	370,311,108,17
 					visible	1
 					forecolor	1,1,1,0.8
-					text	"#str_200168"
+					text	"str_200168"
 					textscale	.28
 					font	"fonts/marine"
 				}
@@ -9242,7 +9389,7 @@ windowDef Desktop
 				rect	39,19,314,16
 				visible	1
 				forecolor	1,1,1,0
-				text	"#str_200012"
+				text	"str_200012"
 				textscale	.25
 				font	"fonts/marine"
 			}
@@ -9265,7 +9412,7 @@ windowDef Desktop
 				rect	552,443,88,17
 				visible	1
 				forecolor	1,1,1,0
-				text	"#str_200018"
+				text	"str_200018"
 				textscale	.28
 				font	"fonts/marine"
 			}
@@ -15423,7 +15570,7 @@ windowDef Desktop
 					rect	180,149,146,17
 					visible	1
 					forecolor	1,1,1,0.8
-					text	"#str_200169"
+					text	"str_200169"
 					textscale	.28
 					font	"fonts/marine"
 					textspacing	-1
@@ -15433,7 +15580,7 @@ windowDef Desktop
 					rect	182,200,260,51
 					visible	1
 					forecolor	1,1,1,0.8
-					text	"#str_200170"
+					text	"str_200170"
 					textscale	0.24
 					font	"fonts/lowpixel"
 				}
@@ -15449,7 +15596,7 @@ windowDef Desktop
 					rect	200,253,88,17
 					visible	1
 					forecolor	1,1,1,0.8
-					text	"#str_200157"
+					text	"str_200157"
 					textscale	.28
 					font	"fonts/marine"
 				}
@@ -15472,7 +15619,7 @@ windowDef Desktop
 					rect	358,253,88,17
 					visible	1
 					forecolor	1,1,1,0.8
-					text	"#str_200158"
+					text	"str_200158"
 					textscale	.28
 					font	"fonts/marine"
 				}
@@ -15532,7 +15679,7 @@ windowDef Desktop
 					rect	180,153,211,17
 					visible	1
 					forecolor	1,1,1,0.8
-					text	"#str_200025"
+					text	"str_200025"
 					textscale	.28
 					font	"fonts/marine"
 					textspacing	-1
@@ -15549,7 +15696,7 @@ windowDef Desktop
 					rect	200,227,138,17
 					visible	1
 					forecolor	1,1,1,0.8
-					text	"#str_200171"
+					text	"str_200171"
 					textscale	.28
 					font	"fonts/marine"
 				}
@@ -15572,7 +15719,7 @@ windowDef Desktop
 					rect	358,227,115,17
 					visible	1
 					forecolor	1,1,1,0.8
-					text	"#str_200168"
+					text	"str_200168"
 					textscale	.28
 					font	"fonts/marine"
 				}
@@ -15634,7 +15781,7 @@ windowDef Desktop
 					rect	189,282,275,17
 					visible	1
 					forecolor	1,1,1,0.4
-					text	"#str_200180"
+					text	"str_200180"
 					textscale	0.28
 					font	"fonts/marine"
 					textspacing	-1
@@ -15733,7 +15880,7 @@ windowDef Desktop
 					rect	200,253,88,17
 					visible	1
 					forecolor	1,1,1,0.8
-					text	"#str_200157"
+					text	"str_200157"
 					textscale	.28
 					font	"fonts/marine"
 				}
@@ -15756,7 +15903,7 @@ windowDef Desktop
 					rect	358,253,88,17
 					visible	1
 					forecolor	1,1,1,0.8
-					text	"#str_200158"
+					text	"str_200158"
 					textscale	.28
 					font	"fonts/marine"
 				}
@@ -15816,7 +15963,7 @@ windowDef Desktop
 					rect	180,149,146,17
 					visible	1
 					forecolor	1,1,1,0.8
-					text	"#str_200266"
+					text	"str_200266"
 					textscale	.28
 					font	"fonts/marine"
 					textspacing	-1
@@ -15826,7 +15973,7 @@ windowDef Desktop
 					rect	182,190,260,51
 					visible	1
 					forecolor	0.890,0.537,0,1*guitable_10_5[time*0.001]
-					text	"#str_104137"
+					text	"str_104137"
 					textscale	0.24
 					font	"fonts/lowpixel"
 				}
@@ -15842,7 +15989,7 @@ windowDef Desktop
 					rect	198,251,256,21
 					visible	1
 					forecolor	1,1,1,0.8
-					text	"#str_104339"
+					text	"str_104339"
 					textscale	.28
 					font	"fonts/marine"
 				}
@@ -15997,6 +16144,11 @@ windowDef Desktop
 		}
 
 		onNamedEvent mainReset0 {
+			
+			set "myBuyMenu1::matcolor_w" "0";						//EDEL
+			set "myBuyMenuText1::forecolor"  "$desktop::white_0" ;	//EDEL
+			set "myBuyMenuText1::textscale" "0.33" ;					//EDEL
+			
 			set "main_b1::matcolor_w" "0" ;
 			set "main_t_b1::forecolor"  "$desktop::white_0" ; 
 			set "main_b1_corner::matcolor" "$desktop::corner_0" ;
@@ -16085,6 +16237,10 @@ windowDef Desktop
 				set "main_b3_corner::matcolor" "$desktop::corner" ;
 				set "main_t_b3::textscale" "0.33" ; 
 			}
+			
+			set "myBuyMenu1::matcolor" "$desktop::white_4" ;			//EDEL
+			set "myBuyMenuText1::forecolor"  "$desktop::white_8" ;	//EDEL
+			set "myBuyMenuText1::textscale" "0.33" ;					//EDEL
 			
 			set "main_b1::matcolor" "$desktop::white_4" ;
 			set "main_t_b1::forecolor"  "$desktop::white_8" ; 
@@ -16496,6 +16652,10 @@ windowDef Desktop
 				transition "q4logo::matcolor" "$desktop::black" "$desktop::white" "150" ;
 				transition "q4text::matcolor" "$desktop::black" "$desktop::white" "150" ;	
 				
+				
+				
+				transition "myBuyMenu1::matcolor_w" "0" "0.4" "150" ;		//EDEL
+				transition "myBuyMenuText1::forecolor_w"  "0" "0.8" "150" ;	//EDEL
 				transition "main_b1::matcolor_w" "0" "0.4" "150" ;
 				transition "main_t_b1::forecolor_w"  "0" "0.8" "150" ; 
 				transition "main_b1_corner::matcolor_w"  "0" "0.4" "150" ;
@@ -16525,9 +16685,10 @@ windowDef Desktop
 					transition "main_t_b9::forecolor_w"  "0" "0.8" "150" ; 
 					transition "main_b9_corner::matcolor_w"  "0" "0.4" "150" ;
 					
-					set "main_t_b1::text" "#str_200003" ;
-					set "main_t_b2::text" "#str_200001" ;
-					set "main_t_b3::text" "#str_200004" ;	
+					set "main_t_b1::text" "str_200003" ;
+					set "main_t_b2::text" "str_200001" ;
+					set "main_t_b3::text" "str_200004" ;
+					set "myBuyButtonText"::text" "BUY_1";//EDEL
 					
 				} else	if ("gui::ingame" == 2) {
 					
@@ -16539,8 +16700,8 @@ windowDef Desktop
 					transition "main_b7_corner::matcolor_w"  "0" "0.4" "150" ;
 					
 					
-					//set "main_t_b5::text" "#str_200005" ;
-					//set "main_t_b6::text" "#str_200006" ;
+					//set "main_t_b5::text" "Return to Zoo" ;
+					//set "main_t_b6::text" "str_200006" ;
 					
 				} else	if ("gui::ingame" == 0) {	
 					//transition "main_b3::matcolor_w" "0" "0.4" "150" ;
@@ -16553,9 +16714,10 @@ windowDef Desktop
 					transition "main_t_b7::forecolor_w"  "0" "0.5" "150" ; 
 					transition "main_b7_corner::matcolor_w"  "0" "0.4" "150" ;					
 					
-					set "main_t_b1::text" "#str_200000" ;
-					set "main_t_b2::text" "#str_200001" ;
-					set "main_t_b3::text" "#str_200002" ;
+					set "main_t_b1::text" "str_200000" ;
+					set "main_t_b2::text" "str_200001" ;
+					set "main_t_b3::text" "str_200002" ;
+					set "myBuyButtonText"::text" "BUY_2";//EDEL
 				}
 			}
 
@@ -16589,6 +16751,10 @@ windowDef Desktop
 				stoptransitions "main_b_updates" ;
 				stoptransitions "main_b_credits" ;
 				stoptransitions "main_b_exit" ;
+				
+				
+				transition "myBuyButton::matcolor" "0.4" "0" "250";			//Edel
+				transition "myBuyButtonText::forecolor_w" "0.8" "0" "250";	//Edel
 				
 				transition "main_b1::matcolor_w" "0.4" "0" "250" ;
 				transition "main_t_b1::forecolor_w"  "0.8" "0" "250" ; 
@@ -17204,19 +17370,19 @@ windowDef Desktop
 			onTime 0 {
 				if ( "gui::com_machineSpec" == 0 ) {
 					//	set "cmd" "video low" ;	
-					set "set_sys_vidqual_val::text" "#str_200263" ;
+					set "set_sys_vidqual_val::text" "str_200263" ;
 					set "desktop::com_machineSpec" "0" ;
 				}	else if ( "gui::com_machineSpec" == 1 ) {
 					//	set "cmd" "video medium" ;	
-					set "set_sys_vidqual_val::text" "#str_200261" ;
+					set "set_sys_vidqual_val::text" "str_200261" ;
 					set "desktop::com_machineSpec" "1" ;
 				} else if ( "gui::com_machineSpec" == 2 ) {
 					//	set "cmd" "video high" ;	
-					set "set_sys_vidqual_val::text" "#str_200262" ;
+					set "set_sys_vidqual_val::text" "str_200262" ;
 					set "desktop::com_machineSpec" "2" ;
 				} else if ( "gui::com_machineSpec" == 3 ) {
 					//	set "cmd" "video ultra" ;	
-					set "set_sys_vidqual_val::text" "#str_200268" ;
+					set "set_sys_vidqual_val::text" "str_200268" ;
 					set "desktop::com_machineSpec" "3" ;
 				}
 				
@@ -17271,7 +17437,7 @@ windowDef Desktop
 					
 					set "ctrls_tab::background" "gfx/guis/mainmenu/ctrls_tab1"  ;
 					transition "t_settings_title::forecolor_w" "0" "0.5" "150" ;
-					set "t_settings_title::text" "#str_200007" ;
+					set "t_settings_title::text" "str_200007" ;
 					transition "grad2::matcolor_w" "0" "0.6" "150" ;
 					
 					set "set_b1::matcolor_w" "8" ;
@@ -17298,7 +17464,7 @@ windowDef Desktop
 					set "set_ctrl_b12::matcolor_w" "0.2" ;
 					set "set_ctrl_b13::matcolor_w" "0.2" ;
 				} else if ( "desktop::dest" == 21 ) {
-					set "t_settings_title::text" "#str_200008" ;
+					set "t_settings_title::text" "str_200008" ;
 					transition "t_settings_title::forecolor_w" "0" "0.5" "150" ;
 					transition "grad2::matcolor_w" "0" "0.6" "150" ;
 					
@@ -17315,7 +17481,7 @@ windowDef Desktop
 					set "set_t_b3::textscale" "0.31" ;
 					
 				} else if ( "desktop::dest" == 22 ) {
-					set "t_settings_title::text" "#str_200175" ;
+					set "t_settings_title::text" "str_200175" ;
 					transition "t_settings_title::forecolor_w" "0" "0.5" "150" ;
 					transition "grad2::matcolor_w" "0" "0.6" "150" ;
 					
@@ -18114,6 +18280,9 @@ windowDef Desktop
 				transition "q4logo::matcolor" "$desktop::black" "$desktop::white" "0" ;
 				transition "q4text::matcolor" "$desktop::black" "$desktop::white" "0" ;	
 				
+				transition "myBuyButton::matcolor" "0" "0.4" "0";			//Edel
+				transition "myBuyButtonText::forecolor_w" "0" "0.8" "0";	//Edel
+				
 				transition "main_b1::matcolor_w" "0" "0.4" "0" ;
 				transition "main_t_b1::forecolor_w"  "0" "0.8" "0" ; 
 				transition "main_b1_corner::matcolor_w"  "0" "0.4" "0" ;
@@ -18549,16 +18718,16 @@ windowDef Desktop
 				set "set_sys_b9_corner::matcolor" "$desktop::corner" ;
 				
 				if ( "gui::com_machineSpec" == 0 ) {
-					set "set_sys_vidqual_val::text" "#str_200263" ;
+					set "set_sys_vidqual_val::text" "str_200263" ;
 					set "desktop::com_machineSpec" "0" ;
 				} else if ( "gui::com_machineSpec" == 1 ) {
-					set "set_sys_vidqual_val::text" "#str_200261" ;
+					set "set_sys_vidqual_val::text" "str_200261" ;
 					set "desktop::com_machineSpec" "1" ;
 				} else if ( "gui::com_machineSpec" == 2 ) {
-					set "set_sys_vidqual_val::text" "#str_200262" ;
+					set "set_sys_vidqual_val::text" "str_200262" ;
 					set "desktop::com_machineSpec" "2" ;
 				} else if ( "gui::com_machineSpec" == 3 ) {
-					set "set_sys_vidqual_val::text" "#str_200268" ;
+					set "set_sys_vidqual_val::text" "str_200268" ;
 					set "desktop::com_machineSpec" "3" ;
 				}	
 			}
@@ -18948,6 +19117,29 @@ windowDef Desktop
 	{
 		rect	0,0,640,480
 		visible	1
+
+
+		//EDEL START
+		//	myBuyMenuState = 0
+		onNameEvent myInitialMenu {		
+			set "cmd" "close";
+			set "myBuyMenuText1::text" "Buy Strogg";
+			set "myBuyMenuText2::text" "Buy Shops";
+			set "myBuyMenuText3::text" "Research";
+			set "myBuyMenuText4::text" "nathing";
+			set "myBuyMenuText5::text" "nada";
+		}
+		//		0 < myBuyMenuState < 6
+		onNamedEvent myMonsterMenu {	
+			set "myBuyMenuText1::text" "100 : Grunt;
+			set "myBuyMenuText2::text" "100 : Berserker";
+			set "myBuyMenuText3::text" "100 : Gladiator";
+			set "myBuyMenuText4::text" "100 : Sentry";
+			set "myBuyMenuText5::text" "100 : Network Guardian";
+		}
+		//EDEL END
+
+
 
 		onNamedEvent showMain {
 			if ("gui::ingame" == 0) {
@@ -19478,22 +19670,22 @@ windowDef Desktop
 				set "new_b1::matcolor_w" "1" ;
 				set "new_t_b1::forecolor" "$desktop::orange" "0" ; 
 				set "new_t_b1::textscale" "0.32" ; 
-				set "new_diffDescript::text" "#str_200183"
+				set "new_diffDescript::text" "str_200183"
 			} else if ("desktop::skill" == 1) {
 				set "new_b2::matcolor_w" "1" ;
 				set "new_t_b2::forecolor" "$desktop::orange" "0" ; 
 				set "new_t_b2::textscale" "0.32" ; 
-				set "new_diffDescript::text" "#str_200019"
+				set "new_diffDescript::text" "str_200019"
 			} else if ("desktop::skill" == 2) {
 				set "new_b3::matcolor_w" "1" ;
 				set "new_t_b3::forecolor" "$desktop::orange" "0" ; 
 				set "new_t_b3::textscale" "0.32" ; 
-				set "new_diffDescript::text" "#str_200184"
+				set "new_diffDescript::text" "str_200184"
 			} else if ("desktop::skill" == 3) {
 				set "new_b4::matcolor_w" "1" ;
 				set "new_t_b4::forecolor" "$desktop::orange" "0" ; 
 				set "new_t_b4::textscale" "0.32" ; 
-				set "new_diffDescript::text" "#str_200185"
+				set "new_diffDescript::text" "str_200185"
 			}
 		}
 
@@ -19923,6 +20115,409 @@ windowDef Desktop
 			set "pop_b_set_sndadv_close::visible" "0" ;
 		}
 
+		//EDEL START
+		// this handles all the buttons and their press events
+
+		windowDef myBuyPress1
+		{
+			rect	352,165,413,52
+			visible	1
+
+			onMouseEnter {
+				if ("desktop::active" == 0) {
+					set "myBuyMenu1::matcolor_w" "0.8" ;	
+					transition "myBuyMenuText1::forecolor" "$desktop::white_8" "$desktop::orange" "0" ;
+					set "myBuyMenuText1::textscale" "0.34" ;	
+					set "cmd" "play main_menu_mouseover" ;		
+				}
+			}
+			onMouseExit {
+				if ("desktop::active" == 0) {
+					transition "myBuyMenu1::matcolor_w" "0.8" "0.4" "300" ;
+					transition "myBuyMenuText1::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ;
+					transition "myBuyMenuText1::textscale" "0.34" "0.33" "300" ;
+				}
+			}
+			
+			// 0:enc,shop,research ; 1:enc1 ; 2:enc2 ; 3:enc3 ; 4:enc4 ; 5:enc5 ; 6:shop ; 7:research ; 9:enclosures
+			onAction {
+				if( "desktop::myBuyMenuState" == 0){		// in initial buy menu 0? -> go to enclosure list 9
+					
+					set "desktop::myBuyMenuState" "9";
+					
+					if ("desktop::enc1" == 0)	{ set "myBuyMenuText1::text" "100 : Unlock Enc 1"; }
+					else						{ set "myBuyMenuText1::text" "Enclosure 1"; }
+					if ("desktop::enc2" == 0)	{ set "myBuyMenuText2::text" "100 : Unlock Enc 2"; }
+					else						{ set "myBuyMenuText2::text" "Enclosure 2"; }
+					if ("desktop::enc3" == 0)	{ set "myBuyMenuText3::text" "100 : Unlock Enc 3"; }
+					else						{ set "myBuyMenuText3::text" "Enclosure 3"; }
+					if ("desktop::enc4" == 0)	{ set "myBuyMenuText4::text" "100 : Unlock Enc 4"; }
+					else						{ set "myBuyMenuText4::text" "Enclosure 4"; }
+					if ("desktop::enc5" == 0)	{ set "myBuyMenuText5::text" "100 : Unlock Enc 5"; }
+					else						{ set "myBuyMenuText5::text" "Enclosure 5"; }
+				}
+				else if("desktop::myBuyMenuState" == 9){	// in enclosure menu?
+					if("desktop::enc1" == 0){				// enclosure 1 unlocked?
+						//TODO: check if they have enough money
+						set "desktop::enc1" "1" ;
+						set "myBuyMenuText1::text" "Enclosure 1";
+					} 
+					else {									//enters enclosure specific monster menu					
+						set "myBuyMenuText1::text" "100 : Grunt";
+						set "myBuyMenuText2::text" "100 : Berserker";
+						set "myBuyMenuText3::text" "100 : Gladiator";
+						set "myBuyMenuText4::text" "100 : Sentry";
+						set "myBuyMenuText5::text" "100 : Network Guardian";
+						set "desktop::myBuyMenuState" "1";
+					}
+				} 
+				else if ("desktop::myBuyMenuState" == 1){	// in enclosure specific monster menu?
+					//TODO: check if they have enough money
+					consoleCMD "buyStroggSmall monster_grunt 1";
+					set "cmd" "close";
+				}
+				else if ("desktop::myBuyMenuState" == 2){	// in enclosure specific monster menu?
+					//TODO: check if they have enough money
+					consoleCMD "buyStroggSmall monster_grunt 2";
+					set "cmd" "close";
+				}
+				else if ("desktop::myBuyMenuState" == 3){	// in enclosure specific monster menu?
+					//TODO: check if they have enough money
+					consoleCMD "buyStroggSmall monster_grunt 3";
+					set "cmd" "close";
+				}
+				else if ("desktop::myBuyMenuState" == 4){	// in enclosure specific monster menu?
+					//TODO: check if they have enough money
+					consoleCMD "buyStroggSmall monster_grunt 4";
+					set "cmd" "close";
+				}
+				else if ("desktop::myBuyMenuState" == 5){	// in enclosure specific monster menu?
+					//TODO: check if they have enough money
+					consoleCMD "buyStroggSmall monster_grunt 5";
+					set "cmd" "close";
+				} 
+				else if ("desktop::myBuyMenuState" == 6){   // in shop menu?
+					if("desktop::shop1" == 0){
+						//TODO: check for money
+						//TODO: shop?
+						set "desktop::shop1" "1";
+						set "myBuyMenuText1::text" "Bought";
+					}
+				}
+			
+			}
+		}
+		windowDef myBuyPress2
+		{
+			rect	349,206,413,52
+			visible	1
+
+			onMouseEnter {
+				if ("desktop::active" == 0) {
+					set "myBuyMenu2::matcolor_w" "0.8" ;	
+					transition "myBuyMenuText2::forecolor" "$desktop::white_8" "$desktop::orange" "0" ;
+					set "myBuyMenuText2::textscale" "0.34" ;	
+					set "cmd" "play main_menu_mouseover" ;		
+				}
+			}
+			onMouseExit {
+				if ("desktop::active" == 0) {
+					transition "myBuyMenu2::matcolor_w" "0.8" "0.4" "300" ;
+					transition "myBuyMenuText2::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ;
+					transition "myBuyMenuText2::textscale" "0.34" "0.33" "300" ;
+				}
+			}
+			
+			// 0:enc,shop,research ; 1:enc1 ; 2:enc2 ; 3:enc3 ; 4:enc4 ; 5:enc5 ; 6:shop ; 7:research ; 9:enclosures
+			onAction {
+				if( "desktop::myBuyMenuState" == 0){		// in initial buy menu 0? -> go to shop list 6
+					
+					set "desktop::myBuyMenuState" "6";
+
+					if ("desktop::shop1" == 0)	{ set "myBuyMenuText1::text" "100 : Pizza Place"; }
+					else						{ set "myBuyMenuText1::text" "Bought"; }
+					if ("desktop::shop2" == 0)	{ set "myBuyMenuText2::text" "100 : Ice Cream Stand"; }
+					else						{ set "myBuyMenuText2::text" "Bought"; }
+					if ("desktop::shop3" == 0)	{ set "myBuyMenuText3::text" "100 : Balloon Stand"; }
+					else						{ set "myBuyMenuText3::text" "Bought"; }
+				}
+				else if("desktop::myBuyMenuState" == 9){	// in enclosure menu?
+					if("desktop::enc2" == 0){				// enclosure 2 locked?
+						//TODO: check if they have enough money
+						set "desktop::enc2" "1" ;
+						set "myBuyMenuText2::text" "Enclosure 2";
+					} 
+					else {									
+						//namedevent "p_btns::myMonsterMenu" ;
+						set "myBuyMenuText1::text" "100 : Grunt";
+						set "myBuyMenuText2::text" "100 : Berserker";
+						set "myBuyMenuText3::text" "100 : Gladiator";
+						set "myBuyMenuText4::text" "100 : Sentry";
+						set "myBuyMenuText5::text" "100 : Network Guardian";
+						set "desktop::myBuyMenuState" "2";
+					}
+				} 
+				else if ("desktop::myBuyMenuState" == 1){	// in enclosure specific monster menu?
+					//TODO: check if they have enough money
+					consoleCMD "buyStroggSmall monster_berserker 1";
+					set "cmd" "close";
+				}
+				else if ("desktop::myBuyMenuState" == 2){	// in enclosure specific monster menu?
+					//TODO: check if they have enough money
+					consoleCMD "buyStroggSmall monster_berserker 2";
+					set "cmd" "close";
+				}
+				else if ("desktop::myBuyMenuState" == 3){	// in enclosure specific monster menu?
+					//TODO: check if they have enough money
+					consoleCMD "buyStroggSmall monster_berserker 3";
+					set "cmd" "close";
+				}
+				else if ("desktop::myBuyMenuState" == 4){	// in enclosure specific monster menu?
+					//TODO: check if they have enough money
+					consoleCMD "buyStroggSmall monster_berserker 4";
+					set "cmd" "close";
+				}
+				else if ("desktop::myBuyMenuState" == 5){	// in enclosure specific monster menu?
+					//TODO: check if they have enough money
+					consoleCMD "buyStroggSmall monster_berserker 5";
+					set "cmd" "close";
+				}
+				else if ("desktop::myBuyMenuState" == 6){   // in shop menu?
+					if("desktop::shop2" == 0){
+						//TODO: check for money
+						//TODO: shop?
+						set "desktop::shop2" "1";
+						set "myBuyMenuText2::text" "Bought";
+					}
+				}
+			
+			}
+		}
+
+		windowDef myBuyPress3
+		{
+			rect	346,242,413,52
+			visible	1
+
+			onMouseEnter {
+				if ("desktop::active" == 0) {
+					set "myBuyMenu3::matcolor_w" "0.8" ;	
+					transition "myBuyMenuText3::forecolor" "$desktop::white_8" "$desktop::orange" "0" ;
+					set "myBuyMenuText3::textscale" "0.34" ;	
+					set "cmd" "play main_menu_mouseover" ;		
+				}
+			}
+			onMouseExit {
+				if ("desktop::active" == 0) {
+					transition "myBuyMenu3::matcolor_w" "0.8" "0.4" "300" ;
+					transition "myBuyMenuText3::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ;
+					transition "myBuyMenuText3::textscale" "0.34" "0.33" "300" ;
+				}
+			}
+			
+			// 0:enc,shop,research ; 1:enc1 ; 2:enc2 ; 3:enc3 ; 4:enc4 ; 5:enc5 ; 6:shop ; 7:research ; 9:enclosures
+			onAction {
+				if( "desktop::myBuyMenuState" == 0){		// in initial buy menu 0? -> go to research 7
+						//this might not be necessary
+				}
+				else if("desktop::myBuyMenuState" == 9){	// in enclosure menu?
+					if("desktop::enc3" == 0){				// enclosure 2 locked?
+						//TODO: check if they have enough money
+						set "desktop::enc3" "1" ;
+						set "myBuyMenuText3::text" "Enclosure 3";
+					} 
+					else {									
+						//namedevent "p_btns::myMonsterMenu" ;
+						set "myBuyMenuText1::text" "100 : Grunt";
+						set "myBuyMenuText2::text" "100 : Berserker";
+						set "myBuyMenuText3::text" "100 : Gladiator";
+						set "myBuyMenuText4::text" "100 : Sentry";
+						set "myBuyMenuText5::text" "100 : Network Guardian";
+						set "desktop::myBuyMenuState" "3";
+					}
+				} 
+				else if ("desktop::myBuyMenuState" == 1){	// in enclosure specific monster menu?
+					//TODO: check if they have enough money
+					consoleCMD "buyStroggSmall monster_gladiator 1";
+					set "cmd" "close";
+				}
+				else if ("desktop::myBuyMenuState" == 2){	// in enclosure specific monster menu?
+					//TODO: check if they have enough money
+					consoleCMD "buyStroggSmall monster_gladiator 2";
+					set "cmd" "close";
+				}
+				else if ("desktop::myBuyMenuState" == 3){	// in enclosure specific monster menu?
+					//TODO: check if they have enough money
+					consoleCMD "buyStroggSmall monster_gladiator 3";
+					set "cmd" "close";
+				}
+				else if ("desktop::myBuyMenuState" == 4){	// in enclosure specific monster menu?
+					//TODO: check if they have enough money
+					consoleCMD "buyStroggSmall monster_gladiator 4";
+					set "cmd" "close";
+				}
+				else if ("desktop::myBuyMenuState" == 5){	// in enclosure specific monster menu?
+					//TODO: check if they have enough money
+					consoleCMD "buyStroggSmall monster_gladiator 5";
+					set "cmd" "close";
+				}
+				else if ("desktop::myBuyMenuState" == 6){   // in shop menu?
+					if("desktop::shop3" == 0){
+						//TODO: check for money
+						//TODO: shop?
+						set "desktop::shop3" "1";
+						set "myBuyMenuText3::text" "Bought";
+					}
+				}
+			
+			}
+		}
+
+		windowDef myBuyPress4
+		{
+			rect	349,278,413,52
+			visible	1
+
+			onMouseEnter {
+				if ("desktop::active" == 0) {
+					set "myBuyMenu4::matcolor_w" "0.8" ;	
+					transition "myBuyMenuText4::forecolor" "$desktop::white_8" "$desktop::orange" "0" ;
+					set "myBuyMenuText4::textscale" "0.34" ;	
+					set "cmd" "play main_menu_mouseover" ;		
+				}
+			}
+			onMouseExit {
+				if ("desktop::active" == 0) {
+					transition "myBuyMenu4::matcolor_w" "0.8" "0.4" "300" ;
+					transition "myBuyMenuText4::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ;
+					transition "myBuyMenuText4::textscale" "0.34" "0.33" "300" ;
+				}
+			}
+			
+			// 0:enc,shop,research ; 1:enc1 ; 2:enc2 ; 3:enc3 ; 4:enc4 ; 5:enc5 ; 6:shop ; 7:research ; 9:enclosures
+			onAction {
+				if( "desktop::myBuyMenuState" == 0){		// in initial buy menu 0? -> go to research 7
+						//this might not be necessary
+				}
+				else if("desktop::myBuyMenuState" == 9){	// in enclosure menu?
+					if("desktop::enc4" == 0){				// enclosure 4 locked?
+						//TODO: check if they have enough money
+						set "desktop::enc4" "1" ;
+						set "myBuyMenuText4::text" "Enclosure 4";
+					} 
+					else {									
+						//namedevent "p_btns::myMonsterMenu" ;
+						set "myBuyMenuText1::text" "100 : Grunt";
+						set "myBuyMenuText2::text" "100 : Berserker";
+						set "myBuyMenuText3::text" "100 : Gladiator";
+						set "myBuyMenuText4::text" "100 : Sentry";
+						set "myBuyMenuText5::text" "100 : Network Guardian";
+						set "desktop::myBuyMenuState" "4";
+					}
+				} 
+				else if ("desktop::myBuyMenuState" == 1){	// in enclosure specific monster menu?
+					//TODO: check if they have enough money
+					consoleCMD "buyStroggSmall monster_sentry 1";
+					set "cmd" "close";
+				}
+				else if ("desktop::myBuyMenuState" == 2){	// in enclosure specific monster menu?
+					//TODO: check if they have enough money
+					consoleCMD "buyStroggSmall monster_sentry 2";
+					set "cmd" "close";
+				}
+				else if ("desktop::myBuyMenuState" == 3){	// in enclosure specific monster menu?
+					//TODO: check if they have enough money
+					consoleCMD "buyStroggSmall monster_sentry 3";
+					set "cmd" "close";
+				}
+				else if ("desktop::myBuyMenuState" == 4){	// in enclosure specific monster menu?
+					//TODO: check if they have enough money
+					consoleCMD "buyStroggSmall monster_sentry 4";
+					set "cmd" "close";
+				}
+				else if ("desktop::myBuyMenuState" == 5){	// in enclosure specific monster menu?
+					//TODO: check if they have enough money
+					consoleCMD "buyStroggSmall monster_sentry 5";
+					set "cmd" "close";
+				}
+			
+			}
+		}
+
+		windowDef myBuyPress5
+		{
+			rect	350,320,413,52
+			visible	1
+
+			onMouseEnter {
+				if ("desktop::active" == 0) {
+					set "myBuyMenu5::matcolor_w" "0.8" ;	
+					transition "myBuyMenuText5::forecolor" "$desktop::white_8" "$desktop::orange" "0" ;
+					set "myBuyMenuText5::textscale" "0.34" ;	
+					set "cmd" "play main_menu_mouseover" ;		
+				}
+			}
+			onMouseExit {
+				if ("desktop::active" == 0) {
+					transition "myBuyMenu5::matcolor_w" "0.8" "0.4" "300" ;
+					transition "myBuyMenuText5::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ;
+					transition "myBuyMenuText5::textscale" "0.34" "0.33" "300" ;
+				}
+			}
+			
+			// 0:enc,shop,research ; 1:enc1 ; 2:enc2 ; 3:enc3 ; 4:enc4 ; 5:enc5 ; 6:shop ; 7:research ; 9:enclosures
+			onAction {
+				if( "desktop::myBuyMenuState" == 0){		// in initial buy menu 0? -> go to research 7
+						//this might not be necessary
+				}
+				else if("desktop::myBuyMenuState" == 9){	// in enclosure menu?
+					if("desktop::enc5" == 0){				// enclosure 4 locked?
+						//TODO: check if they have enough money
+						set "desktop::enc5" "1" ;
+						set "myBuyMenuText5::text" "Enclosure 5";
+					} 
+					else {									
+						//namedevent "p_btns::myMonsterMenu" ;
+						set "myBuyMenuText1::text" "100 : Grunt";
+						set "myBuyMenuText2::text" "100 : Berserker";
+						set "myBuyMenuText3::text" "100 : Gladiator";
+						set "myBuyMenuText4::text" "100 : Sentry";
+						set "myBuyMenuText5::text" "100 : Network Guardian";
+						set "desktop::myBuyMenuState" "5";
+					}
+				} 
+				else if ("desktop::myBuyMenuState" == 1){	// in enclosure specific monster menu?
+					//TODO: check if they have enough money
+					consoleCMD "buyStroggSmall monster_network_guardian 1";
+					set "cmd" "close";
+				}
+				else if ("desktop::myBuyMenuState" == 2){	// in enclosure specific monster menu?
+					//TODO: check if they have enough money
+					consoleCMD "buyStroggSmall monster_network_guardian 2";
+					set "cmd" "close";
+				}
+				else if ("desktop::myBuyMenuState" == 3){	// in enclosure specific monster menu?
+					//TODO: check if they have enough money
+					consoleCMD "buyStroggSmall monster_network_guardian 3";
+					set "cmd" "close";
+				}
+				else if ("desktop::myBuyMenuState" == 4){	// in enclosure specific monster menu?
+					//TODO: check if they have enough money
+					consoleCMD "buyStroggSmall monster_network_guardian 4";
+					set "cmd" "close";
+				}
+				else if ("desktop::myBuyMenuState" == 5){	// in enclosure specific monster menu?
+					//TODO: check if they have enough money
+					consoleCMD "buyStroggSmall monster_network_guardian 5";
+					set "cmd" "close";
+				}
+			
+			}
+		}
+
+		//EDEL END
+
+
 		windowDef main_b_returnmp
 		{
 			rect	24,214,333,26
@@ -19944,6 +20539,7 @@ windowDef Desktop
 
 			onMouseExit {
 				if ("desktop::active" == 0) {
+					
 					transition "main_b1::matcolor_w" "0.8" "0.4" "300" ;
 					transition "main_t_b1::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ; 
 					transition "main_b1_corner::matcolor"  "$desktop::orange" "$desktop::corner" "300" ; 
@@ -19980,6 +20576,7 @@ windowDef Desktop
 
 			onMouseExit {
 				if ("desktop::active" == 0) {
+					
 					transition "main_b1::matcolor_w" "0.8" "0.4" "300" ;
 					transition "main_t_b1::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ; 
 					transition "main_b1_corner::matcolor"  "$desktop::orange" "$desktop::corner" "300" ; 
@@ -20023,6 +20620,7 @@ windowDef Desktop
 
 			onMouseExit {
 				if ("desktop::active" == 0) {
+					
 					transition "main_b1::matcolor_w" "0.8" "0.4" "300" ;
 					transition "main_t_b1::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ; 
 					transition "main_b1_corner::matcolor"  "$desktop::orange" "$desktop::corner" "300" ; 
@@ -20119,8 +20717,8 @@ windowDef Desktop
 			}
 
 			onAction {
-				set "pop_disc_title::text" "#str_200006" ;
-				set "pop_disc_text::text" "#str_200173" ;
+				set "pop_disc_title::text" "str_200006" ;
+				set "pop_disc_text::text" "str_200173" ;
 				
 				set "desktop::active" "1" ;
 				resettime "anim_pop_discIn" "0" ;				
@@ -20159,8 +20757,8 @@ windowDef Desktop
 			}
 
 			onAction {
-				set "pop_disc_title::text" "#str_200004" ;
-				set "pop_disc_text::text" "#str_200174" ;
+				set "pop_disc_title::text" "str_200004" ;
+				set "pop_disc_text::text" "str_200174" ;
 				
 				set "desktop::active" "1" ;
 				resettime "anim_pop_discIn" "0" ;
@@ -20566,37 +21164,13 @@ windowDef Desktop
 		{
 			rect	239,226,358,34
 			visible	0
-			/*
-			onMouseEnter {
-				if ("desktop::active" == 0) {
-					stoptransitions "new_b_start" ;
-					
-					set "new_bstart::matcolor_w" "1" ;
-					transition "new_t_bstart::forecolor" "$desktop::white_8" "$desktop::white" "0" ; 
-					transition "new_bstart_corner::matcolor" "$desktop::corner" "$desktop::orange" "0" ; 
-					
-					set "new_t_bstart::textscale" "0.34" ; 
-					
-					set "cmd" "play main_menu_mouseover" ;	
-				}
-			}
 
-			onMouseExit {
-				if ("desktop::active" == 0) {
-					transition "new_bstart::matcolor_w" "1" "0.4" "300" ;
-					transition "new_t_bstart::forecolor" "$desktop::white" "$desktop::white_8" "300" ; 
-					transition "new_bstart_corner::matcolor" "$desktop::orange" "$desktop::corner" "300" ; 
-					
-					transition "new_t_bstart::textscale" "0.34" "0.33" "300" ;
-				}
-			}
-			*/
 			onAction {
 				consoleCMD "map game/walker" ; // EDEL : airdefense1->walker
 				consoleCMD "notarget"; // EDEL
 				consoleCMD "give all"; // EDEL
-				consoleCMD "god"; / EDEL
-
+				consoleCMD "god"; // EDEL
+				
 				//set "cmd" "play main_menu_selection" ;
 			}
 
@@ -20884,7 +21458,7 @@ windowDef Desktop
 				set "set_ctrl_t_b4::forecolor" "$desktop::white_8"; 
 				set "set_ctrl_t_b4::textscale" "0.23" ;
 				
-				set "t_settings_title::text" "#str_200007" ;
+				set "t_settings_title::text" "str_200007" ;
 				
 				set "desktop::curr" "9" ;
 				set "desktop::undercurr" "9" ;
@@ -20968,7 +21542,7 @@ windowDef Desktop
 				set "set_game_xhairsize_background::matcolor_w" "0.4" ;
 				set "set_game_xhaircolor_background::matcolor_w" "0.4" ;
 				
-				set "t_settings_title::text" "#str_200008" ;
+				set "t_settings_title::text" "str_200008" ;
 				
 				set "desktop::curr" "21" ;
 				set "desktop::undercurr" "21" ;
@@ -21043,7 +21617,7 @@ windowDef Desktop
 				set "set_sys_adv_corner::matcolor" "$desktop::corner" ; 
 				set "set_sys_t_adv::textscale" "0.26" ;
 				
-				set "t_settings_title::text" "#str_200175" ;
+				set "t_settings_title::text" "str_200175" ;
 				
 				set "desktop::curr" "22" ;
 				set "desktop::undercurr" "22" ;
@@ -22760,7 +23334,7 @@ windowDef Desktop
 			onMouseEnter {
 				resettime "anim_sttip" "0" ;
 				
-				set "mp_browse_sttip_value::text" "#str_200932" ;
+				set "mp_browse_sttip_value::text" "str_200932" ;
 			}
 
 			onMouseExit {
@@ -22790,7 +23364,7 @@ windowDef Desktop
 			onMouseEnter {
 				resettime "anim_sttip" "0" ;
 				
-				set "mp_browse_sttip_value::text" "#str_200933" ;
+				set "mp_browse_sttip_value::text" "str_200933" ;
 			}
 
 			onMouseExit {
@@ -22820,7 +23394,7 @@ windowDef Desktop
 			onMouseEnter {
 				resettime "anim_sttip" "0" ;
 				
-				set "mp_browse_sttip_value::text" "#str_200934" ;
+				set "mp_browse_sttip_value::text" "str_200934" ;
 			}
 
 			onMouseExit {
@@ -22850,7 +23424,7 @@ windowDef Desktop
 			onMouseEnter {
 				resettime "anim_sttip" "0" ;
 				
-				set "mp_browse_sttip_value::text" "#str_200931" ;
+				set "mp_browse_sttip_value::text" "str_200931" ;
 			}
 
 			onMouseExit {
@@ -22938,7 +23512,7 @@ windowDef Desktop
 			onMouseEnter {
 				resettime "anim_sttip" "0" ;
 				
-				set "mp_browse_sttip_value::text" "#str_223004" ;
+				set "mp_browse_sttip_value::text" "str_223004" ;
 			}
 
 			onMouseExit {
@@ -25909,13 +26483,13 @@ windowDef Desktop
 				if ( "desktop::com_machineSpec" == 2 ) {
 					set "cmd" "video low" ;	
 					
-					set "set_sys_vidqual_val::text" "#str_200263" ;
+					set "set_sys_vidqual_val::text" "str_200263" ;
 					set "desktop::com_machineSpec" "0" ;
 					
 				} else {
 					set "cmd" "video high" ;	
 					
-					set "set_sys_vidqual_val::text" "#str_200262" ;
+					set "set_sys_vidqual_val::text" "str_200262" ;
 					set "desktop::com_machineSpec" "2" ;							
 				}
 				//set "cmd" "play main_menu_selection" ;
@@ -25954,7 +26528,7 @@ windowDef Desktop
 			onAction {
 				set "cmd" "video ultra" ;	
 				
-				set "set_sys_vidqual_val::text" "#str_200268" ;
+				set "set_sys_vidqual_val::text" "str_200268" ;
 				set "desktop::com_machineSpec" "3" ;
 				//set "cmd" "play main_menu_selection" ;
 				set "desktop::active" "1" ;
