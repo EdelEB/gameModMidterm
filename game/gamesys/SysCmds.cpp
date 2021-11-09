@@ -3246,8 +3246,12 @@ void Cmd_BuildShop_f(const idCmdArgs& args) {
 			plate.Set("origin", "-1000 950 -2093");
 			guy.Set("origin", "-1000 950 -2085");
 			break;
+		case 10: {
+			return;
+		}
 		}
 	}
+
 
 	idEntity* plateEnt, * guyEnt = NULL;
 	gameLocal.SpawnEntityDef(plate, &plateEnt);

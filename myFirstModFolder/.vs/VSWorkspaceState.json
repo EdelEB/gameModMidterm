@@ -9,6 +9,6 @@
     "\\scripts",
     "\\scripts\\maps"
   ],
-  "SelectedNode": "\\guis\\mainmenu.gui",
+  "SelectedNode": "\\scripts\\maps\\walker.script",
   "PreviewInSolutionExplorer": false
 }

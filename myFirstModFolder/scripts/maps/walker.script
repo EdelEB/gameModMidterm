@@ -765,7 +765,7 @@ void zooGuests(){
 			thread guestLife();
 			x = x-1;
 		}
-		sys.wait(15);
+		sys.wait(13);
 	}
 }
 
@@ -776,7 +776,6 @@ void activateResearchGuy(entity e){
 
 void researchGuy(){
 	entity e = sys.spawn("char_marine_medic");
-	e.setName("100: Research Gladiator");
 	e.disableTarget();
 	e.becomePassive(1);
 	e.setOrigin('-400 3927 -1818');

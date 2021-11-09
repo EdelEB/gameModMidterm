@@ -63,7 +63,7 @@ windowDef Desktop
 	float	"enc5" 0
 	float	"network_guardian"	0
 	float	"gladiator"	0
-	float	"bossbuddy"	0
+	float	"research"	0
 	float	"shop1"	0
 	float	"shop2" 0
 	float	"shop3" 0
@@ -559,7 +559,8 @@ windowDef Desktop
 			set "desktop::myBuyMenuState" "0";
 			set "myBuyMenuText1::text" "Buy Strogg";
 			set "myBuyMenuText2::text" "Buy Shops";
-			set "myBuyMenuText3::text" "Research";
+			if("desktop::research" == 0)	{set "myBuyMenuText3::text" "Hire a Researcher";}
+			else							{set "myBuyMenuText3::text" "Hired"}
 			set "myBuyMenuText4::text" "";
 			set "myBuyMenuText5::text" "";
 			
@@ -19125,7 +19126,7 @@ windowDef Desktop
 			set "cmd" "close";
 			set "myBuyMenuText1::text" "Buy Strogg";
 			set "myBuyMenuText2::text" "Buy Shops";
-			set "myBuyMenuText3::text" "Research";
+			set "myBuyMenuText3::text" "Hire a Researcher";
 			set "myBuyMenuText4::text" "nathing";
 			set "myBuyMenuText5::text" "nada";
 		}
@@ -20305,8 +20306,12 @@ windowDef Desktop
 			
 			// 0:enc,shop,research ; 1:enc1 ; 2:enc2 ; 3:enc3 ; 4:enc4 ; 5:enc5 ; 6:shop ; 7:research ; 9:enclosures
 			onAction {
-				if( "desktop::myBuyMenuState" == 0){		// in initial buy menu 0? -> go to research 7
-						//this might not be necessary
+				if( "desktop::myBuyMenuState" == 0){		// in initial buy menu 0? -> research
+						if("desktop::research" == 0){		// research bought?
+							set "myBuyMenuText3::text" "Hired";
+							set "desktop::research" "1";
+							consoleCMD "buildShop 10";
+						}
 				}
 				else if("desktop::myBuyMenuState" == 9){	// in enclosure menu?
 					if("desktop::enc3" == 0){				// enclosure 2 locked?
