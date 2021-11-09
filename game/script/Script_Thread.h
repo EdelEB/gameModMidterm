@@ -164,6 +164,10 @@ private:
 	void						Event_DrawText( const char *text, const idVec3 &origin, float scale, const idVec3 &color, const int align, const float lifetime );
 	void						Event_InfluenceActive( void );
 
+	//EDEL BEGIN
+	void						Event_Money(int);
+	//EDEL END
+
 // RAVEN BEGIN
 // kfuller: added
 	void						Event_SetSpawnVector( const char *key, idVec3 &vec );
@@ -202,6 +206,7 @@ private:
 	void						Event_EndManualStreaming( void );
 	void						Event_SetMatSort( const char *name, const char *val ) const;
 // RAVEN END
+
 
 public:							
 								CLASS_PROTOTYPE( idThread );

@@ -271,6 +271,11 @@ scriptEvent void	removeTarget( entity ent );
 	system events (called via 'sys.')
 
 ***********************************************************************/
+//EDEL START
+
+scriptEvent void	money(float money);
+
+//EDEL END
 
 // Terminates a thread.
 scriptEvent	void 	terminate( float threadNumber );

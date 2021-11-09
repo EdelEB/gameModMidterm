@@ -20158,48 +20158,42 @@ windowDef Desktop
 				}
 				else if("desktop::myBuyMenuState" == 9){	// in enclosure menu?
 					if("desktop::enc1" == 0){				// enclosure 1 unlocked?
-						//TODO: check if they have enough money
+						consoleCMD "buildEnc 1";
 						set "desktop::enc1" "1" ;
 						set "myBuyMenuText1::text" "Enclosure 1";
 					} 
 					else {									//enters enclosure specific monster menu					
 						set "myBuyMenuText1::text" "100 : Grunt";
-						set "myBuyMenuText2::text" "100 : Berserker";
-						set "myBuyMenuText3::text" "100 : Gladiator";
-						set "myBuyMenuText4::text" "100 : Sentry";
-						set "myBuyMenuText5::text" "100 : Network Guardian";
+						set "myBuyMenuText2::text" "105 : Berserker";
+						set "myBuyMenuText3::text" "110 : Gladiator";
+						set "myBuyMenuText4::text" "120 : Sentry";
+						set "myBuyMenuText5::text" "150 : Network Guardian";
 						set "desktop::myBuyMenuState" "1";
 					}
 				} 
 				else if ("desktop::myBuyMenuState" == 1){	// in enclosure specific monster menu?
-					//TODO: check if they have enough money
-					consoleCMD "buyStroggSmall monster_grunt 1";
+					consoleCMD "buyStroggSmall monster_grunt 1 100";
 					set "cmd" "close";
 				}
 				else if ("desktop::myBuyMenuState" == 2){	// in enclosure specific monster menu?
-					//TODO: check if they have enough money
-					consoleCMD "buyStroggSmall monster_grunt 2";
+					consoleCMD "buyStroggSmall monster_grunt 2 100";
 					set "cmd" "close";
 				}
 				else if ("desktop::myBuyMenuState" == 3){	// in enclosure specific monster menu?
-					//TODO: check if they have enough money
-					consoleCMD "buyStroggSmall monster_grunt 3";
+					consoleCMD "buyStroggSmall monster_grunt 3 100";
 					set "cmd" "close";
 				}
 				else if ("desktop::myBuyMenuState" == 4){	// in enclosure specific monster menu?
-					//TODO: check if they have enough money
-					consoleCMD "buyStroggSmall monster_grunt 4";
+					consoleCMD "buyStroggSmall monster_grunt 4 100";
 					set "cmd" "close";
 				}
 				else if ("desktop::myBuyMenuState" == 5){	// in enclosure specific monster menu?
-					//TODO: check if they have enough money
-					consoleCMD "buyStroggSmall monster_grunt 5";
+					consoleCMD "buyStroggSmall monster_grunt 5 100";
 					set "cmd" "close";
 				} 
 				else if ("desktop::myBuyMenuState" == 6){   // in shop menu?
 					if("desktop::shop1" == 0){
-						//TODO: check for money
-						//TODO: shop?
+						consoleCMD "buildShop 1";
 						set "desktop::shop1" "1";
 						set "myBuyMenuText1::text" "Bought";
 					}
@@ -20234,7 +20228,7 @@ windowDef Desktop
 					
 					set "desktop::myBuyMenuState" "6";
 
-					if ("desktop::shop1" == 0)	{ set "myBuyMenuText1::text" "100 : Pizza Place"; }
+					if ("desktop::shop1" == 0)	{ set "myBuyMenuText1::text" "100 : Photographer"; }
 					else						{ set "myBuyMenuText1::text" "Bought"; }
 					if ("desktop::shop2" == 0)	{ set "myBuyMenuText2::text" "100 : Ice Cream Stand"; }
 					else						{ set "myBuyMenuText2::text" "Bought"; }
@@ -20243,49 +20237,43 @@ windowDef Desktop
 				}
 				else if("desktop::myBuyMenuState" == 9){	// in enclosure menu?
 					if("desktop::enc2" == 0){				// enclosure 2 locked?
-						//TODO: check if they have enough money
+						consoleCMD "buildEnc 2";
 						set "desktop::enc2" "1" ;
 						set "myBuyMenuText2::text" "Enclosure 2";
 					} 
 					else {									
 						//namedevent "p_btns::myMonsterMenu" ;
 						set "myBuyMenuText1::text" "100 : Grunt";
-						set "myBuyMenuText2::text" "100 : Berserker";
-						set "myBuyMenuText3::text" "100 : Gladiator";
-						set "myBuyMenuText4::text" "100 : Sentry";
-						set "myBuyMenuText5::text" "100 : Network Guardian";
+						set "myBuyMenuText2::text" "105 : Berserker";
+						set "myBuyMenuText3::text" "110 : Gladiator";
+						set "myBuyMenuText4::text" "120 : Sentry";
+						set "myBuyMenuText5::text" "150 : Network Guardian";
 						set "desktop::myBuyMenuState" "2";
 					}
 				} 
 				else if ("desktop::myBuyMenuState" == 1){	// in enclosure specific monster menu?
-					//TODO: check if they have enough money
-					consoleCMD "buyStroggSmall monster_berserker 1";
+					consoleCMD "buyStroggSmall monster_berserker 1 105";
 					set "cmd" "close";
 				}
 				else if ("desktop::myBuyMenuState" == 2){	// in enclosure specific monster menu?
-					//TODO: check if they have enough money
-					consoleCMD "buyStroggSmall monster_berserker 2";
+					consoleCMD "buyStroggSmall monster_berserker 2 105";
 					set "cmd" "close";
 				}
 				else if ("desktop::myBuyMenuState" == 3){	// in enclosure specific monster menu?
-					//TODO: check if they have enough money
-					consoleCMD "buyStroggSmall monster_berserker 3";
+					consoleCMD "buyStroggSmall monster_berserker 3 105";
 					set "cmd" "close";
 				}
 				else if ("desktop::myBuyMenuState" == 4){	// in enclosure specific monster menu?
-					//TODO: check if they have enough money
-					consoleCMD "buyStroggSmall monster_berserker 4";
+					consoleCMD "buyStroggSmall monster_berserker 4 105";
 					set "cmd" "close";
 				}
 				else if ("desktop::myBuyMenuState" == 5){	// in enclosure specific monster menu?
-					//TODO: check if they have enough money
-					consoleCMD "buyStroggSmall monster_berserker 5";
+					consoleCMD "buyStroggSmall monster_berserker 5 105";
 					set "cmd" "close";
 				}
 				else if ("desktop::myBuyMenuState" == 6){   // in shop menu?
 					if("desktop::shop2" == 0){
-						//TODO: check for money
-						//TODO: shop?
+						consoleCMD "buildShop 2";
 						set "desktop::shop2" "1";
 						set "myBuyMenuText2::text" "Bought";
 					}
@@ -20322,49 +20310,43 @@ windowDef Desktop
 				}
 				else if("desktop::myBuyMenuState" == 9){	// in enclosure menu?
 					if("desktop::enc3" == 0){				// enclosure 2 locked?
-						//TODO: check if they have enough money
+						consoleCMD "buildEnc 3";
 						set "desktop::enc3" "1" ;
 						set "myBuyMenuText3::text" "Enclosure 3";
 					} 
 					else {									
 						//namedevent "p_btns::myMonsterMenu" ;
 						set "myBuyMenuText1::text" "100 : Grunt";
-						set "myBuyMenuText2::text" "100 : Berserker";
-						set "myBuyMenuText3::text" "100 : Gladiator";
-						set "myBuyMenuText4::text" "100 : Sentry";
-						set "myBuyMenuText5::text" "100 : Network Guardian";
+						set "myBuyMenuText2::text" "105 : Berserker";
+						set "myBuyMenuText3::text" "110 : Gladiator";
+						set "myBuyMenuText4::text" "120 : Sentry";
+						set "myBuyMenuText5::text" "150 : Network Guardian";
 						set "desktop::myBuyMenuState" "3";
 					}
 				} 
 				else if ("desktop::myBuyMenuState" == 1){	// in enclosure specific monster menu?
-					//TODO: check if they have enough money
-					consoleCMD "buyStroggSmall monster_gladiator 1";
+					consoleCMD "buyStroggSmall monster_gladiator 1 110";
 					set "cmd" "close";
 				}
 				else if ("desktop::myBuyMenuState" == 2){	// in enclosure specific monster menu?
-					//TODO: check if they have enough money
-					consoleCMD "buyStroggSmall monster_gladiator 2";
+					consoleCMD "buyStroggSmall monster_gladiator 2 110";
 					set "cmd" "close";
 				}
 				else if ("desktop::myBuyMenuState" == 3){	// in enclosure specific monster menu?
-					//TODO: check if they have enough money
-					consoleCMD "buyStroggSmall monster_gladiator 3";
+					consoleCMD "buyStroggSmall monster_gladiator 3 110";
 					set "cmd" "close";
 				}
 				else if ("desktop::myBuyMenuState" == 4){	// in enclosure specific monster menu?
-					//TODO: check if they have enough money
-					consoleCMD "buyStroggSmall monster_gladiator 4";
+					consoleCMD "buyStroggSmall monster_gladiator 4 110";
 					set "cmd" "close";
 				}
 				else if ("desktop::myBuyMenuState" == 5){	// in enclosure specific monster menu?
-					//TODO: check if they have enough money
-					consoleCMD "buyStroggSmall monster_gladiator 5";
+					consoleCMD "buyStroggSmall monster_gladiator 5 110";
 					set "cmd" "close";
 				}
 				else if ("desktop::myBuyMenuState" == 6){   // in shop menu?
 					if("desktop::shop3" == 0){
-						//TODO: check for money
-						//TODO: shop?
+						consoleCMD "buildShop 3";
 						set "desktop::shop3" "1";
 						set "myBuyMenuText3::text" "Bought";
 					}
@@ -20394,50 +20376,44 @@ windowDef Desktop
 				}
 			}
 			
-			// 0:enc,shop,research ; 1:enc1 ; 2:enc2 ; 3:enc3 ; 4:enc4 ; 5:enc5 ; 6:shop ; 7:research ; 9:enclosures
 			onAction {
 				if( "desktop::myBuyMenuState" == 0){		// in initial buy menu 0? -> go to research 7
 						//this might not be necessary
 				}
 				else if("desktop::myBuyMenuState" == 9){	// in enclosure menu?
 					if("desktop::enc4" == 0){				// enclosure 4 locked?
-						//TODO: check if they have enough money
+						consoleCMD "buildEnc 4";
 						set "desktop::enc4" "1" ;
 						set "myBuyMenuText4::text" "Enclosure 4";
 					} 
 					else {									
 						//namedevent "p_btns::myMonsterMenu" ;
 						set "myBuyMenuText1::text" "100 : Grunt";
-						set "myBuyMenuText2::text" "100 : Berserker";
-						set "myBuyMenuText3::text" "100 : Gladiator";
-						set "myBuyMenuText4::text" "100 : Sentry";
-						set "myBuyMenuText5::text" "100 : Network Guardian";
+						set "myBuyMenuText2::text" "105 : Berserker";
+						set "myBuyMenuText3::text" "110 : Gladiator";
+						set "myBuyMenuText4::text" "120 : Sentry";
+						set "myBuyMenuText5::text" "150 : Network Guardian";
 						set "desktop::myBuyMenuState" "4";
 					}
 				} 
 				else if ("desktop::myBuyMenuState" == 1){	// in enclosure specific monster menu?
-					//TODO: check if they have enough money
-					consoleCMD "buyStroggSmall monster_sentry 1";
+					consoleCMD "buyStroggSmall monster_sentry 1 120";
 					set "cmd" "close";
 				}
 				else if ("desktop::myBuyMenuState" == 2){	// in enclosure specific monster menu?
-					//TODO: check if they have enough money
-					consoleCMD "buyStroggSmall monster_sentry 2";
+					consoleCMD "buyStroggSmall monster_sentry 2 120";
 					set "cmd" "close";
 				}
 				else if ("desktop::myBuyMenuState" == 3){	// in enclosure specific monster menu?
-					//TODO: check if they have enough money
-					consoleCMD "buyStroggSmall monster_sentry 3";
+					consoleCMD "buyStroggSmall monster_sentry 3 120";
 					set "cmd" "close";
 				}
 				else if ("desktop::myBuyMenuState" == 4){	// in enclosure specific monster menu?
-					//TODO: check if they have enough money
-					consoleCMD "buyStroggSmall monster_sentry 4";
+					consoleCMD "buyStroggSmall monster_sentry 4 120";
 					set "cmd" "close";
 				}
 				else if ("desktop::myBuyMenuState" == 5){	// in enclosure specific monster menu?
-					//TODO: check if they have enough money
-					consoleCMD "buyStroggSmall monster_sentry 5";
+					consoleCMD "buyStroggSmall monster_sentry 5 120";
 					set "cmd" "close";
 				}
 			
@@ -20465,50 +20441,44 @@ windowDef Desktop
 				}
 			}
 			
-			// 0:enc,shop,research ; 1:enc1 ; 2:enc2 ; 3:enc3 ; 4:enc4 ; 5:enc5 ; 6:shop ; 7:research ; 9:enclosures
 			onAction {
 				if( "desktop::myBuyMenuState" == 0){		// in initial buy menu 0? -> go to research 7
 						//this might not be necessary
 				}
 				else if("desktop::myBuyMenuState" == 9){	// in enclosure menu?
 					if("desktop::enc5" == 0){				// enclosure 4 locked?
-						//TODO: check if they have enough money
+						consoleCMD "buildEnc 5";
 						set "desktop::enc5" "1" ;
 						set "myBuyMenuText5::text" "Enclosure 5";
 					} 
 					else {									
 						//namedevent "p_btns::myMonsterMenu" ;
 						set "myBuyMenuText1::text" "100 : Grunt";
-						set "myBuyMenuText2::text" "100 : Berserker";
-						set "myBuyMenuText3::text" "100 : Gladiator";
-						set "myBuyMenuText4::text" "100 : Sentry";
-						set "myBuyMenuText5::text" "100 : Network Guardian";
+						set "myBuyMenuText2::text" "105 : Berserker";
+						set "myBuyMenuText3::text" "110 : Gladiator";
+						set "myBuyMenuText4::text" "120 : Sentry";
+						set "myBuyMenuText5::text" "150 : Network Guardian";
 						set "desktop::myBuyMenuState" "5";
 					}
 				} 
 				else if ("desktop::myBuyMenuState" == 1){	// in enclosure specific monster menu?
-					//TODO: check if they have enough money
-					consoleCMD "buyStroggSmall monster_network_guardian 1";
+					consoleCMD "buyStroggSmall monster_network_guardian 1 150";
 					set "cmd" "close";
 				}
 				else if ("desktop::myBuyMenuState" == 2){	// in enclosure specific monster menu?
-					//TODO: check if they have enough money
-					consoleCMD "buyStroggSmall monster_network_guardian 2";
+					consoleCMD "buyStroggSmall monster_network_guardian 2 150";
 					set "cmd" "close";
 				}
 				else if ("desktop::myBuyMenuState" == 3){	// in enclosure specific monster menu?
-					//TODO: check if they have enough money
-					consoleCMD "buyStroggSmall monster_network_guardian 3";
+					consoleCMD "buyStroggSmall monster_network_guardian 3 150";
 					set "cmd" "close";
 				}
 				else if ("desktop::myBuyMenuState" == 4){	// in enclosure specific monster menu?
-					//TODO: check if they have enough money
-					consoleCMD "buyStroggSmall monster_network_guardian 4";
+					consoleCMD "buyStroggSmall monster_network_guardian 4 150";
 					set "cmd" "close";
 				}
 				else if ("desktop::myBuyMenuState" == 5){	// in enclosure specific monster menu?
-					//TODO: check if they have enough money
-					consoleCMD "buyStroggSmall monster_network_guardian 5";
+					consoleCMD "buyStroggSmall monster_network_guardian 5 150";
 					set "cmd" "close";
 				}
 			
@@ -21169,7 +21139,7 @@ windowDef Desktop
 				consoleCMD "map game/walker" ; // EDEL : airdefense1->walker
 				consoleCMD "notarget"; // EDEL
 				consoleCMD "god"; // EDEL
-				
+				consoleCMD "money 900"; //EDEL
 				//set "cmd" "play main_menu_selection" ;
 			}
 

@@ -736,13 +736,15 @@ void endDropships()	{
 }
 
 // EDEL START
+
 void guestLife(){
+	sys.money(20);
 	string ent_string;
 	vector spawn_location;
 	float y = sys.randomInt(3); //determines marine type spawned
-	if(y==1){		ent_string = "char_marine";			spawn_location = '-1438 335 -1807';}		
-	else if(y==2){	ent_string = "char_marine_tech";	spawn_location = '-1456 1339 -1807';}
-	else{			ent_string = "char_marine_medic";	spawn_location = '-1415 2370 -1807';}
+	if(y==1){		ent_string = "char_marine_unarmed";	spawn_location = '-1438 335 -1807';}		
+	else if(y==2){	ent_string = "char_marine_unarmed";	spawn_location = '-1456 1339 -1807';}
+	else{			ent_string = "char_marine_unarmed";	spawn_location = '-1415 2370 -1807';}
 
 	entity guest = sys.spawn(ent_string);
 	guest.disableTarget();
@@ -767,47 +769,35 @@ void zooGuests(){
 	}
 }
 
-void addMoney(){
-	return;
-}
+void activateResearchGuy(entity e){
+	//sys.println("lets do research");
 
-void activateResearchGuy(){
-	sys.println("lets do research");
 }
 
 void researchGuy(){
-	entity scientist = sys.spawn("char_marine_medic");
-	scientist.disableTarget();
-	scientist.becomePassive(1);
-	scientist.setOrigin('-400 3927 -1818');
-	scientist.setScript("onclick", "activateResearchGuy");
-}
-
-void pauseTest(){
-
-	//#include "Script_Thread.h"
-	//idThread::Event_Pause();
+	entity e = sys.spawn("char_marine_medic");
+	e.setName("100: Research Gladiator");
+	e.disableTarget();
+	e.becomePassive(1);
+	e.setOrigin('-400 3927 -1818');
+	e.setScript("onclick", "activateResearchGuy(e)");
 }
 
 // EDEL END
 
 void main()
 {
-	//thread initFlyby();
-	
-	thread pauseTest();
-
 	thread researchGuy();
-
-	
 	
 	thread zooGuests();
 	thread lowerLifts();	
-	thread addMoney();
-
 	
+	//entity e = sys.spawn("func_static");
+	//e.setModel("models/mapobjects/strogg/cargo_container/generic_small.lwo");
+	//e.setSkin("skins/mapobjects/strogg/doors/generic/tram/tram_door01");
+	//e.setOrigin('-400 3927 -1818');
 
-	//thread mostHorrendousHackEver();
+
 }
 
 }	//end namespace

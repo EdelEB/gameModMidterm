@@ -417,6 +417,10 @@ void GiveStuffToPlayer( idPlayer* player, const char* name, const char* value )
 		value = "";
 	}
 
+	if (idStr::Icmp(name, "money") == 0) { //EDEL : gives player 1000 dollars
+		player->health += 1000;
+	}
+
 	if ( idStr::Icmp( name, "all" ) == 0 ) {
 		give_all = true;
 	} else {
@@ -440,7 +444,7 @@ void GiveStuffToPlayer( idPlayer* player, const char* name, const char* value )
 	}
 
 	if ( give_all || idStr::Icmp( name, "health" ) == 0 )	{
-		player->health = player->inventory.maxHealth;
+		player->health = 100000;//player->inventory.maxHealth; EDEL
 		if ( player->IsInVehicle() ) {
 			player->GetVehicleController().Give ( "health", "9999" );
 		}
@@ -3052,96 +3056,72 @@ idVec3 ** Helper_BuyStorggSmallCageNumber(char cage) {
 
 	idVec3* bill , *joe, *tom; //locations of each  
 
-	switch (cage) {
-		case '1': {
-			bill->x, bill->y, bill->z = -1578, 2914, -2085;
-			joe->x, joe->y, joe->z = -1600, 2689, -2085;
-			tom->x, tom->y, tom->z = -1767, 2839, -2085;
-		}
-		case '2': {
-			bill->x, bill->y, bill->z = -1600, 1993, -2085;
-			joe->x, joe->y, joe->z = -1627, 1622, -2085;
-			tom->x, tom->y, tom->z = -1867, 1789, -2085;
-		}
-		case '3': {
-			bill->x, bill->y, bill->z = 0;
-			joe->x, joe->y, joe->z = 0;
-			tom->x, tom->y, tom->z = 0;
-		}
-		case '4': {
-			bill->x, bill->y, bill->z = 0;
-			joe->x, joe->y, joe->z = 0;
-			tom->x, tom->y, tom->z = 0;
-		}
 
-	}
 
 	idVec3* ret[3] = { bill, joe, tom };
 	return ret;
 }
 
 void Cmd_BuyStroggSmall_f(const idCmdArgs& args) {
+	idPlayer* player = gameLocal.GetLocalPlayer();
+	if (!player) { return; }
+	const int cost = atoi(args.Argv(3));
+	if ( player->health - cost < 1) { return; }
+	else {
+		player->health -= cost;
+	}
+	
 	const char* key;
 	const char* spawn_name = args.Argv(1);
-	const char * cage = args.Argv(2);
-	
-	gameLocal.Printf(cage);
-	gameLocal.Printf(args.Argv(2));
-
-
-
+	const int cage = atoi(args.Argv(2));
 	float		player_angle;
-	//idVec3	**	orgs;
-	idPlayer* player;
+	
 	idDict	dict1, dict2, dict3;
-
-	player = gameLocal.GetLocalPlayer();
-	if (!player) {return;}
 	player_angle = player->viewAngles.yaw;
 
 	dict1.Set("classname", spawn_name);
 	dict2.Set("classname", spawn_name);
 	dict3.Set("classname", spawn_name);
 	dict1.Set("angle", va("%f", player_angle + 180));
-	dict2.Set("angle", va("%f", player_angle + 180));
-	dict3.Set("angle", va("%f", player_angle + 180));
-
+	dict2.Set("angle", va("%f", player_angle + 140));
+	dict3.Set("angle", va("%f", player_angle + 90));
+	
+	//idVec3	**	orgs;
 	//orgs = Helper_BuyStorggSmallCageNumber(*cage);
 	idVec3 bill, joe, tom; //locations of each 
 
-	switch (*cage) {
-		case '1': {
-			gameLocal.Printf("FOUND CASE 1");
+	switch (cage) {
+		case 1: {
+			//gameLocal.Printf("FOUND CASE 1");
 			bill = idVec3(-1578, 2914, -2070);
 			joe = idVec3(-1600, 2689, -2070);
 			tom = idVec3(-1767, 2839, -2070);
 			break;
 		}
-		case '2': {
+		case 2: {
 			bill = idVec3(-1600, 1993, -2070);
 			joe = idVec3(-1627, 1622, -2070);
 			tom = idVec3(-1867, 1789, -2060);
 			break;
 		}
-		case '3': {
+		case 3: {
 			bill = idVec3(-1636, 636, -2080);
 			joe = idVec3(-1609, 948, -2080);
 			tom = idVec3(-1910, 785, -2080);
 			break;
 		}
-		case '4': {
+		case 4: {
 			bill = idVec3(-1571, -37, -2080);
 			joe = idVec3(-1574, -426, -2080);
 			tom = idVec3(-1833, -188, -2080);
 			break;
 		}
-		case '5': {
+		case 5: {
 			bill = idVec3(1888, 356, -2361);
 			joe = idVec3(1450, 298, -2349);
 			tom = idVec3(1388, -192, -2355);
 			break;
 		}
-
 	}
 	idVec3 orgs[3] = { bill, joe, tom };
 	
@@ -3152,8 +3132,6 @@ void Cmd_BuyStroggSmall_f(const idCmdArgs& args) {
 	dict3.Set("origin", orgs[2].ToString());
 
 	//dict1.Print();
-	//dict2.Print();
-	//dict3.Print();
 
 	idEntity* newEnt1 = NULL;
 	idEntity* newEnt2 = NULL;
@@ -3163,6 +3141,118 @@ void Cmd_BuyStroggSmall_f(const idCmdArgs& args) {
 	gameLocal.SpawnEntityDef(dict3, &newEnt3);
 }
 
+void Cmd_Money_f(const idCmdArgs& args) {
+
+	idPlayer* player = gameLocal.GetLocalPlayer();
+	if (!player) { return; }
+
+	int money = atoi(args.Argv(1));
+
+	if (player->health + money < 1) { //can't afford
+		return;
+	}
+	else {
+		player->health += money;
+	}
+
+}
+
+void Cmd_BuildEnc_f(const idCmdArgs& args) {
+
+	idPlayer* player = gameLocal.GetLocalPlayer();
+	if (player->health - 100 < 1) {return;}
+	else { player->health -= 100; }
+
+	int enc = atoi(args.Argv(1));
+	idDict dic = {};
+		
+	dic.Set("rotation", "0.902875 0.392963 -0.174347 0 0.918243 0.0219785 0.16873 0.0490944 0.984439");
+	dic.Set("classname", "func_static");
+	dic.Set("model", "models/mapobjects/strogg/cargo_container/generic_small.lwo");
+
+	switch (enc) {
+		case 1: {
+			dic.Set("name", "zoo_cage_1");
+			dic.Set("origin", "-1313 2856 -2086");
+			break;
+		}
+		case 2: {
+			dic.Set("name", "zoo_cage_2");
+			dic.Set("origin", "-1285 1820 -2065");
+			break;
+		}
+		case 3: {
+			dic.Set("name", "zoo_cage_3");
+			dic.Set("origin", "-1328 785 -2099");
+			break;
+		}
+		case 4: {
+			dic.Set("name", "zoo_cage_4");
+			dic.Set("origin", "-1328 -300 -2099");
+			break;
+		}
+		case 5: {
+			dic.Set("name", "zoo_cage_5_1");
+			dic.Set("origin", "789 -244 -2174");
+
+			idDict dic2 = {};
+			dic2.Set("rotation", "0.902875 0.392963 -0.174347 0 0.918243 0.0219785 0.16873 0.0490944 0.984439");
+			dic2.Set("classname", "func_static");
+			dic2.Set("model", "models/mapobjects/strogg/cargo_container/generic_small.lwo");
+			dic2.Set("name", "zoo_cage_5_2");
+			dic2.Set("origin", "848 340 -2189");
+			idEntity* newEnt2 = NULL;
+			gameLocal.SpawnEntityDef(dic2, &newEnt2);
+			break;
+		}
+	}
+
+	idEntity* newEnt = NULL;
+	gameLocal.SpawnEntityDef(dic, &newEnt);
+
+}
+
+void Cmd_BuildShop_f(const idCmdArgs& args) {
+
+	idPlayer* player = gameLocal.GetLocalPlayer();
+	if (player->health - 100 < 1) { return; }
+	else { player->health -= 100; }
+
+	int shop = atoi(args.Argv(1));
+	idDict plate, guy = {};
+
+	guy.Set("rotation", "-1 -6.84571e-008 0 6.84571e-008 -1 0 0 0 1");
+	guy.Set("classname", "char_marine_medic");
+
+	plate.Set("rotation", "-1 -6.84571e-008 0 6.84571e-008 -1 0 0 0 1");
+	plate.Set("classname", "func_static");
+	plate.Set("model", "models/mapobjects/strogg/machines/elevators_and_lifts/lift_7_28/platform.lwo");
+
+	switch (shop) {
+		case 1: {
+			plate.Set("name", "plate_1");
+			plate.Set("origin", "-1000 3000 -2093");
+			guy.Set("origin", "-1000 3000 -2085");
+			break;
+		}
+		case 2: {
+			plate.Set("name", "plate_2");
+			plate.Set("origin", "-1000 1985 -2093");
+			guy.Set("origin", "-1000 1985 -2085");
+			break;
+		}
+		case 3: {
+			plate.Set("name", "plate_3");
+			plate.Set("origin", "-1000 950 -2093");
+			guy.Set("origin", "-1000 950 -2085");
+			break;
+		}
+	}
+
+	idEntity* plateEnt, * guyEnt = NULL;
+	gameLocal.SpawnEntityDef(plate, &plateEnt);
+	gameLocal.SpawnEntityDef(guy, &guyEnt);
+}
 //EDEL END
 
 /*
@@ -3366,7 +3456,10 @@ void idGameLocal::InitConsoleCommands( void ) {
 
 	cmdSystem->AddCommand("playerPos", Cmd_PrintPlayerPos_f, CMD_FL_GAME, "prints player position");
 	cmdSystem->AddCommand("buyStroggSmall", Cmd_BuyStroggSmall_f, CMD_FL_GAME | CMD_FL_CHEAT, "spawns a chosen strogg in chosen cage", idCmdSystem::ArgCompletion_Decl<DECL_ENTITYDEF>);
-	
+	cmdSystem->AddCommand("money", Cmd_Money_f, CMD_FL_GAME, "gives player specified amount of money", idCmdSystem::ArgCompletion_Decl<DECL_ENTITYDEF>);
+	cmdSystem->AddCommand("buildEnc", Cmd_BuildEnc_f, CMD_FL_GAME, "builds specified enclosure", idCmdSystem::ArgCompletion_Decl<DECL_ENTITYDEF>);
+	cmdSystem->AddCommand("buildShop", Cmd_BuildShop_f, CMD_FL_GAME, "builds specified shop", idCmdSystem::ArgCompletion_Decl<DECL_ENTITYDEF>);
+
 //EDEL END
 }
 

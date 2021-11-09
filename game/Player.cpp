@@ -2977,7 +2977,7 @@ void idPlayer::SavePersistantInfo( void ) {
 
 	playerInfo.Clear();
 	inventory.GetPersistantData( playerInfo );
-	playerInfo.SetInt( "health", health );
+	playerInfo.SetInt( "health", health ); //EDEL health->money
 	playerInfo.SetInt( "current_weapon", currentWeapon );
 }
 
@@ -3399,7 +3399,10 @@ void idPlayer::UpdateHudStats( idUserInterface *_hud ) {
 		_hud->SetStateFloat	( "player_healthpct", idMath::ClampFloat ( 0.0f, 1.0f, (float)health / (float)inventory.maxHealth ) );
 		_hud->HandleNamedEvent ( "updateHealth" );
 	}
-		
+	
+
+
+
 	temp = _hud->State().GetInt ( "player_armor", "-1" );
 	if ( temp != inventory.armor ) {
 		_hud->SetStateInt ( "player_armorDelta", temp == -1 ? 0 : (temp - inventory.armor) );
@@ -8561,13 +8564,12 @@ void idPlayer::PerformImpulse( int impulse ) {
 
 		case IMPULSE_24: { //spawns strogg berserker ; bind 'k'
 			const char* key;
-			char* spawn_name = "monster_sentry";
+			char* spawn_name = "func_static";
 			float		player_angle;
 			idVec3		org;
-			idPlayer	*player;
+			idPlayer	*player = gameLocal.GetLocalPlayer();
 			idDict		dict;
 
-			player = gameLocal.GetLocalPlayer();
 			if ( !player ) {break;}
 
 			player_angle = player->viewAngles.yaw;
@@ -8582,6 +8584,7 @@ void idPlayer::PerformImpulse( int impulse ) {
 
 			idEntity *newEnt = NULL;
 			gameLocal.SpawnEntityDef( dict, &newEnt );
+			newEnt->SetModel("models/mapobjects/strogg/cargo_container/generic_small.lwo");
 
 			if (newEnt)	{
 				gameLocal.Printf("spawned entity '%s'\n", newEnt->name.c_str());
