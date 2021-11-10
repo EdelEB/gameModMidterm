@@ -41,7 +41,9 @@ SysCmds.cpp & Player.cpp
 Config file
 	new binding for 'l', 'b', 'h'
 
+////////////////////////////////////////////////////////////////////////////////////////////
 
-	
-
+NOTE: 
+Documentation took a back seat as more work needed to be done more quickley. 
+However searching for "EDEL" in the code should find any changes I made.
 	

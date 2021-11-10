@@ -270,6 +270,24 @@ cage_5 walls : 789 -244 -2174       848 340 -2189
 	in the map script; that is not my main concern though.
 
 	Having the cages able to be open and closed is still up in the air.
+
+11/8/21
+	Adding events like the ones in Script_Thread.cpp allowed me to add commands that could
+	be used in the scripts however, I underutilized this because I was crunched for time at
+	the end. I made several new consoleCMD's to help that I called from the mainmenu.gui which
+	was also used as the buy menu. A ridiculous amount and disgustingly formatted code can
+	be found in the mainmenu.gui; namedEvent's were not working for me, so there is a bunch
+	of repeated code. Although, the job is done.
+
+11/9/21 Concluding thoughts:
+	I think the main stress and difficulty in this project came from the pak file format and
+	how you can't just search the whole project for something because it might be in a pak
+	file you don't know exists. After looking at the code long enough, I now know what I 
+	can expect to be in the paks and the c++. If I were to redo this project from the ground 
+	up, I would be able to make many aspects significantly quicker and more polished overall.
+	I do still think there are many things that I would still have to decipher, but I guess
+	that's part of the fun. You can only know you're sane when you lose your sanity once in
+	a while. 
 	
 
 
